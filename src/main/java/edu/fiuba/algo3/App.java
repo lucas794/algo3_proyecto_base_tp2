@@ -6,6 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 /**
  * JavaFX App
  */
@@ -24,6 +26,13 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
+        ArrayList<String> test = new ArrayList<String>();
+
+        test.add("elemento 1");
+        test.add("Elemento 2");
+        test.add("Elemento 3");
+
+        System.out.println(test);
     }
 
 }
