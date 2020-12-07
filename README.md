@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/lucas794/algo3_proyecto_base_tp2.svg?branch=master)](https://travis-ci.org/lucas794/algo3_proyecto_base_tp2) [![codecov](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2/branch/master/graph/badge.svg)](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2)
+[![Build Status](https://travis-ci.org/lucas794/algo3_proyecto_base_tp2.svg?branch=master)](https://travis-ci.org/lucas794/algo3_proyecto_base_tp2) [![codecov](https://codecov.io/gh/lucas794/algo3_proyecto_base_tp2/branch/master/graph/badge.svg)](https://codecov.io/gh/lucas794/algo3_proyecto_base_tp2)
 
 
 
@@ -8,12 +8,12 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 ## Grupo {N}
 
-* **Integrante 1** - [integrante1](https://github.com/integrante1)
-* **Integrante 2** - [integrante2](https://github.com/integrante2)
-* **Integrante 3** - [integrante3](https://github.com/integrante3)
-* **Integrante 4** - [integrante4](https://github.com/integrante4)
+* **Integrante 1** - [Claudia Ramos](https://github.com/claudia-ramos)
+* **Integrante 2** - [Matias Gonzalez](https://github.com/matias-gonz)
+* **Integrante 3** - [Luz Calixto](https://github.com/integrante3)
+* **Integrante 4** - [Lucas Torres](https://github.com/lucas794)
 
-Corrector: **{Corrector}**
+Corrector: **{TBD}**
 
 ### Pre-requisitos
 
