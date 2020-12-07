@@ -6,7 +6,7 @@
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {N}
+## Grupo 4 | Turno Noche
 
 * **Integrante 1** - [Claudia Ramos](https://github.com/claudia-ramos)
 * **Integrante 2** - [Matias Gonzalez](https://github.com/matias-gonz)
