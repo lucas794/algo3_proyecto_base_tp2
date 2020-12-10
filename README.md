@@ -10,7 +10,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 * **Integrante 1** - [Claudia Ramos](https://github.com/claudia-ramos)
 * **Integrante 2** - [Matias Gonzalez](https://github.com/matias-gonz)
-* **Integrante 3** - [Luz Calixto](https://github.com/integrante3)
+* **Integrante 3** - [Luz Calixto](https://github.com/ldiazcto)
 * **Integrante 4** - [Lucas Torres](https://github.com/lucas794)
 
 Corrector: **{TBD}**
