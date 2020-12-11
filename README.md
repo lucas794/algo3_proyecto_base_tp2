@@ -2,7 +2,7 @@
 
 
 
-# TP2 Algoritmos 3: {nombre}
+# TP2 Algoritmos 3: AlgoBlocks
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
@@ -13,7 +13,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Integrante 3** - [Luz Calixto](https://github.com/ldiazcto)
 * **Integrante 4** - [Lucas Torres](https://github.com/lucas794)
 
-Corrector: **{TBD}**
+Corrector: [Joaquin Gomez](https://github.com/joaqogomez)
 
 ### Pre-requisitos
 
