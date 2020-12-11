@@ -15,7 +15,7 @@ public class Personaje {
     }
 
     public void apoyarLapiz() {
-        /* hay que implementarlo */
+        this.lapiz = new LapizApoyado();
     }
 
     public void levantarLapiz() {
