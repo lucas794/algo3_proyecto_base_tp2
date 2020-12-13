@@ -17,15 +17,15 @@ public class PersonajeTest {
     @Test
     public void test02SeLevantaYVuelveABajarElLapizConUnBloque(){
         Personaje personaje = new Personaje();
-        BloqueMovimientoLevantar bloqueLevantar = new BloqueMovimientoLevantar();
-        BloqueMovimientoBajar bloqueBajar = new BloqueMovimientoBajar();
+        BloqueLevantarLapiz bloqueLevantarLapiz = new BloqueLevantarLapiz();
+        BloqueBajarLapiz bloqueBajarLapiz = new BloqueBajarLapiz();
 
-        bloqueLevantar.ejecutar(personaje);
+        bloqueLevantarLapiz.ejecutar(personaje);
 
         /* ahora, el personaje, debería tener el lapiz levantado */
         assertFalse( personaje.tieneLapizAbajo() );
 
-        bloqueBajar.ejecutar(personaje);
+        bloqueBajarLapiz.ejecutar(personaje);
 
         /* subimos el lapiz con el bloque, debe dar true */
         assertTrue( personaje.tieneLapizAbajo() );
