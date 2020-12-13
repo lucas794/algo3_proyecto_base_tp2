@@ -6,7 +6,7 @@ public class Personaje {
 
     private Lapiz lapiz = new LapizApoyado(); // por defecto, el lapiz arranca apoyado.
 
-    public void ejecutarBloques(List<Bloques> bloques) {
+    public void ejecutarBloques(List<Bloque> bloques) {
         /* hay que implementarlo */
     }
 
@@ -20,5 +20,9 @@ public class Personaje {
 
     public void levantarLapiz() {
         this.lapiz = new LapizLevantado();
+    }
+
+    public boolean tieneLapizAbajo() {
+        return this.lapiz.lapizLevantado();
     }
 }
