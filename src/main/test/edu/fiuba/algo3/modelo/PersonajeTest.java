@@ -91,34 +91,4 @@ public class PersonajeTest {
             assertEquals(lista_posiciones_esperadas.get(i), personaje.obtenerPosicion() );
         }
     }
-
-    /*
-    Varias preguntas respecto a test 05.
-
-    1) Está bien planteada la idea general?
-    2) Por alguna razón, adentro de la clase BloqueInvertirComportamiento, no coinciden los bloques que le mando
-       con las keys que tengo adentro, puede ser que está buscando la referencia en memoria, por eso falla?
-    3) Si (2) es si, busqué algo en StackOverflow acerca de reescribir equals, puede ser?
-      -Referencia : https://stackoverflow.com/questions/2265503/why-do-i-need-to-override-the-equals-and-hashcode-methods-in-java
-    4) Solucionando esto, hipotéticamente debería funcionar.
-
-    @Test
-    public void test05SeInvierteComportamiento() {
-
-        BloqueMoverAbajo bloqueMoverAbajo = new BloqueMoverAbajo();       // (0, -1)
-        BloqueMoverDerecha bloqueMoverDerecha = new BloqueMoverDerecha(); // (1, -1)
-
-        List<Bloque> lista_bloques = new ArrayList<Bloque>();
-        lista_bloques.add(bloqueMoverAbajo);
-        lista_bloques.add(bloqueMoverDerecha);
-
-        BloqueInvertirComportamiento bloqueInvertirComportamiento = new BloqueInvertirComportamiento(lista_bloques);
-
-        bloqueInvertirComportamiento.ejecutar(personaje);
-
-        // hipotéticamente, aplicó los 2 bloques previos, por ende, debería estar en (-1, 1)
-
-        assertEquals( Arrays.asList(-1, 1), personaje.obtenerPosicion() );
-    }
-    */
 }
