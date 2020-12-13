@@ -9,6 +9,6 @@ public class LapizLevantado implements Lapiz {
 
     @Override
     public boolean lapizLevantado() {
-        return false;
+        return true;
     }
 }

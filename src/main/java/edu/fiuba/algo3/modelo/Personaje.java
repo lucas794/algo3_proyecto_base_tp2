@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Personaje {
 
-    private Lapiz lapiz = new LapizApoyado(); // por defecto, el lapiz arranca apoyado.
+    private Lapiz lapiz = new LapizLevantado(); // por defecto, el lapiz arranca arriba.
 
     public void ejecutarBloques(List<Bloque> bloques) {
         /* hay que implementarlo */
@@ -22,7 +22,7 @@ public class Personaje {
         this.lapiz = new LapizLevantado();
     }
 
-    public boolean tieneLapizAbajo() {
+    public boolean tieneLapizLevantado() {
         return this.lapiz.lapizLevantado();
     }
 }

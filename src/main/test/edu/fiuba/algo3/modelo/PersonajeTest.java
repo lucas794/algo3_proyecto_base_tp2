@@ -11,7 +11,7 @@ public class PersonajeTest {
     {
         Personaje personaje = new Personaje();
 
-        assertTrue( personaje.tieneLapizAbajo() ); /* inicialmente, tiene el lapiz abajo */
+        assertTrue( personaje.tieneLapizLevantado() ); /* inicialmente, tiene el lapiz levantado */
     }
 
     @Test
@@ -20,14 +20,14 @@ public class PersonajeTest {
         BloqueLevantarLapiz bloqueLevantarLapiz = new BloqueLevantarLapiz();
         BloqueBajarLapiz bloqueBajarLapiz = new BloqueBajarLapiz();
 
-        bloqueLevantarLapiz.ejecutar(personaje);
-
-        /* ahora, el personaje, debería tener el lapiz levantado */
-        assertFalse( personaje.tieneLapizAbajo() );
-
         bloqueBajarLapiz.ejecutar(personaje);
 
+        /* ahora, el personaje, debería tener el lapiz apoyado */
+        assertFalse( personaje.tieneLapizLevantado() );
+
+        bloqueLevantarLapiz.ejecutar(personaje);
+
         /* subimos el lapiz con el bloque, debe dar true */
-        assertTrue( personaje.tieneLapizAbajo() );
+        assertTrue( personaje.tieneLapizLevantado() );
     }
 }
