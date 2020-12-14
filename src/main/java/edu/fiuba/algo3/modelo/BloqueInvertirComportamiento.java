@@ -12,5 +12,6 @@ public class BloqueInvertirComportamiento implements Bloque {
     @Override
     public void ejecutar(Personaje personaje) {
         /* deberíamos crear una excepción acá por si se llegara a enviar un bloque inexistente o inválido */
+
     }
 }
