@@ -14,7 +14,9 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Integrante 4** - [Lucas Torres](https://github.com/lucas794)
 
 Corrector: [Joaquin Gomez](https://github.com/joaqogomez)
+
 Link al informe: [Overleaf](https://www.overleaf.com/6819117356xhdwqtrmvzyr)
+
 ### Pre-requisitos
 
 Listado de software/herramientas necesarias para el proyecto
