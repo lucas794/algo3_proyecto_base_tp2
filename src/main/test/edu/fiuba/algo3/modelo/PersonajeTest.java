@@ -37,37 +37,111 @@ public class PersonajeTest {
     }
 
     @Test
-    public void test03SeCreaUnPersonajeYSeLoMueveEnTodasLasDirecciones() {
-        /* el personaje, inicialmente, está en el (0,0) */
+    public void test03SeCreaUnPersonajeYLaPosicionInicialEs0_0(){
         assertEquals( Arrays.asList(0,0), personaje.obtenerPosicion() );
+    }
 
+    @Test
+    public void test04SeMueveUnPersonajeUnaPosicionALaDerecha(){
         BloqueMoverDerecha bloqueMoverDerecha = new BloqueMoverDerecha();
         bloqueMoverDerecha.ejecutar(personaje);
 
-        /* si el personaje se mueve hacia la derecha, está en el punto (1,0) */
         assertEquals( Arrays.asList(1, 0), personaje.obtenerPosicion() );
+    }
 
-        BloqueMoverAbajo bloqueMoverAbajo = new BloqueMoverAbajo();
-        bloqueMoverAbajo.ejecutar(personaje);
+    @Test
+    public void test05SeMueveUnPersonajeTresPosicionesALaDerecha(){
+        BloqueMoverDerecha bloqueMoverDerecha = new BloqueMoverDerecha();
 
-        /* si el personaje se mueve hacia abajo estando en (1,0) , debe ir a (1,-1) */
-        assertEquals( Arrays.asList(1, -1), personaje.obtenerPosicion() );
+        for(int i = 0; i < 3; i++) {
+            bloqueMoverDerecha.ejecutar(personaje);
+        }
 
+        assertEquals( Arrays.asList(3, 0), personaje.obtenerPosicion() );
+    }
+
+    @Test
+    public void test06SeMueveUnPersonajeUnaPosicionALaIzquierda(){
         BloqueMoverIzquierda bloqueMoverIzquierda = new BloqueMoverIzquierda();
         bloqueMoverIzquierda.ejecutar(personaje);
 
-        /* si el personaje se mueve hacia la izquierda estando en (1,-1), va a (0,-1) */
-        assertEquals( Arrays.asList(0, -1), personaje.obtenerPosicion() );
+        assertEquals( Arrays.asList(-1, 0), personaje.obtenerPosicion() );
+    }
 
+    @Test
+    public void test07SeMueveUnPersonajeTresPosicionesALaIzquierda(){
+        BloqueMoverIzquierda bloqueMoverIzquierda = new BloqueMoverIzquierda();
+
+        for(int i = 0; i < 3; i++) {
+            bloqueMoverIzquierda.ejecutar(personaje);
+        }
+
+        assertEquals( Arrays.asList(-3, 0), personaje.obtenerPosicion() );
+    }
+
+    @Test
+    public void test08SeMueveUnPersonajeUnaPosicionArriba(){
         BloqueMoverArriba bloqueMoverArriba = new BloqueMoverArriba();
         bloqueMoverArriba.ejecutar(personaje);
 
-        /* si el personaje se mueve hacia la izquierda estando en (0, -1), va a (0,0) */
+        assertEquals( Arrays.asList(0, 1), personaje.obtenerPosicion() );
+    }
+
+    @Test
+    public void test09SeMueveUnPersonajeTresPosicionesArriba(){
+        BloqueMoverArriba bloqueMoverArriba = new BloqueMoverArriba();
+
+        for(int i = 0; i < 3; i++) {
+            bloqueMoverArriba.ejecutar(personaje);
+        }
+
+        assertEquals( Arrays.asList(0, 3), personaje.obtenerPosicion() );
+    }
+
+    @Test
+    public void test10SeMueveUnPersonajeUnaPosicionAbajo(){
+        BloqueMoverAbajo bloqueMoverAbajo = new BloqueMoverAbajo();
+        bloqueMoverAbajo.ejecutar(personaje);
+
+        assertEquals( Arrays.asList(0, -1), personaje.obtenerPosicion() );
+    }
+
+    @Test
+    public void test09SeMueveUnPersonajeTresPosicionesAbajo(){
+        BloqueMoverAbajo bloqueMoverAbajo = new BloqueMoverAbajo();
+
+        for(int i = 0; i < 3; i++) {
+            bloqueMoverAbajo.ejecutar(personaje);
+        }
+
+        assertEquals( Arrays.asList(0, -3), personaje.obtenerPosicion() );
+    }
+
+
+    @Test
+    public void test10SeMueveElPersonajeParaArribaYAbajoDebeTerminarEn0_0() {
+        BloqueMoverAbajo bloqueMoverAbajo = new BloqueMoverAbajo();
+        BloqueMoverArriba bloqueMoverArriba = new BloqueMoverArriba();
+
+        bloqueMoverAbajo.ejecutar(personaje);
+        bloqueMoverArriba.ejecutar(personaje);
+
         assertEquals( Arrays.asList(0, 0), personaje.obtenerPosicion() );
     }
 
     @Test
-    public void test04SeCreaUnPersonajeYSeLoMueveHaciaDiferentesSentidos() {
+    public void test11SeMueveElPersonajeParaIzquierdaYDerechaDebeTerminarEn0_0() {
+        BloqueMoverIzquierda bloqueMoverIzquierda = new BloqueMoverIzquierda();
+        BloqueMoverDerecha bloqueMoverDerecha = new BloqueMoverDerecha();
+
+        bloqueMoverIzquierda.ejecutar(personaje);
+        bloqueMoverDerecha.ejecutar(personaje);
+
+        assertEquals( Arrays.asList(0, 0), personaje.obtenerPosicion() );
+    }
+
+    @Test
+    public void test12SeMueveElPersonajeHaciaDiferentesSentidos() {
         List<Bloque> listaBloquesDeMovimiento = new ArrayList<>();
         listaBloquesDeMovimiento.add(new BloqueMoverAbajo());   /* (0, -1) */
         listaBloquesDeMovimiento.add(new BloqueMoverAbajo());   /* (0, -2) */
