@@ -17,6 +17,8 @@ Corrector: [Joaquin Gomez](https://github.com/joaqogomez)
 
 Link al informe: [Overleaf](https://www.overleaf.com/6819117356xhdwqtrmvzyr)
 
+Link al enunciado: [Google Docs](https://docs.google.com/document/d/1mVxDk4yDnr1ck9b-jBZ9ZcSXvRVdQCUoggX72gO6PSc/edit?usp=sharing)
+
 ### Pre-requisitos
 
 Listado de software/herramientas necesarias para el proyecto
