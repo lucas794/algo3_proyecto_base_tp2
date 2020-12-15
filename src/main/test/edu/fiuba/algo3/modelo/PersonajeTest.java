@@ -30,10 +30,6 @@ public class PersonajeTest {
         BloqueBajarLapiz bloqueBajarLapiz = new BloqueBajarLapiz();
 
         bloqueBajarLapiz.ejecutar(personaje);
-
-        /* ahora, el personaje, debería tener el lapiz apoyado */
-        assertFalse( personaje.tieneLapizLevantado() );
-
         bloqueLevantarLapiz.ejecutar(personaje);
 
         /* subimos el lapiz con el bloque, debe dar true */
