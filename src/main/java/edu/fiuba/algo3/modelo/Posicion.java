@@ -17,11 +17,4 @@ public class Posicion {
         return (movimiento.mover(this));
     }
 
- /*  public Posicion desplazamientoHorizontal(Movimiento movimiento) {
-        return (movimiento.mover(this));
-    }
-
-    public Posicion desplazamientoVertical(Movimiento movimiento) {
-        return (movimiento.mover(this));
-    }*/
 }
