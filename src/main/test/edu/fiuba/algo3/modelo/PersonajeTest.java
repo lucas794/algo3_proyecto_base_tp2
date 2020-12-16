@@ -18,7 +18,7 @@ public class PersonajeTest {
         personaje = new Personaje();
     }
 
-    public void ejecutarBloque(Personaje personaje, Bloque bloque, int cantidad){
+    private void ejecutarBloque(Personaje personaje, Bloque bloque, int cantidad){
         for(int i = 0; i < cantidad; i++)
             bloque.ejecutar(personaje);
     }
@@ -30,14 +30,14 @@ public class PersonajeTest {
     }
 
     @Test
-    public void test02SeLevantaYVuelveABajarElLapizConUnBloque(){
+    public void test02SeBajayVuelveALevantarElLapizConUnBloque(){
         BloqueLevantarLapiz bloqueLevantarLapiz = new BloqueLevantarLapiz();
         BloqueBajarLapiz bloqueBajarLapiz = new BloqueBajarLapiz();
 
         bloqueBajarLapiz.ejecutar(personaje);
         bloqueLevantarLapiz.ejecutar(personaje);
 
-        /* subimos el lapiz con el bloque, debe dar true */
+        /* subimos el lapiz con el último bloque, debe dar true */
         assertTrue( personaje.tieneLapizLevantado() );
     }
 
