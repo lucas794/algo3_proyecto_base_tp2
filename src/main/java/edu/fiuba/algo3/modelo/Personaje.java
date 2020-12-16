@@ -25,7 +25,7 @@ public class Personaje {
     }
 
     public boolean tieneLapizLevantado() {
-        return this.lapiz.lapizLevantado();
+        return !(this.lapiz.puedeDibujar());
     }
 
     public <T> List<T> obtenerPosicion() {

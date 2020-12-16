@@ -8,7 +8,7 @@ public class LapizLevantado implements Lapiz {
     }
 
     @Override
-    public boolean lapizLevantado() {
-        return true;
+    public boolean puedeDibujar() {
+        return false;
     }
 }
