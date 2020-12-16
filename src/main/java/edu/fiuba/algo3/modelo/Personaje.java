@@ -28,8 +28,8 @@ public class Personaje {
         return !(this.lapiz.puedeDibujar());
     }
 
-    public <T> List<T> obtenerPosicion() {
+    public List<Integer> obtenerPosicion() {
         /* obtengo la posicion del personaje en forma de tupla (coordenada_x, coordenada_y) */
-        return (List<T>) Arrays.asList(this.posicion_personaje.getHorizontal(), this.posicion_personaje.getVertical());
+        return Arrays.asList(this.posicion_personaje.getHorizontal(), this.posicion_personaje.getVertical());
     }
 }

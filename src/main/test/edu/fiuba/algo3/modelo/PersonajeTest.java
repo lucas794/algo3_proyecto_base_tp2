@@ -133,14 +133,13 @@ public class PersonajeTest {
         assertEquals( Arrays.asList(0, 0), personaje.obtenerPosicion() );
     }
 
-    /*
     @Test
     public void test12SeMueveElPersonajeHaciaDiferentesSentidos() {
-        List<Bloque> listaBloquesDeMovimiento = new ArrayList<>();
-        listaBloquesDeMovimiento.add(new BloqueMoverAbajo());
-        listaBloquesDeMovimiento.add(new BloqueMoverAbajo());
-        listaBloquesDeMovimiento.add(new BloqueMoverDerecha());
-        listaBloquesDeMovimiento.add(new BloqueMoverArriba());
+        List<Movimiento> listaDeMovimiento = new ArrayList<>();
+        listaDeMovimiento.add(new MovimientoAbajo());
+        listaDeMovimiento.add(new MovimientoAbajo());
+        listaDeMovimiento.add(new MovimientoDerecha());
+        listaDeMovimiento.add(new MovimientoArriba());
 
         List<List<Integer>> lista_posiciones_esperadas = new ArrayList<>();
         lista_posiciones_esperadas.add( Arrays.asList(0, -1) );
@@ -151,9 +150,9 @@ public class PersonajeTest {
         int i;
         for( i = 0; i < lista_posiciones_esperadas.size( ); i++ )
         {
-            listaBloquesDeMovimiento.get(i).ejecutar(personaje);
+            BloqueMovimiento bloqueMovimiento = new BloqueMovimiento( listaDeMovimiento.get(i) );
+            bloqueMovimiento.ejecutar(personaje);
             assertEquals(lista_posiciones_esperadas.get(i), personaje.obtenerPosicion() );
         }
     }
-   */
 }

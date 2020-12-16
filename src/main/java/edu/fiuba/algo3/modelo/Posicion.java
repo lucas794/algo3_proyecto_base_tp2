@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
 public class Posicion {
-    private int posHorizontal;
-    private int posVertical;
+    private final int posHorizontal;
+    private final int posVertical;
 
     public Posicion(int posHorizontal, int posVertical) {
         this.posHorizontal = posHorizontal;
