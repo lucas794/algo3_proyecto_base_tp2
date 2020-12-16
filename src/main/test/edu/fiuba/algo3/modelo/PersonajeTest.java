@@ -151,8 +151,8 @@ public class PersonajeTest {
         for( i = 0; i < lista_posiciones_esperadas.size( ); i++ )
         {
             BloqueMovimiento bloqueMovimiento = new BloqueMovimiento( listaDeMovimiento.get(i) );
-            bloqueMovimiento.ejecutar(personaje);
-            assertEquals(lista_posiciones_esperadas.get(i), personaje.obtenerPosicion() );
+            ejecutarBloque(personaje, bloqueMovimiento, 1); // usamos la misma función creada
+            assertEquals( lista_posiciones_esperadas.get(i), personaje.obtenerPosicion() );
         }
     }
 }
