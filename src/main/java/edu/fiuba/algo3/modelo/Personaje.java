@@ -9,7 +9,9 @@ public class Personaje {
     private Posicion posicion_personaje = new Posicion(0,0);
 
     public void ejecutarBloques(List<Bloque> bloques) {
-        /* hay que implementarlo */
+        for (Bloque i : bloques){
+            i.ejecutar(this);
+        }
     }
 
     public void mover(Movimiento movimiento) {
