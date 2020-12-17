@@ -11,6 +11,160 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class PersonajeTest {
 
+    /* Pruebas unitarias*/
+    @Test
+    public void test01ElPersonajeSePuedeMoverHaciaArriba(){
+        Personaje personaje = new Personaje();
+        MovimientoArriba movimientoArriba = new MovimientoArriba();
+
+        personaje.mover(movimientoArriba);
+
+        assertEquals( Arrays.asList(0, 1), personaje.obtenerPosicion() );
+    }
+
+    @Test
+    public void test02ElPersonajePuedeRepetirElMomientoHaciaArriba(){
+        Personaje personaje = new Personaje();
+        MovimientoArriba movimientoArriba = new MovimientoArriba();
+
+        personaje.mover(movimientoArriba);
+        personaje.mover(movimientoArriba);
+
+        assertEquals( Arrays.asList(0, 2), personaje.obtenerPosicion() );
+    }
+
+    @Test
+    public void test03ElPersonajeSePuedeMoverHaciaAbajo(){
+        Personaje personaje = new Personaje();
+        MovimientoAbajo movimientoAbajo = new MovimientoAbajo();
+
+        personaje.mover(movimientoAbajo);
+
+        assertEquals( Arrays.asList(0, -1), personaje.obtenerPosicion() );
+    }
+
+    @Test
+    public void test04ElPersonajePuedeRepetirElMovimientoHaciaAbajo(){
+        Personaje personaje = new Personaje();
+        MovimientoAbajo movimientoAbajo = new MovimientoAbajo();
+
+        personaje.mover(movimientoAbajo);
+        personaje.mover(movimientoAbajo);
+
+        assertEquals( Arrays.asList(0, -2), personaje.obtenerPosicion() );
+    }
+
+    @Test
+    public void test05ElPersonajeSePuedeMoverHaciaLaIzquierda(){
+        Personaje personaje = new Personaje();
+        MovimientoIzquierda movimientoIzquierda = new MovimientoIzquierda();
+
+        personaje.mover(movimientoIzquierda);
+
+        assertEquals( Arrays.asList(-1, 0), personaje.obtenerPosicion() );
+    }
+
+    @Test
+    public void test06ElPersonajePuedeRepetirElMovimientoHaciaLaIzquierda(){
+        Personaje personaje = new Personaje();
+        MovimientoIzquierda movimientoIzquierda = new MovimientoIzquierda();
+
+        personaje.mover(movimientoIzquierda);
+        personaje.mover(movimientoIzquierda);
+
+        assertEquals( Arrays.asList(-2, 0), personaje.obtenerPosicion() );
+    }
+
+    @Test
+    public void test07ElPersonajeSePuedeMoverHaciaLaDerecha(){
+        Personaje personaje = new Personaje();
+        MovimientoDerecha movimientoDerecha = new MovimientoDerecha();
+
+        personaje.mover(movimientoDerecha);
+
+        assertEquals( Arrays.asList(1, 0), personaje.obtenerPosicion() );
+    }
+
+    @Test
+    public void test08ElPersonajePuedeRepetirElMovimientoHaciaLaDerecha(){
+        Personaje personaje = new Personaje();
+        MovimientoDerecha movimientoDerecha = new MovimientoDerecha();
+
+        personaje.mover(movimientoDerecha);
+        personaje.mover(movimientoDerecha);
+
+
+        assertEquals( Arrays.asList(2, 0), personaje.obtenerPosicion() );
+    }
+
+    @Test
+    public void test09ElPersonajePuedeLevantarElLapizCuandoElLapizEstaApoyado() {
+        Personaje personaje = new Personaje();
+
+        personaje.apoyarLapiz();
+        personaje.levantarLapiz();
+
+        assertTrue(personaje.tieneLapizLevantado());
+    }
+
+    @Test
+    public void test10ElPersonajePuedeLevantarElLapizCuandoElLapizEstaApoyado() {
+        Personaje personaje = new Personaje();
+
+        personaje.apoyarLapiz();
+        personaje.levantarLapiz();
+
+        assertTrue(personaje.tieneLapizLevantado());
+    }
+
+    @Test
+    public void test11ElPersonajeNoPuedeLevantarElLapizCuandoElLapizEstaLevantado() {
+        Personaje personaje = new Personaje();
+
+        assertThrows(LapizEstaLevantadoException.class, ()->{
+            personaje.levantarLapiz();
+        });
+    }
+
+    @Test
+    public void test12ElPersonajePuedeApoyarElLapizCuandoElLapizEstaLevantado() {
+        Personaje personaje = new Personaje();
+
+        personaje.apoyarLapiz();
+
+        assertFalse(personaje.tieneLapizLevantado());
+    }
+
+    @Test
+    public void test13ElPersonajeNoPuedeApoyarElLapizCuandoElLapizEstaApoyado() {
+        Personaje personaje = new Personaje();
+
+        personaje.apoyarLapiz();
+
+        assertThrows(LapizEstaApoyadoException.class, ()->{
+            personaje.apoyarLapiz();
+        });
+    }
+
+    @Test
+    public void test14ElMetdodtieneLapizLevantadoDevuelveTrueCuandoElLapizEstaLevantado() {
+        Personaje personaje = new Personaje();
+
+        assertTrue(personaje.tieneLapizLevantado());
+    }
+
+    @Test
+    public void test15ElMetdodtieneLapizLevantadoDevuelveFalseCuandoElLapizEstaApoyado() {
+        Personaje personaje = new Personaje();
+
+        personaje.apoyarLapiz();
+
+        assertFalse(personaje.tieneLapizLevantado());
+    }
+
+
+
+    /*Pruebas de integracion*/
     Personaje personaje;
 
     @BeforeEach
