@@ -309,4 +309,32 @@ public class PersonajeTest {
             assertEquals( lista_posiciones_esperadas.get(i), personaje.obtenerPosicion() );
         }
     }
+
+    @Test
+    public void test13SeMueveElPersonajeConListaDeBloquesMovimientoHaciaIzquierda() {
+        BloqueMovimiento bloqueMoverIzquierda = new BloqueMovimiento(new MovimientoIzquierda());
+        List<Bloque> bloques = new ArrayList();
+        for (int i = 0; i < 10; i++) {
+            bloques.add(bloqueMoverIzquierda);
+        }
+
+        personaje.ejecutarBloques(bloques);
+
+        assertEquals( Arrays.asList(-10, 0), personaje.obtenerPosicion() );
+    }
+
+    @Test
+    public void test14SeMueveElPersonajeConListaDeBloquesMovimientoHaciaArribaYAbajo() {
+        BloqueMovimiento bloqueMoverArriba = new BloqueMovimiento(new MovimientoArriba());
+        BloqueMovimiento bloqueMoverAbajo = new BloqueMovimiento(new MovimientoAbajo());
+        List<Bloque> bloques = new ArrayList();
+        for (int i = 0; i < 50; i++) {
+            bloques.add(bloqueMoverAbajo);
+            bloques.add(bloqueMoverArriba);
+        }
+
+        personaje.ejecutarBloques(bloques);
+
+        assertEquals( Arrays.asList(0, 0), personaje.obtenerPosicion() );
+    }
 }
