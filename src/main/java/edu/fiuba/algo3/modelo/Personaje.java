@@ -17,10 +17,16 @@ public class Personaje {
     }
 
     public void apoyarLapiz() {
+        /*if (!(this.tieneLapizLevantado())) {
+            throw new LapizEstaLevantadoExcepcion();
+        }*/
         this.lapiz = new LapizApoyado();
     }
 
     public void levantarLapiz() {
+        /*if (this.tieneLapizLevantado()) {
+            throw new LapizEstaLevantadoExcepcion();
+        }*/
         this.lapiz = new LapizLevantado();
     }
 
