@@ -9,8 +9,8 @@ public class BloqueLevantarLapizTest {
 
     @Test
     public void test01SiSeEjecutaElBloqueLevantarLapizLevantaElLapizDeUnPersonaje() {
-        BloqueLevantarLapiz bloqueLevantarLapiz = new BloqueLevantarLapiz();
         BloqueBajarLapiz bloqueBajarLapiz = new BloqueBajarLapiz();
+        BloqueLevantarLapiz bloqueLevantarLapiz = new BloqueLevantarLapiz();
         Personaje personaje = new Personaje();
 
         bloqueBajarLapiz.ejecutar(personaje);
@@ -19,16 +19,13 @@ public class BloqueLevantarLapizTest {
         assertTrue(personaje.tieneLapizLevantado());
     }
 
-    /*@Rule
-    public ExceptedException thrown = ExpectedException.none();
-
     @Test
-    public void test02SiSeEjecutaElBloqueLevantarLapizCuandoElLapizDeUnPersonajeEstaLevantadoLanzaUnaExcepcion() throws Exception{
-        BloqueLevantarLapiz bloqueLevantarLapiz = new BloqueLevantarLa
+    public void test02SiSeEjecutaElBloqueLevantarLapizCuandoElLapizDeUnPersonajeEstaLevantadoLanzaUnaExcepcion() {
+        BloqueLevantarLapiz bloqueLevantarLapiz = new BloqueLevantarLapiz();
         Personaje personaje = new Personaje();
 
-        thrown.expect(LapizEstaLevantandoExcepcion.class);
-        bloqueLevantarLapiz.ejecutar(personaje);
-    }*/
+        assertThrows(LapizEstaLevantadoException.class, ()->{
+            bloqueLevantarLapiz.ejecutar(personaje);
+        });
+    }
 }
-

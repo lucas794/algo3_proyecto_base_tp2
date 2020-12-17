@@ -16,17 +16,13 @@ public class Personaje {
         this.posicion_personaje = this.posicion_personaje.desplazarPosicion(movimiento);
     }
 
-    public void apoyarLapiz() {
-        /*if (!(this.tieneLapizLevantado())) {
-            throw new LapizEstaLevantadoExcepcion();
-        }*/
+    public void apoyarLapiz() throws LapizEstaApoyadoException {
+        if (!this.tieneLapizLevantado()) throw new LapizEstaApoyadoException();
         this.lapiz = new LapizApoyado();
     }
 
-    public void levantarLapiz() {
-        /*if (this.tieneLapizLevantado()) {
-            throw new LapizEstaLevantadoExcepcion();
-        }*/
+    public void levantarLapiz() throws LapizEstaLevantadoException {
+        if (this.tieneLapizLevantado()) throw new LapizEstaLevantadoException();
         this.lapiz = new LapizLevantado();
     }
 

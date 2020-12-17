@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class BloqueApoyarLapizTest {
+public class BloqueBajarLapizTest {
 
     @Test
-    public void test01SiSeEjecutaElBloqueApoyarLapizApoyaElLapizDeUnPersonaje() {
+    public void test01SiSeEjecutaElBloqueBajarLapizApoyaElLapizDeUnPersonaje() {
         BloqueBajarLapiz bloqueBajarLapiz = new BloqueBajarLapiz();
         Personaje personaje = new Personaje();
 
@@ -17,17 +17,16 @@ public class BloqueApoyarLapizTest {
         assertFalse(personaje.tieneLapizLevantado());
     }
 
-    /*@Rule
-    public ExceptedException thrown = ExpectedException.none();
-
     @Test
-    public void test02SiSeEjecutaElBloqueApoyarLapizCuandoElLapizDeUnPersonajeEstaApoyadaLanzaUnaExcepcion() throws Exception{
+    public void test02SiSeEjecutaElBloqueApoyarLapizCuandoElLapizDeUnPersonajeEstaApoyadaLanzaUnaExcepcion() {
         BloqueBajarLapiz bloqueBajarLapiz = new BloqueBajarLapiz();
         Personaje personaje = new Personaje();
 
         bloqueBajarLapiz.ejecutar(personaje);
 
-        thrown.expect(LapizEstaApoyadoExcepcion.class);
-        bloqueBajarLapiz.ejecutar(personaje);
-    }*/
+        assertThrows(LapizEstaApoyadoException.class, ()->{
+            bloqueBajarLapiz.ejecutar(personaje);
+        });
+
+    }
 }
