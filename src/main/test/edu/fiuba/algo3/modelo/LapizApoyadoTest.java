@@ -12,4 +12,5 @@ public class LapizApoyadoTest {
 
         assertTrue(lapizApoyado.puedeDibujar());
     }
+    
 }
