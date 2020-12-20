@@ -18,9 +18,6 @@ public class Personaje {
         this.posicion_personaje = this.posicion_personaje.desplazarPosicion(movimiento);
     }
 
-    /* No es necesario tirar una excepción si el lapiz ya lo tiene levantado
-    o apoyado, solamente ignorar el mensaje */
-
     public void apoyarLapiz(){
         this.lapiz = new LapizApoyado();
     }
@@ -34,13 +31,7 @@ public class Personaje {
     }
 
     public List<Integer> obtenerPosicion() {
-        /* obtengo la posicion del personaje en forma de tupla (coordenada_x, coordenada_y) */
 
-        /* revisar esta línea porque si bien funciona, está mal
-        Es posible una solución del tipo
         return this.posicion_personaje.obtenerCoordenadas();
-        y crear el metodo obtenerCoordenadas en Posicion
-        */
-        return Arrays.asList(this.posicion_personaje.getHorizontal(), this.posicion_personaje.getVertical());
     }
 }

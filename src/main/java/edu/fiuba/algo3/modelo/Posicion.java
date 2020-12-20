@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Posicion {
     private final int posHorizontal;
     private final int posVertical;
@@ -17,4 +20,10 @@ public class Posicion {
         return (movimiento.mover(this));
     }
 
+    public List<Integer> obtenerCoordenadas(){
+        List<Integer> coordenadas = new ArrayList();
+        coordenadas.add(posHorizontal);
+        coordenadas.add(posVertical);
+        return coordenadas;
+    }
 }
