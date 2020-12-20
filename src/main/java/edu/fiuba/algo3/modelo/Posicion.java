@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Posicion {
-    private final int posHorizontal;
-    private final int posVertical;
+    private int posHorizontal;
+    private int posVertical;
 
     public Posicion(int posHorizontal, int posVertical) {
         this.posHorizontal = posHorizontal;
@@ -16,14 +16,26 @@ public class Posicion {
 
     public int getVertical() { return posVertical;}
 
-    public Posicion desplazarPosicion(Movimiento movimiento){
-        return (movimiento.mover(this));
-    }
-
     public List<Integer> obtenerCoordenadas(){
         List<Integer> coordenadas = new ArrayList();
         coordenadas.add(posHorizontal);
         coordenadas.add(posVertical);
         return coordenadas;
+    }
+
+    public void desplazarAbajo() {
+        this.posVertical = this.posVertical - 1;
+    }
+
+    public void desplazarArriba() {
+        this.posVertical = this.posVertical + 1;
+    }
+
+    public void desplazarDerecha() {
+        this.posHorizontal = this.posHorizontal + 1;
+    }
+
+    public void desplazarIzquierda() {
+        this.posHorizontal = this.posHorizontal - 1;
     }
 }

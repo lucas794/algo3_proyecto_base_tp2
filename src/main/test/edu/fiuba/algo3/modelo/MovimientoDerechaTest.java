@@ -12,8 +12,8 @@ public class MovimientoDerechaTest {
 
         MovimientoDerecha movimientoDerecha = new MovimientoDerecha();
 
-        Posicion nuevaPosicion = movimientoDerecha.mover(posicion);
+        movimientoDerecha.mover(posicion);
 
-        assertEquals(6, nuevaPosicion.getHorizontal());
+        assertEquals(6, posicion.getHorizontal());
     }
 }

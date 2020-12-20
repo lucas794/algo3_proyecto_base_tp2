@@ -15,7 +15,7 @@ public class Personaje {
     }
 
     public void mover(Movimiento movimiento) {
-        this.posicion_personaje = this.posicion_personaje.desplazarPosicion(movimiento);
+        movimiento.mover(this.posicion_personaje);
     }
 
     public void apoyarLapiz(){

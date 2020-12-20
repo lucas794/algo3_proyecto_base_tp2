@@ -11,8 +11,8 @@ public class MovimientoArribaTest {
 
         MovimientoArriba movimientoArriba = new MovimientoArriba();
 
-        Posicion nuevaPosicion = movimientoArriba.mover(posicion);
+        movimientoArriba.mover(posicion);
 
-        assertEquals(6, nuevaPosicion.getVertical());
+        assertEquals(6, posicion.getVertical());
     }
 }

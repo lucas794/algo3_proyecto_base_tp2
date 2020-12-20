@@ -7,7 +7,7 @@ public class MovimientoAbajo implements Movimiento {
      */
 
     @Override
-    public Posicion mover(Posicion posicion) {
-        return new Posicion( posicion.getHorizontal() , posicion.getVertical() - 1 );
+    public void mover(Posicion posicion) {
+        posicion.desplazarAbajo();
     }
 }

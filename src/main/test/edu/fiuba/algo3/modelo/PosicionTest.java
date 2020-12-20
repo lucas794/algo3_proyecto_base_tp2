@@ -12,9 +12,9 @@ public class PosicionTest {
 
         MovimientoDerecha movimientoDerecha = new MovimientoDerecha();
 
-        Posicion nuevaPosicion = posicion.desplazarPosicion(movimientoDerecha);
+        movimientoDerecha.mover(posicion);
 
-        assertEquals(6, nuevaPosicion.getHorizontal());
+        assertEquals(6, posicion.getHorizontal());
     }
 
     @Test
@@ -23,9 +23,9 @@ public class PosicionTest {
 
         MovimientoIzquierda movimientoIzquierda = new MovimientoIzquierda();
 
-        Posicion nuevaPosicion = posicion.desplazarPosicion(movimientoIzquierda);
+        movimientoIzquierda.mover(posicion);
 
-        assertEquals(4, nuevaPosicion.getHorizontal());
+        assertEquals(4, posicion.getHorizontal());
     }
 
     @Test
@@ -34,9 +34,9 @@ public class PosicionTest {
 
         MovimientoArriba movimientoArriba = new MovimientoArriba();
 
-        Posicion nuevaPosicion = posicion.desplazarPosicion(movimientoArriba);
+        movimientoArriba.mover(posicion);
 
-        assertEquals(6, nuevaPosicion.getVertical());
+        assertEquals(6, posicion.getVertical());
     }
 
     @Test
@@ -45,9 +45,9 @@ public class PosicionTest {
 
         MovimientoAbajo movimientoAbajo = new MovimientoAbajo();
 
-        Posicion nuevaPosicion = posicion.desplazarPosicion(movimientoAbajo);
+        movimientoAbajo.mover(posicion);
 
-        assertEquals(4, nuevaPosicion.getVertical());
+        assertEquals(4, posicion.getVertical());
     }
 
 

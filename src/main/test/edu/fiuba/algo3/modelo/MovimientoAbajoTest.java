@@ -12,23 +12,23 @@ public class MovimientoAbajoTest {
 
         MovimientoAbajo movimientoAbajo = new MovimientoAbajo();
 
-        Posicion nuevaPosicion = movimientoAbajo.mover(posicion);
+        movimientoAbajo.mover(posicion);
 
-        assertEquals(4, nuevaPosicion.getVertical());
+        assertEquals(4, posicion.getVertical());
 
     }
 
     @Test
     public void test02SeCambiaDePosicionDosVecesHaciaAbajo(){
-        Posicion primeraPos = new Posicion(5, 5);
+        Posicion posicion = new Posicion(5, 5);
 
         MovimientoAbajo movimientoAbajo = new MovimientoAbajo();
 
-        Posicion segundaPos = movimientoAbajo.mover(primeraPos);
+        movimientoAbajo.mover(posicion);
 
-        Posicion terceraPos = movimientoAbajo.mover(segundaPos);
+        movimientoAbajo.mover(posicion);
 
-        assertEquals(3, terceraPos.getVertical());
+        assertEquals(3, posicion.getVertical());
 
     }
 
