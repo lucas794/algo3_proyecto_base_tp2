@@ -21,13 +21,11 @@ public class Personaje {
     /* No es necesario tirar una excepción si el lapiz ya lo tiene levantado
     o apoyado, solamente ignorar el mensaje */
 
-    public void apoyarLapiz() throws LapizEstaApoyadoException {
-        if (!this.tieneLapizLevantado()) throw new LapizEstaApoyadoException();
+    public void apoyarLapiz(){
         this.lapiz = new LapizApoyado();
     }
 
-    public void levantarLapiz() throws LapizEstaLevantadoException {
-        if (this.tieneLapizLevantado()) throw new LapizEstaLevantadoException();
+    public void levantarLapiz(){
         this.lapiz = new LapizLevantado();
     }
 

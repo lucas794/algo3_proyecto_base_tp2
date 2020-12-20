@@ -93,7 +93,6 @@ public class PersonajeTest {
         personaje.mover(movimientoDerecha);
         personaje.mover(movimientoDerecha);
 
-
         assertEquals( Arrays.asList(2, 0), personaje.obtenerPosicion() );
     }
 
@@ -117,17 +116,9 @@ public class PersonajeTest {
         assertTrue(personaje.tieneLapizLevantado());
     }
 
-    @Test
-    public void test11ElPersonajeNoPuedeLevantarElLapizCuandoElLapizEstaLevantado() {
-        Personaje personaje = new Personaje();
-
-        assertThrows(LapizEstaLevantadoException.class, ()->{
-            personaje.levantarLapiz();
-        });
-    }
 
     @Test
-    public void test12ElPersonajePuedeApoyarElLapizCuandoElLapizEstaLevantado() {
+    public void test11ElPersonajePuedeApoyarElLapizCuandoElLapizEstaLevantado() {
         Personaje personaje = new Personaje();
 
         personaje.apoyarLapiz();
@@ -136,25 +127,14 @@ public class PersonajeTest {
     }
 
     @Test
-    public void test13ElPersonajeNoPuedeApoyarElLapizCuandoElLapizEstaApoyado() {
-        Personaje personaje = new Personaje();
-
-        personaje.apoyarLapiz();
-
-        assertThrows(LapizEstaApoyadoException.class, ()->{
-            personaje.apoyarLapiz();
-        });
-    }
-
-    @Test
-    public void test14ElMetdodtieneLapizLevantadoDevuelveTrueCuandoElLapizEstaLevantado() {
+    public void test12ElMetdodtieneLapizLevantadoDevuelveTrueCuandoElLapizEstaLevantado() {
         Personaje personaje = new Personaje();
 
         assertTrue(personaje.tieneLapizLevantado());
     }
 
     @Test
-    public void test15ElMetdodtieneLapizLevantadoDevuelveFalseCuandoElLapizEstaApoyado() {
+    public void test13ElMetdodtieneLapizLevantadoDevuelveFalseCuandoElLapizEstaApoyado() {
         Personaje personaje = new Personaje();
 
         personaje.apoyarLapiz();

@@ -19,13 +19,4 @@ public class BloqueLevantarLapizTest {
         assertTrue(personaje.tieneLapizLevantado());
     }
 
-    @Test
-    public void test02SiSeEjecutaElBloqueLevantarLapizCuandoElLapizDeUnPersonajeEstaLevantadoLanzaUnaExcepcion() {
-        BloqueLevantarLapiz bloqueLevantarLapiz = new BloqueLevantarLapiz();
-        Personaje personaje = new Personaje();
-
-        assertThrows(LapizEstaLevantadoException.class, ()->{
-            bloqueLevantarLapiz.ejecutar(personaje);
-        });
-    }
 }
