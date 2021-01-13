@@ -1,55 +1,110 @@
 package edu.fiuba.algo3.modelo;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PosicionTest {
 
-    @Test
-    public void test01SeCambiaDePosicionHaciendoUnMovimientoALaDerecha(){
-        Posicion posicion = new Posicion(5, 5);
+    Posicion posicion;
 
-        MovimientoDerecha movimientoDerecha = new MovimientoDerecha();
-
-        movimientoDerecha.mover(posicion);
-
-        assertEquals(6, posicion.getHorizontal());
+    @BeforeEach
+    public void setUp() {
+        posicion = new Posicion(0,0);
     }
 
     @Test
-    public void test02SeCambiaDePosicionHaciendoUnMovimientoALaIzquierda() {
-        Posicion posicion = new Posicion(5, 5);
+    public void test01SeDesplazaUnaUnidadHaciaLaDerecha(){
+        posicion.desplazarDerecha();
+        List<Integer> coordenadas = new ArrayList(Arrays.asList(1,0));
 
-        MovimientoIzquierda movimientoIzquierda = new MovimientoIzquierda();
-
-        movimientoIzquierda.mover(posicion);
-
-        assertEquals(4, posicion.getHorizontal());
+        assertEquals(coordenadas,posicion.obtenerCoordenadas());
     }
 
     @Test
-    public void test03SeCambiaDePosicionHaciendoUnMovimientoHaciaArriba(){
-        Posicion posicion = new Posicion(5, 5);
+    public void test02SeDesplazaUnaUnidadHaciaLaIzquierda(){
+        posicion.desplazarIzquierda();
+        List<Integer> coordenadas = new ArrayList(Arrays.asList(-1,0));
 
-        MovimientoArriba movimientoArriba = new MovimientoArriba();
-
-        movimientoArriba.mover(posicion);
-
-        assertEquals(6, posicion.getVertical());
+        assertEquals(coordenadas,posicion.obtenerCoordenadas());
     }
 
     @Test
-    public void test04SeCambiaDePosicionHaciendoUnMovimientoHaciaAbajo(){
-        Posicion posicion = new Posicion(5, 5);
+    public void test03SeDesplazaUnaUnidadHaciaArriba(){
+        posicion.desplazarArriba();
+        List<Integer> coordenadas = new ArrayList(Arrays.asList(0,1));
 
-        MovimientoAbajo movimientoAbajo = new MovimientoAbajo();
-
-        movimientoAbajo.mover(posicion);
-
-        assertEquals(4, posicion.getVertical());
+        assertEquals(coordenadas,posicion.obtenerCoordenadas());
     }
 
+    @Test
+    public void test04SeDesplazaUnaUnidadHaciaAbajo(){
+        posicion.desplazarAbajo();
+        List<Integer> coordenadas = new ArrayList(Arrays.asList(0,-1));
 
+        assertEquals(coordenadas,posicion.obtenerCoordenadas());
+    }
 
+    @Test
+    public void test05SeDesplazaArribaYAbajoSigueEnElOrigen(){
+        posicion.desplazarAbajo();
+        posicion.desplazarArriba();
+        List<Integer> coordenadas = new ArrayList(Arrays.asList(0,0));
+
+        assertEquals(coordenadas,posicion.obtenerCoordenadas());
+    }
+
+    @Test
+    public void test06SeDesplazaDerechaEIzquierdaSigueEnElOrigen(){
+        posicion.desplazarDerecha();
+        posicion.desplazarIzquierda();
+        List<Integer> coordenadas = new ArrayList(Arrays.asList(0,0));
+
+        assertEquals(coordenadas,posicion.obtenerCoordenadas());
+    }
+
+    @Test
+    public void test07SeDesplazaUnaUnidadTodasLasDireccionesSigueEnElOrigen(){
+        posicion.desplazarDerecha();
+        posicion.desplazarIzquierda();
+        posicion.desplazarAbajo();
+        posicion.desplazarArriba();
+        List<Integer> coordenadas = new ArrayList(Arrays.asList(0,0));
+
+        assertEquals(coordenadas,posicion.obtenerCoordenadas());
+    }
+
+    @Test
+    public void test08SeDesplazaEnTodasLasDirecciones(){
+        for(int i = 0; i < 5 ; i++){
+            posicion.desplazarDerecha();
+        }
+        for(int i = 0; i < 6 ; i++){
+            posicion.desplazarAbajo();
+        }
+        posicion.desplazarIzquierda();
+        posicion.desplazarArriba();
+        List<Integer> coordenadas = new ArrayList(Arrays.asList(4,-5));
+
+        assertEquals(coordenadas,posicion.obtenerCoordenadas());
+    }
+
+    @Test
+    public void test09SeDesplazaMuchasUnidadesEnDiagonalArribaDerecha(){
+        for(int i = 0; i < 100 ; i++){
+            posicion.desplazarDerecha();
+        }
+        for(int i = 0; i < 100; i++){
+            posicion.desplazarArriba();
+        }
+
+        List<Integer> coordenadas = new ArrayList(Arrays.asList(100,100));
+
+        assertEquals(coordenadas,posicion.obtenerCoordenadas());
+    }
 }
