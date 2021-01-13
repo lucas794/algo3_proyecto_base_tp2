@@ -13,8 +13,8 @@ public class BloqueLevantarLapizTest {
         BloqueLevantarLapiz bloqueLevantarLapiz = new BloqueLevantarLapiz();
         Personaje personaje = new Personaje();
 
-        bloqueBajarLapiz.ejecutar(personaje);
-        bloqueLevantarLapiz.ejecutar(personaje);
+        bloqueBajarLapiz.ejecutar(personaje, new Dibujo());
+        bloqueLevantarLapiz.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.tieneLapizLevantado());
     }

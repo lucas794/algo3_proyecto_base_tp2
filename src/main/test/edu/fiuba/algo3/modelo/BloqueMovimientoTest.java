@@ -4,9 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class BloqueMovimientoTest {
 
@@ -15,7 +13,7 @@ public class BloqueMovimientoTest {
         BloqueMovimiento bloqueMoverArriba = new BloqueMovimiento(new MovimientoArriba());
         Personaje personaje = new Personaje();
 
-        bloqueMoverArriba.ejecutar(personaje);
+        bloqueMoverArriba.ejecutar(personaje, new Dibujo());
 
         assertEquals(Arrays.asList(0,1), personaje.obtenerPosicion() );
     }
@@ -25,9 +23,9 @@ public class BloqueMovimientoTest {
         BloqueMovimiento bloqueMoverArriba = new BloqueMovimiento(new MovimientoArriba());
         Personaje personaje = new Personaje();
 
-        bloqueMoverArriba.ejecutar(personaje);
+        bloqueMoverArriba.ejecutar(personaje, new Dibujo());
 
-        bloqueMoverArriba.ejecutar(personaje);
+        bloqueMoverArriba.ejecutar(personaje, new Dibujo());
 
         assertEquals(Arrays.asList(0,2), personaje.obtenerPosicion() );
     }
@@ -37,7 +35,7 @@ public class BloqueMovimientoTest {
         BloqueMovimiento bloqueMoverAbajo = new BloqueMovimiento(new MovimientoAbajo());
         Personaje personaje = new Personaje();
 
-        bloqueMoverAbajo.ejecutar(personaje);
+        bloqueMoverAbajo.ejecutar(personaje, new Dibujo());
 
         assertEquals(Arrays.asList(0,-1), personaje.obtenerPosicion() );
     }
@@ -47,8 +45,8 @@ public class BloqueMovimientoTest {
         BloqueMovimiento bloqueMoverAbajo = new BloqueMovimiento(new MovimientoAbajo());
         Personaje personaje = new Personaje();
 
-        bloqueMoverAbajo.ejecutar(personaje);
-        bloqueMoverAbajo.ejecutar(personaje);
+        bloqueMoverAbajo.ejecutar(personaje, new Dibujo());
+        bloqueMoverAbajo.ejecutar(personaje, new Dibujo());
 
         assertEquals(Arrays.asList(0, -2), personaje.obtenerPosicion());
     }
@@ -58,7 +56,7 @@ public class BloqueMovimientoTest {
         BloqueMovimiento bloqueMoverIzquierda = new BloqueMovimiento(new MovimientoIzquierda());
         Personaje personaje = new Personaje();
 
-        bloqueMoverIzquierda.ejecutar(personaje);
+        bloqueMoverIzquierda.ejecutar(personaje, new Dibujo());
 
         assertEquals(Arrays.asList(-1,0), personaje.obtenerPosicion() );
     }
@@ -68,8 +66,8 @@ public class BloqueMovimientoTest {
         BloqueMovimiento bloqueMoverIzquierda = new BloqueMovimiento(new MovimientoIzquierda());
         Personaje personaje = new Personaje();
 
-        bloqueMoverIzquierda.ejecutar(personaje);
-        bloqueMoverIzquierda.ejecutar(personaje);
+        bloqueMoverIzquierda.ejecutar(personaje, new Dibujo());
+        bloqueMoverIzquierda.ejecutar(personaje, new Dibujo());
 
         assertEquals(Arrays.asList(-2, 0), personaje.obtenerPosicion());
     }
@@ -79,7 +77,7 @@ public class BloqueMovimientoTest {
         BloqueMovimiento bloqueMoverDerecha = new BloqueMovimiento(new MovimientoDerecha());
         Personaje personaje = new Personaje();
 
-        bloqueMoverDerecha.ejecutar(personaje);
+        bloqueMoverDerecha.ejecutar(personaje, new Dibujo());
 
         assertEquals(Arrays.asList(1,0), personaje.obtenerPosicion() );
     }
@@ -89,8 +87,8 @@ public class BloqueMovimientoTest {
         BloqueMovimiento bloqueMoverDerecha = new BloqueMovimiento(new MovimientoDerecha());
         Personaje personaje = new Personaje();
 
-        bloqueMoverDerecha.ejecutar(personaje);
-        bloqueMoverDerecha.ejecutar(personaje);
+        bloqueMoverDerecha.ejecutar(personaje, new Dibujo());
+        bloqueMoverDerecha.ejecutar(personaje, new Dibujo());
 
         assertEquals(Arrays.asList(2,0), personaje.obtenerPosicion());
     }

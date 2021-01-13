@@ -17,7 +17,7 @@ public class PersonajeTest {
         Personaje personaje = new Personaje();
         MovimientoArriba movimientoArriba = new MovimientoArriba();
 
-        personaje.mover(movimientoArriba);
+        personaje.mover(movimientoArriba, new Dibujo());
 
         assertEquals( Arrays.asList(0, 1), personaje.obtenerPosicion() );
     }
@@ -27,8 +27,8 @@ public class PersonajeTest {
         Personaje personaje = new Personaje();
         MovimientoArriba movimientoArriba = new MovimientoArriba();
 
-        personaje.mover(movimientoArriba);
-        personaje.mover(movimientoArriba);
+        personaje.mover(movimientoArriba, new Dibujo());
+        personaje.mover(movimientoArriba, new Dibujo());
 
         assertEquals( Arrays.asList(0, 2), personaje.obtenerPosicion() );
     }
@@ -38,7 +38,7 @@ public class PersonajeTest {
         Personaje personaje = new Personaje();
         MovimientoAbajo movimientoAbajo = new MovimientoAbajo();
 
-        personaje.mover(movimientoAbajo);
+        personaje.mover(movimientoAbajo, new Dibujo());
 
         assertEquals( Arrays.asList(0, -1), personaje.obtenerPosicion() );
     }
@@ -48,8 +48,8 @@ public class PersonajeTest {
         Personaje personaje = new Personaje();
         MovimientoAbajo movimientoAbajo = new MovimientoAbajo();
 
-        personaje.mover(movimientoAbajo);
-        personaje.mover(movimientoAbajo);
+        personaje.mover(movimientoAbajo, new Dibujo());
+        personaje.mover(movimientoAbajo, new Dibujo());
 
         assertEquals( Arrays.asList(0, -2), personaje.obtenerPosicion() );
     }
@@ -59,7 +59,7 @@ public class PersonajeTest {
         Personaje personaje = new Personaje();
         MovimientoIzquierda movimientoIzquierda = new MovimientoIzquierda();
 
-        personaje.mover(movimientoIzquierda);
+        personaje.mover(movimientoIzquierda, new Dibujo());
 
         assertEquals( Arrays.asList(-1, 0), personaje.obtenerPosicion() );
     }
@@ -69,8 +69,8 @@ public class PersonajeTest {
         Personaje personaje = new Personaje();
         MovimientoIzquierda movimientoIzquierda = new MovimientoIzquierda();
 
-        personaje.mover(movimientoIzquierda);
-        personaje.mover(movimientoIzquierda);
+        personaje.mover(movimientoIzquierda, new Dibujo());
+        personaje.mover(movimientoIzquierda, new Dibujo());
 
         assertEquals( Arrays.asList(-2, 0), personaje.obtenerPosicion() );
     }
@@ -80,7 +80,7 @@ public class PersonajeTest {
         Personaje personaje = new Personaje();
         MovimientoDerecha movimientoDerecha = new MovimientoDerecha();
 
-        personaje.mover(movimientoDerecha);
+        personaje.mover(movimientoDerecha, new Dibujo());
 
         assertEquals( Arrays.asList(1, 0), personaje.obtenerPosicion() );
     }
@@ -90,8 +90,8 @@ public class PersonajeTest {
         Personaje personaje = new Personaje();
         MovimientoDerecha movimientoDerecha = new MovimientoDerecha();
 
-        personaje.mover(movimientoDerecha);
-        personaje.mover(movimientoDerecha);
+        personaje.mover(movimientoDerecha, new Dibujo());
+        personaje.mover(movimientoDerecha, new Dibujo());
 
         assertEquals( Arrays.asList(2, 0), personaje.obtenerPosicion() );
     }
@@ -154,7 +154,7 @@ public class PersonajeTest {
 
     private void ejecutarBloque(Personaje personaje, Bloque bloque, int cantidad){
         for(int i = 0; i < cantidad; i++)
-            bloque.ejecutar(personaje);
+            bloque.ejecutar(personaje, new Dibujo());
     }
 
     @Test
@@ -168,8 +168,8 @@ public class PersonajeTest {
         BloqueLevantarLapiz bloqueLevantarLapiz = new BloqueLevantarLapiz();
         BloqueBajarLapiz bloqueBajarLapiz = new BloqueBajarLapiz();
 
-        bloqueBajarLapiz.ejecutar(personaje);
-        bloqueLevantarLapiz.ejecutar(personaje);
+        bloqueBajarLapiz.ejecutar(personaje, new Dibujo());
+        bloqueLevantarLapiz.ejecutar(personaje, new Dibujo());
 
         /* subimos el lapiz con el último bloque, debe dar true */
         assertTrue( personaje.tieneLapizLevantado() );
@@ -298,7 +298,7 @@ public class PersonajeTest {
             bloques.add(bloqueMoverIzquierda);
         }
 
-        personaje.ejecutarBloques(bloques);
+        personaje.ejecutarBloques(bloques, new Dibujo());
 
         assertEquals( Arrays.asList(-10, 0), personaje.obtenerPosicion() );
     }
@@ -313,7 +313,7 @@ public class PersonajeTest {
             bloques.add(bloqueMoverArriba);
         }
 
-        personaje.ejecutarBloques(bloques);
+        personaje.ejecutarBloques(bloques, new Dibujo());
 
         assertEquals( Arrays.asList(0, 0), personaje.obtenerPosicion() );
     }

@@ -8,8 +8,8 @@ public class BloqueMovimiento implements Bloque{
     }
 
     @Override
-    public void ejecutar(Personaje personaje) {
-        personaje.mover(movimiento);
+    public void ejecutar(Personaje personaje, Dibujo dibujo) {
+        personaje.mover(movimiento, dibujo);
     }
 }
 

@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Personaje {
@@ -8,14 +7,14 @@ public class Personaje {
     private Lapiz lapiz = new LapizLevantado(); // por defecto, el lapiz arranca arriba.
     private Posicion posicion_personaje = new Posicion(0,0);
 
-    public void ejecutarBloques(List<Bloque> bloques) {
+    public void ejecutarBloques(List<Bloque> bloques, Dibujo dibujo) {
         for (Bloque i : bloques){
-            i.ejecutar(this);
+            i.ejecutar(this, new Dibujo());
         }
     }
 
-    public void mover(Movimiento movimiento) {
-        lapiz.dibujar(movimiento, this.posicion_personaje);
+    public void mover(Movimiento movimiento, Dibujo dibujo) {
+        lapiz.dibujar(movimiento, this.posicion_personaje, new Dibujo());
     }
 
     public void apoyarLapiz(){
