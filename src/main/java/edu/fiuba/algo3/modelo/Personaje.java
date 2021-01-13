@@ -15,7 +15,7 @@ public class Personaje {
     }
 
     public void mover(Movimiento movimiento) {
-        movimiento.mover(this.posicion_personaje);
+        lapiz.dibujar(movimiento, this.posicion_personaje);
     }
 
     public void apoyarLapiz(){
