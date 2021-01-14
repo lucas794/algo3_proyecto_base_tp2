@@ -9,12 +9,12 @@ public class Personaje {
 
     public void ejecutarBloques(List<Bloque> bloques, Dibujo dibujo) {
         for (Bloque i : bloques){
-            i.ejecutar(this, new Dibujo());
+            i.ejecutar(this, dibujo);
         }
     }
 
     public void mover(Movimiento movimiento, Dibujo dibujo) {
-        lapiz.dibujar(movimiento, this.posicion_personaje, new Dibujo());
+        lapiz.dibujar(movimiento, this.posicion_personaje, dibujo);
     }
 
     public void apoyarLapiz(){
