@@ -9,6 +9,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+// en vez de comparar contra Arrays.asList, podriamos armar instanciar Posicion y hacer comparaciones entre Posiciones, quedaría mas bonito.
 public class PosicionTest {
 
     Posicion posicion;
