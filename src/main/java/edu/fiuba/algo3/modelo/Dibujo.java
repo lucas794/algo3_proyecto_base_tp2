@@ -18,4 +18,8 @@ public class Dibujo {
             i.dibujar();
         }
     }
+
+    public List<Linea> obtenerSectorDibujado() {
+        return lineas;
+    }
 }
