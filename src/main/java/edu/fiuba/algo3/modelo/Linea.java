@@ -8,13 +8,9 @@ public class Linea {
     private Posicion posInicial;
     private Posicion posFinal;
 
-    public Linea(Posicion posicion) {
-        this.posInicial = posicion;
-    }
+    public Linea(Posicion posicion) { this.posInicial = new Posicion(posicion.obtenerCoordenadas()); }
 
-    public void setPosFinal(Posicion posFinal) {
-        this.posFinal = posFinal;
-    }
+    public void setPosFinal(Posicion posFinal) { this.posFinal = new Posicion(posFinal.obtenerCoordenadas()); }
 
     public List<Integer> obtenerCoordenadasPosicionInicial()
     {

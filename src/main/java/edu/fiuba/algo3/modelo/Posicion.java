@@ -12,6 +12,11 @@ public class Posicion {
         this.posVertical = posVertical;
     }
 
+    public Posicion(List<Integer> coordenadas){
+        this.posHorizontal = coordenadas.get(0);
+        this.posVertical = coordenadas.get(1);
+    }
+
     public List<Integer> obtenerCoordenadas(){
         List<Integer> coordenadas = new ArrayList();
         coordenadas.add(posHorizontal);
