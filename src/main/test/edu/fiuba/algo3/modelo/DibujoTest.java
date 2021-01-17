@@ -77,12 +77,12 @@ public class DibujoTest {
 
         // en este caso, solo tiene el punto (1,0) ya que desde (0,0) a (1,1) es donde ha dibujado, por ende tanto la
         // posicion inicial y la posicion final coinciden
-        Posicion posInicialTrazoDibujado = new Posicion(1,0);
+        Posicion posInicialTrazoDibujado = new Posicion(0,0);
         Posicion posFinalTrazoDibujado   = new Posicion(1,0);
 
         Linea trazoDibujado = sectorDibujo.obtenerSectorDibujado().get(0);
 
-       // assertEquals( posInicialTrazoDibujado.obtenerCoordenadas(), trazoDibujado.obtenerCoordenadasPosicionInicial() );
+        assertEquals( posInicialTrazoDibujado.obtenerCoordenadas(), trazoDibujado.obtenerCoordenadasPosicionInicial() );
         assertEquals( posFinalTrazoDibujado.obtenerCoordenadas(), trazoDibujado.obtenerCoordenadasPosicionFinal() );
     }
     // Este test está mal, para probar, saca los comments, y correlo, fijate que muestra solo las líneas finales del movimiento.
