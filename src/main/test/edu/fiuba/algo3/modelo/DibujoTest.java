@@ -48,28 +48,65 @@ public class DibujoTest {
     }
 
     @Test
-    public void test03SeBajaElLapizYSeDibuja1Vez()
+    public void test03SeVerificaLaCantidadDeLineasDibujadasEnElSectorDibujo()
+    {
+        lista_de_bloques.add( new BloqueBajarLapiz() );
+        lista_de_bloques.add( new BloqueMovimiento( new MovimientoDerecha() ) );
+        lista_de_bloques.add( new BloqueMovimiento( new MovimientoArriba()  ) );
+
+        for( Bloque bloque : lista_de_bloques )
+        {
+            bloque.ejecutar(personaje, sectorDibujo);
+        }
+
+        // debe quedar dibujado los puntos (0,0) -> (1,0) -> (1,1) por ende son 2 lineas.
+        assertEquals( 2, sectorDibujo.obtenerSectorDibujado().size() );
+    }
+
+    @Test
+    public void test04SeBajaElLapizYSeDibuja1Vez()
     {
         lista_de_bloques.add( new BloqueBajarLapiz() );
         lista_de_bloques.add( new BloqueMovimiento( new MovimientoDerecha() ));
-
-        // resumen, baja el lapiz, luego se mueve hacia la derecha (1,0) ese es el sector dibujado.
+        // resumen, baja el lapiz, luego se mueve hacia la derecha 1 vez por ende queda en (1,0) ese es el sector dibujado.
 
         for( Bloque bloque : lista_de_bloques)
         {
             bloque.ejecutar(personaje, sectorDibujo);
         }
 
-        /*
-        Aquí lo que intenté fue comparar las líneas pero para comparar, lo único que se me ocurre es
-        agregar un getter a la clase línea para ir comparando. Es un inicio creo yo, posiblemente requiera modificaciones.
+        // en este caso, solo tiene el punto (1,0) ya que desde (0,0) a (1,1) es donde ha dibujado, por ende tanto la
+        // posicion inicial y la posicion final coinciden
+        Posicion posInicialTrazoDibujado = new Posicion(1,0);
+        Posicion posFinalTrazoDibujado   = new Posicion(1,0);
 
-        List<Linea> lineas_dibujadas = new ArrayList<>();
-        Linea linea = new Linea( new Posicion(0,0) );
-        linea.setPosFinal( new Posicion(1,0) ); // donde termina de dibujar supuestamente.
-        lineas_dibujadas.add(linea);
+        Linea trazoDibujado = sectorDibujo.obtenerSectorDibujado().get(0);
 
-        System.out.println( Arrays.toString(sectorDibujo.obtenerSectorDibujado()) );
-        */
+        assertEquals( posInicialTrazoDibujado.obtenerCoordenadas(), trazoDibujado.obtenerCoordenadasPosicionInicial() );
+        assertEquals( posFinalTrazoDibujado.obtenerCoordenadas(), trazoDibujado.obtenerCoordenadasPosicionFinal() );
     }
+    /* Este test está mal, para probar, saca los comments, y correlo, fijate que muestra solo las líneas finales del movimiento.
+       
+    @Test
+    public void test05SeBajaElLapizYSeDibuja3Vez() {
+        lista_de_bloques.add(new BloqueBajarLapiz());
+        lista_de_bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
+        lista_de_bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
+        lista_de_bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
+        lista_de_bloques.add(new BloqueMovimiento(new MovimientoArriba()));
+        lista_de_bloques.add(new BloqueLevantarLapiz());
+        lista_de_bloques.add(new BloqueMovimiento(new MovimientoAbajo()));
+        lista_de_bloques.add(new BloqueBajarLapiz());
+        lista_de_bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
+        lista_de_bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
+
+
+        for (Bloque bloque : lista_de_bloques) {
+            bloque.ejecutar(personaje, sectorDibujo);
+        }
+
+        for (int i = 0; i < sectorDibujo.obtenerSectorDibujado().size(); i++) {
+            System.out.print("" + i + "| " + sectorDibujo.obtenerSectorDibujado().get(i).obtenerCoordenadasPosicionInicial() + "," + sectorDibujo.obtenerSectorDibujado().get(i).obtenerCoordenadasPosicionFinal());
+        }
+    }*/
 }
