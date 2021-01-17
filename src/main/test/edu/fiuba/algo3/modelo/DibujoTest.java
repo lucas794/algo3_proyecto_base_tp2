@@ -77,15 +77,14 @@ public class DibujoTest {
 
         // en este caso, solo tiene el punto (1,0) ya que desde (0,0) a (1,1) es donde ha dibujado, por ende tanto la
         // posicion inicial y la posicion final coinciden
-        Posicion posInicialTrazoDibujado = new Posicion(0,0);
-        Posicion posFinalTrazoDibujado   = new Posicion(1,0);
+        Linea lineaComparacion = new Linea( new Posicion(0,0) ); // Linea arranca en (0,0)
+        lineaComparacion.setPosFinal( new Posicion( 1,0) ); // se corta la linea en el (1,0).
 
         Linea trazoDibujado = sectorDibujo.obtenerSectorDibujado().get(0);
 
-        assertEquals( posInicialTrazoDibujado.obtenerCoordenadas(), trazoDibujado.obtenerCoordenadasPosicionInicial() );
-        assertEquals( posFinalTrazoDibujado.obtenerCoordenadas(), trazoDibujado.obtenerCoordenadasPosicionFinal() );
+        assertEquals( lineaComparacion.obtenerCoordenadasPosicionInicial(), trazoDibujado.obtenerCoordenadasPosicionInicial() );
+        assertEquals( lineaComparacion.obtenerCoordenadasPosicionFinal(), trazoDibujado.obtenerCoordenadasPosicionFinal() );
     }
-    // Este test está mal, para probar, saca los comments, y correlo, fijate que muestra solo las líneas finales del movimiento.
 
     @Test
     public void test05SeCreaUnaSecuenciaYSeCuentaLaCantidadDeLineasDibujadasMientrasLapizEstabaApoyado() {
@@ -113,6 +112,8 @@ public class DibujoTest {
 
     @Test
     public void test06SeCreaUnaSecuenciaYSeVerificaQueLaSecuenciaEsteDibujada() {
+        // Analisis del movimiento:
+        // 10 movimientos total, solo 2 fueron con el lapiz apoyado.
         lista_de_bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
         lista_de_bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
         lista_de_bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
@@ -124,7 +125,6 @@ public class DibujoTest {
         lista_de_bloques.add(new BloqueBajarLapiz());
         lista_de_bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
         lista_de_bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
-        // Mientras el lapiz estuvo bajado, solo se hicieron 2 líneas.
 
         // lineas dibujadas (3,3) a (4,-3) - (4,-3) a (5,-3)
         List<Linea> trazosDibujados = new ArrayList<>();
@@ -134,32 +134,27 @@ public class DibujoTest {
         coordenadas_esperadas.add(Arrays.asList(4, -3));
         coordenadas_esperadas.add(Arrays.asList(5, -3));
 
-        for (Bloque bloque : lista_de_bloques) {
+        for (Bloque bloque : lista_de_bloques) { // ejecutamos bloques
             bloque.ejecutar(personaje, sectorDibujo);
         }
 
-        for (int k = 0; k < coordenadas_esperadas.size() - 1; k += 2) // saltando de a 2 ;
+        // generamos el array de lineas a comparar
+        for (int k = 0; k < coordenadas_esperadas.size() ; k += 2) // saltando de a 2 ;
         {
             Linea temp_linea = new Linea(new Posicion(coordenadas_esperadas.get(k)));
             temp_linea.setPosFinal(new Posicion(coordenadas_esperadas.get(k + 1)));
             trazosDibujados.add(temp_linea);
-        } // generamos el array de lineas a comparar
-
-        // aquí hacemos la comparación entre las lineas en el dibujo vs las generadas para hacer la comparación.
-        for( int i = 0, j = 0 ; i < sectorDibujo.obtenerSectorDibujado().size(); i++, j += 2)
-        {
-            Posicion posInicialTrazoDibujado = new Posicion( coordenadas_esperadas.get(j)   );
-            Posicion posFinalTrazoDibujado   = new Posicion( coordenadas_esperadas.get(j+1) );
-
-            Linea trazoDibujado = sectorDibujo.obtenerSectorDibujado().get(i);
-
-            assertEquals( posInicialTrazoDibujado.obtenerCoordenadas(), trazoDibujado.obtenerCoordenadasPosicionInicial() );
-            assertEquals( posFinalTrazoDibujado.obtenerCoordenadas() , trazoDibujado.obtenerCoordenadasPosicionFinal() );
         }
 
-        // lo dejo para hacer debug por si las dudas.
-        /*for (int i = 0; i < sectorDibujo.obtenerSectorDibujado().size(); i++) {
-            System.out.print("\n" + i + "| " + sectorDibujo.obtenerSectorDibujado().get(i).obtenerCoordenadasPosicionInicial() + "," + sectorDibujo.obtenerSectorDibujado().get(i).obtenerCoordenadasPosicionFinal());
-        }*/
+        // aquí hacemos la comparación entre las lineas en el dibujo vs las generadas para hacer la comparación.
+        for( int i = 0, j = 0 ; i < sectorDibujo.obtenerSectorDibujado().size() ; i++, j += 2)
+        {
+            Linea lineaCreadaParaComparar = trazosDibujados.get(i);
+            Linea trazoDibujado = sectorDibujo.obtenerSectorDibujado().get(i);
+
+            // aquí, las lineas dentro del dibujo como las creadas para comparar deben tener igual punto de inicio como final.
+            assertEquals( lineaCreadaParaComparar.obtenerCoordenadasPosicionInicial(), trazoDibujado.obtenerCoordenadasPosicionInicial() );
+            assertEquals( lineaCreadaParaComparar.obtenerCoordenadasPosicionFinal() , trazoDibujado.obtenerCoordenadasPosicionFinal() );
+        }
     }
 }
