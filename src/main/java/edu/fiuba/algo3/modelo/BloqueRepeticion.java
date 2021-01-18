@@ -24,4 +24,9 @@ public class BloqueRepeticion implements Bloque{
         bloques.add(bloque);
     }
 
+    public void agregarBloque( List<Bloque> arreglo_de_bloques )
+    {
+        // a cada elemento en arreglo de bloque lo metemos al arreglo bloques.
+        arreglo_de_bloques.stream().forEach( bloque -> bloques.add(bloque) );
+    }
 }

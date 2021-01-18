@@ -40,10 +40,7 @@ public class BloqueRepeticionTest {
 
         bloqueRepeticion = new BloqueRepeticion(3);
 
-        for(Bloque i : bloquesAEjecutar){
-            bloqueRepeticion.agregarBloque(i);
-        }
-
+        bloqueRepeticion.agregarBloque( bloquesAEjecutar );
         bloqueRepeticion.ejecutar(personaje,dibujo);
 
         posicionEsperada = new Posicion(30, 0); // evitamos comparar vs Arrays.AsList.
@@ -58,10 +55,7 @@ public class BloqueRepeticionTest {
 
         bloqueRepeticion = new BloqueRepeticion(2);
 
-        for(Bloque i : bloquesAEjecutar){
-            bloqueRepeticion.agregarBloque(i);
-        }
-
+        bloqueRepeticion.agregarBloque( bloquesAEjecutar );
         bloqueRepeticion.ejecutar(personaje,dibujo);
 
         posicionEsperada = new Posicion(-30, 0);
@@ -87,10 +81,7 @@ public class BloqueRepeticionTest {
 
         bloqueRepeticion = new BloqueRepeticion(3);
 
-        for(Bloque i : bloquesAEjecutar){
-            bloqueRepeticion.agregarBloque(i);
-        }
-
+        bloqueRepeticion.agregarBloque( bloquesAEjecutar );
         bloqueRepeticion.ejecutar(personaje,dibujo);
 
         posicionEsperada = new Posicion(15, -60);
@@ -104,10 +95,7 @@ public class BloqueRepeticionTest {
 
         bloqueRepeticion = new BloqueRepeticion(3);
 
-        for( Bloque i : bloquesAEjecutar ) {
-            bloqueRepeticion.agregarBloque(i);
-        }
-
+        bloqueRepeticion.agregarBloque( bloquesAEjecutar );
         bloqueRepeticion.ejecutar(personaje, dibujo);
 
         assertFalse( personaje.tieneLapizLevantado() );

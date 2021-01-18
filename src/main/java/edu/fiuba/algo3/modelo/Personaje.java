@@ -8,9 +8,7 @@ public class Personaje {
     private Posicion posicion_personaje = new Posicion(0,0);
 
     public void ejecutarBloques(List<Bloque> bloques, Dibujo dibujo) {
-        for (Bloque i : bloques){
-            i.ejecutar(this, dibujo);
-        }
+        bloques.stream().forEach( bloque -> bloque.ejecutar(this, dibujo) );
     }
 
     public void mover(Movimiento movimiento, Dibujo dibujo) {

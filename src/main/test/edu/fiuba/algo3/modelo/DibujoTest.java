@@ -147,7 +147,7 @@ public class DibujoTest {
         }
 
         // aquí hacemos la comparación entre las lineas en el dibujo vs las generadas para hacer la comparación.
-        for( int i = 0, j = 0 ; i < sectorDibujo.obtenerSectorDibujado().size() ; i++, j += 2)
+        for( int i = 0; i < sectorDibujo.obtenerSectorDibujado().size() ; i++ )
         {
             Linea lineaCreadaParaComparar = trazosDibujados.get(i);
             Linea trazoDibujado = sectorDibujo.obtenerSectorDibujado().get(i);
