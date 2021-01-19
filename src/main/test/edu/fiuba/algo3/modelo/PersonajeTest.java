@@ -142,14 +142,15 @@ public class PersonajeTest {
         assertFalse(personaje.tieneLapizLevantado());
     }
 
-
-
     /*Pruebas de integracion*/
     Personaje personaje;
+    Dibujo sectorDibujo;
+    Linea lineaTrazada;
 
     @BeforeEach
     public void setUp() {
         personaje = new Personaje();
+        sectorDibujo = new Dibujo();
     }
 
     private void ejecutarBloque(Personaje personaje, Bloque bloque, int cantidad){
@@ -316,5 +317,56 @@ public class PersonajeTest {
         personaje.ejecutarBloques(bloques, new Dibujo());
 
         assertEquals( Arrays.asList(0, 0), personaje.obtenerPosicion() );
+    }
+
+    @Test
+    public void test15PersonajeConLapizApoyadoPuedeDibujarUnaLineaHaciaLaDerecha() {
+        List<Bloque> bloques = new ArrayList();
+
+        bloques.add(new BloqueBajarLapiz());
+        bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
+
+        personaje.ejecutarBloques(bloques, sectorDibujo);
+        lineaTrazada = sectorDibujo.obtenerSectorDibujado().get(0);
+
+        //La posicion de personaje coincide con la posFinal del trazo de Linea
+        assertEquals(lineaTrazada.obtenerCoordenadasPosicionFinal(), personaje.obtenerPosicion());
+    }
+
+    @Test
+    public void test16PersonajeConLapizApoyadoDibujaDosLineasSeguidasHaciaLaDerecha(){
+        List<Bloque> bloques = new ArrayList();
+
+        bloques.add(new BloqueBajarLapiz());
+        bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
+
+        personaje.ejecutarBloques(bloques, sectorDibujo);
+        lineaTrazada = sectorDibujo.obtenerSectorDibujado().get(0);
+
+        assertEquals(lineaTrazada.obtenerCoordenadasPosicionFinal(), personaje.obtenerPosicion());
+
+        MovimientoDerecha movimientoDerecha = new MovimientoDerecha();
+        personaje.mover(movimientoDerecha, sectorDibujo);
+        lineaTrazada = sectorDibujo.obtenerSectorDibujado().get(1);
+
+        assertEquals(lineaTrazada.obtenerCoordenadasPosicionFinal(), personaje.obtenerPosicion());
+    }
+
+    @Test
+    public void test17PersonajeSeMueveTresVecesPeroSoloDibujaDosLineas(){
+        List<Bloque> bloques = new ArrayList();
+        bloques.add(new BloqueBajarLapiz());
+        bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
+        bloques.add(new BloqueLevantarLapiz());
+        bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
+        bloques.add(new BloqueBajarLapiz());
+        bloques.add(new BloqueMovimiento(new MovimientoArriba()));
+
+        personaje.ejecutarBloques(bloques, sectorDibujo);
+
+        lineaTrazada = sectorDibujo.obtenerSectorDibujado().get(1);
+
+        assertEquals( 2, sectorDibujo.obtenerSectorDibujado().size() );
+        assertEquals(lineaTrazada.obtenerCoordenadasPosicionFinal(), personaje.obtenerPosicion());
     }
 }
