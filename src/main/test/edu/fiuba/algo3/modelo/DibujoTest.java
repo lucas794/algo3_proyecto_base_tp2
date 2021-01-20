@@ -173,6 +173,7 @@ public class DibujoTest {
             - dibuja en la seugjnda etapa desde (1,3) a (1,4) y luego (1,4) -> (1,5)
         */
 
+        lista_de_bloques.forEach( bloque -> bloque.ejecutar(personaje, sectorDibujo) ); // ejecutamos los bloque previos
         bloqueRepeticion.agregarBloque( lista_bloques_repetir ); // agregamos los bloques al bloque de repetición.
         bloqueRepeticion.ejecutar(personaje, sectorDibujo);
 
