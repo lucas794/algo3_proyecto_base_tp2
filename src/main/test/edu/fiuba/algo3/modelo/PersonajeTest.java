@@ -294,7 +294,7 @@ public class PersonajeTest {
     @Test
     public void test13SeMueveElPersonajeConListaDeBloquesMovimientoHaciaIzquierda() {
         BloqueMovimiento bloqueMoverIzquierda = new BloqueMovimiento(new MovimientoIzquierda());
-        List<Bloque> bloques = new ArrayList();
+        List<Bloque> bloques = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             bloques.add(bloqueMoverIzquierda);
         }
@@ -308,7 +308,7 @@ public class PersonajeTest {
     public void test14SeMueveElPersonajeConListaDeBloquesMovimientoHaciaArribaYAbajo() {
         BloqueMovimiento bloqueMoverArriba = new BloqueMovimiento(new MovimientoArriba());
         BloqueMovimiento bloqueMoverAbajo = new BloqueMovimiento(new MovimientoAbajo());
-        List<Bloque> bloques = new ArrayList();
+        List<Bloque> bloques = new ArrayList<>();
         for (int i = 0; i < 50; i++) {
             bloques.add(bloqueMoverAbajo);
             bloques.add(bloqueMoverArriba);
@@ -321,7 +321,7 @@ public class PersonajeTest {
 
     @Test
     public void test15PersonajeConLapizApoyadoPuedeDibujarUnaLineaHaciaLaDerecha() {
-        List<Bloque> bloques = new ArrayList();
+        List<Bloque> bloques = new ArrayList<>();
 
         bloques.add(new BloqueBajarLapiz());
         bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
@@ -335,7 +335,7 @@ public class PersonajeTest {
 
     @Test
     public void test16PersonajeConLapizApoyadoDibujaDosLineasSeguidasHaciaLaDerecha(){
-        List<Bloque> bloques = new ArrayList();
+        List<Bloque> bloques = new ArrayList<>();
 
         bloques.add(new BloqueBajarLapiz());
         bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
@@ -354,7 +354,7 @@ public class PersonajeTest {
 
     @Test
     public void test17PersonajeSeMueveTresVecesPeroSoloDibujaDosLineas(){
-        List<Bloque> bloques = new ArrayList();
+        List<Bloque> bloques = new ArrayList<>();
         bloques.add(new BloqueBajarLapiz());
         bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
         bloques.add(new BloqueLevantarLapiz());

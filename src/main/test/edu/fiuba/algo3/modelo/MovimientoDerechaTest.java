@@ -13,7 +13,7 @@ public class MovimientoDerechaTest {
     @Test
     public void test01seCambiaDePosicionUnaVezHaciaLaDerecha(){
         Posicion posicion = new Posicion(0, 0);
-        List<Integer> coordenadas = new ArrayList(Arrays.asList(1,0));
+        List<Integer> coordenadas = new ArrayList<>(Arrays.asList(1,0));
         MovimientoDerecha movimientoDerecha = new MovimientoDerecha();
 
         movimientoDerecha.mover(posicion);

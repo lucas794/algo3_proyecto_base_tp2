@@ -12,7 +12,7 @@ public class MovimientoArribaTest {
     @Test
     public void  test01seCambiaDePosicionUnaVezHaciaArriba(){
         Posicion posicion = new Posicion(0, 0);
-        List<Integer> coordenadas = new ArrayList(Arrays.asList(0,1));
+        List<Integer> coordenadas = new ArrayList<>(Arrays.asList(0,1));
 
         MovimientoArriba movimientoArriba = new MovimientoArriba();
 

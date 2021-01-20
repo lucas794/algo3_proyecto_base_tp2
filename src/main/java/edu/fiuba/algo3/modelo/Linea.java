@@ -5,7 +5,7 @@ import java.util.List;
 // clase anémica momentaneamente, pero posiblemente deje de serlo cuando se implemente el dibujo en la interfaz gráfica.
 
 public class Linea {
-    private Posicion posInicial;
+    private final Posicion posInicial;
     private Posicion posFinal;
 
     public Linea(Posicion posicion) { this.posInicial = new Posicion(posicion.obtenerCoordenadas()); }

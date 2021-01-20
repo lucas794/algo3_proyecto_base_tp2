@@ -75,12 +75,11 @@ public class DibujoTest {
             bloque.ejecutar(personaje, sectorDibujo);
         }
 
-        // en este caso, solo tiene el punto (1,0) ya que desde (0,0) a (1,1) es donde ha dibujado, por ende tanto la
-        // posicion inicial y la posicion final coinciden
+        // La linea dibujada en el sector Dibujo va desde (0,0) a (0,1), por ende, hacemos una linea para poder comparar
         Linea lineaComparacion = new Linea( new Posicion(0,0) ); // Linea arranca en (0,0)
         lineaComparacion.setPosFinal( new Posicion( 1,0) ); // se corta la linea en el (1,0).
 
-        Linea trazoDibujado = sectorDibujo.obtenerSectorDibujado().get(0);
+        Linea trazoDibujado = sectorDibujo.obtenerSectorDibujado().get(0); // sabemos que solo existe 1 línea en el sector dibujo
 
         assertEquals( lineaComparacion.obtenerCoordenadasPosicionInicial(), trazoDibujado.obtenerCoordenadasPosicionInicial() );
         assertEquals( lineaComparacion.obtenerCoordenadasPosicionFinal(), trazoDibujado.obtenerCoordenadasPosicionFinal() );
@@ -137,6 +136,61 @@ public class DibujoTest {
         for (Bloque bloque : lista_de_bloques) { // ejecutamos bloques
             bloque.ejecutar(personaje, sectorDibujo);
         }
+
+        // generamos el array de lineas a comparar
+        for (int k = 0; k < coordenadas_esperadas.size() ; k += 2) // saltando de a 2 ;
+        {
+            Linea temp_linea = new Linea(new Posicion(coordenadas_esperadas.get(k)));
+            temp_linea.setPosFinal(new Posicion(coordenadas_esperadas.get(k + 1)));
+            trazosDibujados.add(temp_linea);
+        }
+
+        // aquí hacemos la comparación entre las lineas en el dibujo vs las generadas para hacer la comparación.
+        for( int i = 0; i < sectorDibujo.obtenerSectorDibujado().size() ; i++ )
+        {
+            Linea lineaCreadaParaComparar = trazosDibujados.get(i);
+            Linea trazoDibujado = sectorDibujo.obtenerSectorDibujado().get(i);
+
+            // aquí, las lineas dentro del dibujo como las creadas para comparar deben tener igual punto de inicio como final.
+            assertEquals( lineaCreadaParaComparar.obtenerCoordenadasPosicionInicial(), trazoDibujado.obtenerCoordenadasPosicionInicial() );
+            assertEquals( lineaCreadaParaComparar.obtenerCoordenadasPosicionFinal() , trazoDibujado.obtenerCoordenadasPosicionFinal() );
+        }
+    }
+
+    @Test
+    public void test07SeCreaUnaSecuenciaIncorporandoUnBloqueDeRepeticion() {
+        lista_de_bloques.add(new BloqueBajarLapiz());
+        lista_de_bloques.add(new BloqueMovimiento(new MovimientoArriba()));
+        lista_de_bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
+        // hasta acá, bajamos el lapiz, dibujamos la línea desde (0,0) a (0,1) y luego de (0,1) a (1,1).
+
+        BloqueRepeticion bloqueRepeticion = new BloqueRepeticion(2);
+        List<Bloque> lista_bloques_repetir = new ArrayList<>();
+        lista_bloques_repetir.add( new BloqueMovimiento( new MovimientoArriba() ));
+        lista_bloques_repetir.add( new BloqueMovimiento( new MovimientoArriba() ));
+        /* se mueve hacia arriba 2 veces, es decir:
+            - dibuja en la primera etapa desde (1,1) a (1,2) y luego (1,2) -> (1,3)
+            - dibuja en la seugjnda etapa desde (1,3) a (1,4) y luego (1,4) -> (1,5)
+        */
+
+        bloqueRepeticion.agregarBloque( lista_bloques_repetir ); // agregamos los bloques al bloque de repetición.
+        bloqueRepeticion.ejecutar(personaje, sectorDibujo);
+
+        // ahora, a crear las lineas para comparar.
+        List<Linea> trazosDibujados = new ArrayList<>();
+        List<List<Integer>> coordenadas_esperadas = new ArrayList<>();
+        coordenadas_esperadas.add(Arrays.asList(0, 0));
+        coordenadas_esperadas.add(Arrays.asList(0, 1));
+        coordenadas_esperadas.add(Arrays.asList(0, 1));
+        coordenadas_esperadas.add(Arrays.asList(1, 1));
+        coordenadas_esperadas.add(Arrays.asList(1, 1));
+        coordenadas_esperadas.add(Arrays.asList(1, 2));
+        coordenadas_esperadas.add(Arrays.asList(1, 2));
+        coordenadas_esperadas.add(Arrays.asList(1, 3));
+        coordenadas_esperadas.add(Arrays.asList(1, 3));
+        coordenadas_esperadas.add(Arrays.asList(1, 4));
+        coordenadas_esperadas.add(Arrays.asList(1, 4));
+        coordenadas_esperadas.add(Arrays.asList(1, 5));
 
         // generamos el array de lineas a comparar
         for (int k = 0; k < coordenadas_esperadas.size() ; k += 2) // saltando de a 2 ;

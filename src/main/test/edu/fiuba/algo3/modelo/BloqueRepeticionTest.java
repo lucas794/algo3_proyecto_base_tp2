@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,7 +20,7 @@ public class BloqueRepeticionTest {
     public void setUp(){
         personaje = new Personaje();
         dibujo = new Dibujo();
-        bloquesAEjecutar = new ArrayList();
+        bloquesAEjecutar = new ArrayList<>();
     }
     @Test
     public void test01ElPersonajeNoCambiaDePosicionConUnBLoqueRepeticionVacio(){

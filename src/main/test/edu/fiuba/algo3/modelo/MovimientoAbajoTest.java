@@ -13,7 +13,7 @@ public class MovimientoAbajoTest {
     @Test
     public void test01seCambiaDePosicionUnaVezHaciaAbajo(){
         Posicion posicion = new Posicion(0, 0);
-        List<Integer> coordenadas = new ArrayList(Arrays.asList(0,-1));
+        List<Integer> coordenadas = new ArrayList<>(Arrays.asList(0,-1));
         MovimientoAbajo movimientoAbajo = new MovimientoAbajo();
 
         movimientoAbajo.mover(posicion);
@@ -25,7 +25,7 @@ public class MovimientoAbajoTest {
     @Test
     public void test02SeCambiaDePosicionDosVecesHaciaAbajo(){
         Posicion posicion = new Posicion(0, 0);
-        List<Integer> coordenadas = new ArrayList(Arrays.asList(0,-2));
+        List<Integer> coordenadas = new ArrayList<>(Arrays.asList(0,-2));
         MovimientoAbajo movimientoAbajo = new MovimientoAbajo();
 
         movimientoAbajo.mover(posicion);

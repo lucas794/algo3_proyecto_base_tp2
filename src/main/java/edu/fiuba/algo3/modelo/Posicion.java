@@ -18,7 +18,7 @@ public class Posicion {
     }
 
     public List<Integer> obtenerCoordenadas(){
-        List<Integer> coordenadas = new ArrayList();
+        List<Integer> coordenadas = new ArrayList<>();
         coordenadas.add(posHorizontal);
         coordenadas.add(posVertical);
         return coordenadas;

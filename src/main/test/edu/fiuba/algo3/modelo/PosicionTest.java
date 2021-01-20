@@ -22,7 +22,7 @@ public class PosicionTest {
     @Test
     public void test01SeDesplazaUnaUnidadHaciaLaDerecha(){
         posicion.desplazarDerecha();
-        List<Integer> coordenadas = new ArrayList(Arrays.asList(1,0));
+        List<Integer> coordenadas = new ArrayList<>(Arrays.asList(1,0));
 
         assertEquals(coordenadas,posicion.obtenerCoordenadas());
     }
@@ -30,7 +30,7 @@ public class PosicionTest {
     @Test
     public void test02SeDesplazaUnaUnidadHaciaLaIzquierda(){
         posicion.desplazarIzquierda();
-        List<Integer> coordenadas = new ArrayList(Arrays.asList(-1,0));
+        List<Integer> coordenadas = new ArrayList<>(Arrays.asList(-1,0));
 
         assertEquals(coordenadas,posicion.obtenerCoordenadas());
     }
@@ -38,7 +38,7 @@ public class PosicionTest {
     @Test
     public void test03SeDesplazaUnaUnidadHaciaArriba(){
         posicion.desplazarArriba();
-        List<Integer> coordenadas = new ArrayList(Arrays.asList(0,1));
+        List<Integer> coordenadas = new ArrayList<>(Arrays.asList(0,1));
 
         assertEquals(coordenadas,posicion.obtenerCoordenadas());
     }
@@ -46,7 +46,7 @@ public class PosicionTest {
     @Test
     public void test04SeDesplazaUnaUnidadHaciaAbajo(){
         posicion.desplazarAbajo();
-        List<Integer> coordenadas = new ArrayList(Arrays.asList(0,-1));
+        List<Integer> coordenadas = new ArrayList<>(Arrays.asList(0,-1));
 
         assertEquals(coordenadas,posicion.obtenerCoordenadas());
     }
@@ -55,7 +55,7 @@ public class PosicionTest {
     public void test05SeDesplazaArribaYAbajoSigueEnElOrigen(){
         posicion.desplazarAbajo();
         posicion.desplazarArriba();
-        List<Integer> coordenadas = new ArrayList(Arrays.asList(0,0));
+        List<Integer> coordenadas = new ArrayList<>(Arrays.asList(0,0));
 
         assertEquals(coordenadas,posicion.obtenerCoordenadas());
     }
@@ -64,7 +64,7 @@ public class PosicionTest {
     public void test06SeDesplazaDerechaEIzquierdaSigueEnElOrigen(){
         posicion.desplazarDerecha();
         posicion.desplazarIzquierda();
-        List<Integer> coordenadas = new ArrayList(Arrays.asList(0,0));
+        List<Integer> coordenadas = new ArrayList<>(Arrays.asList(0,0));
 
         assertEquals(coordenadas,posicion.obtenerCoordenadas());
     }
@@ -75,7 +75,7 @@ public class PosicionTest {
         posicion.desplazarIzquierda();
         posicion.desplazarAbajo();
         posicion.desplazarArriba();
-        List<Integer> coordenadas = new ArrayList(Arrays.asList(0,0));
+        List<Integer> coordenadas = new ArrayList<>(Arrays.asList(0,0));
 
         assertEquals(coordenadas,posicion.obtenerCoordenadas());
     }
@@ -90,7 +90,7 @@ public class PosicionTest {
         }
         posicion.desplazarIzquierda();
         posicion.desplazarArriba();
-        List<Integer> coordenadas = new ArrayList(Arrays.asList(4,-5));
+        List<Integer> coordenadas = new ArrayList<>(Arrays.asList(4,-5));
 
         assertEquals(coordenadas,posicion.obtenerCoordenadas());
     }
@@ -104,7 +104,7 @@ public class PosicionTest {
             posicion.desplazarArriba();
         }
 
-        List<Integer> coordenadas = new ArrayList(Arrays.asList(100,100));
+        List<Integer> coordenadas = new ArrayList<>(Arrays.asList(100,100));
 
         assertEquals(coordenadas,posicion.obtenerCoordenadas());
     }
