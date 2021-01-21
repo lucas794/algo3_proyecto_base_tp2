@@ -7,7 +7,8 @@ public class BloqueRepeticion implements Bloque{
     List<Bloque> bloques = new ArrayList<>();
     private final double veces_repeticion;
 
-    public BloqueRepeticion(double veces) {
+    public BloqueRepeticion(double veces) throws NumeroVecesInvalidoException{
+        if(veces < 2 || veces > 3) throw new NumeroVecesInvalidoException();
         this.veces_repeticion = veces;
     }
 

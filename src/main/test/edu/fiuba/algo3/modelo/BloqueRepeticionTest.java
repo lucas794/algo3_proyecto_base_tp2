@@ -100,4 +100,14 @@ public class BloqueRepeticionTest {
         assertFalse( personaje.tieneLapizLevantado() );
     }
     //agregue 1 test para el bloque de lapiz, pueden ir mas aunque no se que exactamente mas probar, es muy límitado.
+
+    @Test
+    public void test06SeIntentaCrearBloqueRepeticionConVecesMenorADosLanzaExcepcion() {
+        assertThrows(NumeroVecesInvalidoException.class,() ->{bloqueRepeticion = new BloqueRepeticion(1);});
+    }
+
+    @Test
+    public void test07SeIntentaCrearBloqueRepeticionConVecesMayorATresLanzaExcepcion() {
+        assertThrows(NumeroVecesInvalidoException.class,() ->{bloqueRepeticion = new BloqueRepeticion(5);});
+    }
 }
