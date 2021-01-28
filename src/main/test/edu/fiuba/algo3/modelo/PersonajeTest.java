@@ -96,51 +96,6 @@ public class PersonajeTest {
         assertEquals( Arrays.asList(2, 0), personaje.obtenerPosicion() );
     }
 
-    @Test
-    public void test09ElPersonajePuedeLevantarElLapizCuandoElLapizEstaApoyado() {
-        Personaje personaje = new Personaje();
-
-        personaje.apoyarLapiz();
-        personaje.levantarLapiz();
-
-        assertTrue(personaje.tieneLapizLevantado());
-    }
-
-    @Test
-    public void test10ElPersonajePuedeLevantarElLapizCuandoElLapizEstaApoyado() {
-        Personaje personaje = new Personaje();
-
-        personaje.apoyarLapiz();
-        personaje.levantarLapiz();
-
-        assertTrue(personaje.tieneLapizLevantado());
-    }
-
-
-    @Test
-    public void test11ElPersonajePuedeApoyarElLapizCuandoElLapizEstaLevantado() {
-        Personaje personaje = new Personaje();
-
-        personaje.apoyarLapiz();
-
-        assertFalse(personaje.tieneLapizLevantado());
-    }
-
-    @Test
-    public void test12ElMetdodtieneLapizLevantadoDevuelveTrueCuandoElLapizEstaLevantado() {
-        Personaje personaje = new Personaje();
-
-        assertTrue(personaje.tieneLapizLevantado());
-    }
-
-    @Test
-    public void test13ElMetdodtieneLapizLevantadoDevuelveFalseCuandoElLapizEstaApoyado() {
-        Personaje personaje = new Personaje();
-
-        personaje.apoyarLapiz();
-
-        assertFalse(personaje.tieneLapizLevantado());
-    }
 
     /*Pruebas de integracion*/
     Personaje personaje;
@@ -159,30 +114,12 @@ public class PersonajeTest {
     }
 
     @Test
-    public void test01SeCreaUnPersonajeYPorDefectoTieneElLapizHaciaArriba()
-    {
-        assertTrue( personaje.tieneLapizLevantado() ); /* inicialmente, tiene el lapiz levantado */
-    }
-
-    @Test
-    public void test02SeBajayVuelveALevantarElLapizConUnBloque(){
-        BloqueLevantarLapiz bloqueLevantarLapiz = new BloqueLevantarLapiz();
-        BloqueBajarLapiz bloqueBajarLapiz = new BloqueBajarLapiz();
-
-        bloqueBajarLapiz.ejecutar(personaje, new Dibujo());
-        bloqueLevantarLapiz.ejecutar(personaje, new Dibujo());
-
-        /* subimos el lapiz con el último bloque, debe dar true */
-        assertTrue( personaje.tieneLapizLevantado() );
-    }
-
-    @Test
-    public void test03SeCreaUnPersonajeYLaPosicionInicialEs0_0(){
+    public void test01SeCreaUnPersonajeYLaPosicionInicialEs0_0(){
         assertEquals( Arrays.asList(0,0), personaje.obtenerPosicion() );
     }
 
     @Test
-    public void test04SeMueveUnPersonajeUnaPosicionALaDerecha(){
+    public void test02SeMueveUnPersonajeUnaPosicionALaDerecha(){
         BloqueMovimiento bloqueMoverDerecha = new BloqueMovimiento(new MovimientoDerecha());
         ejecutarBloque(personaje,bloqueMoverDerecha,1);
 
@@ -190,7 +127,7 @@ public class PersonajeTest {
     }
 
     @Test
-    public void test05SeMueveUnPersonajeTresPosicionesALaDerecha(){
+    public void test03SeMueveUnPersonajeTresPosicionesALaDerecha(){
         BloqueMovimiento bloqueMoverDerecha = new BloqueMovimiento(new MovimientoDerecha());
         ejecutarBloque(personaje,bloqueMoverDerecha,3);
 
@@ -198,7 +135,7 @@ public class PersonajeTest {
     }
 
     @Test
-    public void test06SeMueveUnPersonajeUnaPosicionALaIzquierda(){
+    public void test04SeMueveUnPersonajeUnaPosicionALaIzquierda(){
         BloqueMovimiento bloqueMoverIzquierda = new BloqueMovimiento(new MovimientoIzquierda());
         ejecutarBloque(personaje,bloqueMoverIzquierda,1);
 
@@ -206,7 +143,7 @@ public class PersonajeTest {
     }
 
     @Test
-    public void test07SeMueveUnPersonajeTresPosicionesALaIzquierda(){
+    public void test05SeMueveUnPersonajeTresPosicionesALaIzquierda(){
         BloqueMovimiento bloqueMoverIzquierda = new BloqueMovimiento(new MovimientoIzquierda());
         ejecutarBloque(personaje,bloqueMoverIzquierda,3);
 
@@ -214,7 +151,7 @@ public class PersonajeTest {
     }
 
     @Test
-    public void test08SeMueveUnPersonajeUnaPosicionArriba(){
+    public void test06SeMueveUnPersonajeUnaPosicionArriba(){
         BloqueMovimiento bloqueMoverArriba = new BloqueMovimiento(new MovimientoArriba());
         ejecutarBloque(personaje,bloqueMoverArriba,1);
 
@@ -222,7 +159,7 @@ public class PersonajeTest {
     }
 
     @Test
-    public void test09SeMueveUnPersonajeTresPosicionesArriba(){
+    public void test07SeMueveUnPersonajeTresPosicionesArriba(){
         BloqueMovimiento bloqueMoverArriba = new BloqueMovimiento(new MovimientoArriba());
         ejecutarBloque(personaje,bloqueMoverArriba,3);
 
@@ -230,7 +167,7 @@ public class PersonajeTest {
     }
 
     @Test
-    public void test10SeMueveUnPersonajeUnaPosicionAbajo(){
+    public void test08SeMueveUnPersonajeUnaPosicionAbajo(){
         BloqueMovimiento bloqueMoverAbajo = new BloqueMovimiento(new MovimientoAbajo());
         ejecutarBloque(personaje,bloqueMoverAbajo,1);
 

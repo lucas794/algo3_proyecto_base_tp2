@@ -8,15 +8,16 @@ import static org.junit.jupiter.api.Assertions.*;
 public class BloqueLevantarLapizTest {
 
     @Test
-    public void test01SiSeEjecutaElBloqueLevantarLapizLevantaElLapizDeUnPersonaje() {
-        BloqueBajarLapiz bloqueBajarLapiz = new BloqueBajarLapiz();
+    public void test01SiSeEjecutaBloqueLevantarLapizElSectorDibujoNoTieneLineasDibujadas() {
         BloqueLevantarLapiz bloqueLevantarLapiz = new BloqueLevantarLapiz();
         Personaje personaje = new Personaje();
+        Dibujo sectorDibujo = new Dibujo();
+        MovimientoArriba movimientoArriba = new MovimientoArriba();
 
-        bloqueBajarLapiz.ejecutar(personaje, new Dibujo());
-        bloqueLevantarLapiz.ejecutar(personaje, new Dibujo());
+        bloqueLevantarLapiz.ejecutar(personaje, sectorDibujo);
 
-        assertTrue(personaje.tieneLapizLevantado());
+        personaje.mover(movimientoArriba, sectorDibujo);
+
+        assertEquals( 0, sectorDibujo.obtenerSectorDibujado().size() );
     }
-
 }

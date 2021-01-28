@@ -8,13 +8,17 @@ import static org.junit.jupiter.api.Assertions.*;
 public class BloqueBajarLapizTest {
 
     @Test
-    public void test01SiSeEjecutaElBloqueBajarLapizApoyaElLapizDeUnPersonaje() {
+    public void test01SiSeEjecutaBloqueBajarLapizElPersonajePuedeDibujarEnSectorDibujo() {
         BloqueBajarLapiz bloqueBajarLapiz = new BloqueBajarLapiz();
         Personaje personaje = new Personaje();
+        Dibujo sectorDibujo = new Dibujo();
+        MovimientoArriba movimientoArriba = new MovimientoArriba();
 
-        bloqueBajarLapiz.ejecutar(personaje, new Dibujo());
+        bloqueBajarLapiz.ejecutar(personaje, sectorDibujo);
 
-        assertFalse(personaje.tieneLapizLevantado());
+        personaje.mover(movimientoArriba, sectorDibujo);
+
+        assertEquals( 1, sectorDibujo.obtenerSectorDibujado().size() );
     }
 
 }

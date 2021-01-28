@@ -87,27 +87,15 @@ public class BloqueRepeticionTest {
         assertEquals( posicionEsperada.obtenerCoordenadas(), personaje.obtenerPosicion());
     }
 
-    @Test
-    public void test05SeSubeyBajaElLapizRepetivamente() {
-        bloquesAEjecutar.add(new BloqueLevantarLapiz());
-        bloquesAEjecutar.add(new BloqueBajarLapiz());
-
-        bloqueRepeticion = new BloqueRepeticion(3);
-
-        bloqueRepeticion.agregarBloque( bloquesAEjecutar );
-        bloqueRepeticion.ejecutar(personaje, dibujo);
-
-        assertFalse( personaje.tieneLapizLevantado() );
-    }
     //agregue 1 test para el bloque de lapiz, pueden ir mas aunque no se que exactamente mas probar, es muy límitado.
 
     @Test
-    public void test06SeIntentaCrearBloqueRepeticionConVecesMenorADosLanzaExcepcion() {
+    public void test05SeIntentaCrearBloqueRepeticionConVecesMenorADosLanzaExcepcion() {
         assertThrows(NumeroVecesInvalidoException.class,() ->{bloqueRepeticion = new BloqueRepeticion(1);});
     }
 
     @Test
-    public void test07SeIntentaCrearBloqueRepeticionConVecesMayorATresLanzaExcepcion() {
+    public void test06SeIntentaCrearBloqueRepeticionConVecesMayorATresLanzaExcepcion() {
         assertThrows(NumeroVecesInvalidoException.class,() ->{bloqueRepeticion = new BloqueRepeticion(5);});
     }
 }
