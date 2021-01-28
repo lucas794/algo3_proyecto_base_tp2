@@ -7,10 +7,4 @@ public class LapizLevantado implements Lapiz {
 
         movimiento.mover(posicion);
     }
-
-    /* quedó por la primera entrega pero necesita un refactor */
-    @Override
-    public boolean puedeDibujar() {
-        return false;
-    }
 }

@@ -23,10 +23,6 @@ public class Personaje {
         this.lapiz = new LapizLevantado();
     }
 
-    public boolean tieneLapizLevantado() {
-        return !(this.lapiz.puedeDibujar());
-    }
-
     public List<Integer> obtenerPosicion() {
 
         return this.posicion_personaje.obtenerCoordenadas();
