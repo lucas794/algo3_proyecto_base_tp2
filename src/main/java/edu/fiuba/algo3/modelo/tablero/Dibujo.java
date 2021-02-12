@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.tablero;
 
 import edu.fiuba.algo3.modelo.tablero.movimiento.Movimiento;
-import edu.fiuba.algo3.modelo.Posicion;
 
 import java.util.ArrayList;
 import java.util.List;

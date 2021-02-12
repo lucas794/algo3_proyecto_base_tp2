@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo.tablero;
 
-import edu.fiuba.algo3.modelo.Posicion;
-
 import java.util.List;
 
 // clase anémica momentaneamente, pero posiblemente deje de serlo cuando se implemente el dibujo en la interfaz gráfica.

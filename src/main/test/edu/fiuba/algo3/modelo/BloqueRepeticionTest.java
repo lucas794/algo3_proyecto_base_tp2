@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.bloques.BloqueMovimiento;
 import edu.fiuba.algo3.modelo.bloques.BloqueRepeticion;
 import edu.fiuba.algo3.modelo.excepciones.NumeroVecesInvalidoException;
 import edu.fiuba.algo3.modelo.tablero.Dibujo;
+import edu.fiuba.algo3.modelo.tablero.Posicion;
 import edu.fiuba.algo3.modelo.tablero.movimiento.MovimientoAbajo;
 import edu.fiuba.algo3.modelo.tablero.movimiento.MovimientoArriba;
 import edu.fiuba.algo3.modelo.tablero.movimiento.MovimientoDerecha;
