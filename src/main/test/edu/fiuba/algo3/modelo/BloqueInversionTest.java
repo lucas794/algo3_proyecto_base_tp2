@@ -1,9 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.bloques.Bloque;
-import edu.fiuba.algo3.modelo.bloques.BloqueInversion;
-import edu.fiuba.algo3.modelo.bloques.BloqueLevantarLapiz;
-import edu.fiuba.algo3.modelo.bloques.BloqueMovimiento;
+import edu.fiuba.algo3.modelo.bloques.*;
 import edu.fiuba.algo3.modelo.tablero.Dibujo;
 import edu.fiuba.algo3.modelo.tablero.Posicion;
 import edu.fiuba.algo3.modelo.tablero.movimiento.MovimientoAbajo;
@@ -14,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -36,11 +34,12 @@ public class BloqueInversionTest {
     @Test
     public void test01SeMueveHaciaLaDerechaSeEsperaUnMovimientoOpuesto() {
         BloqueMovimiento bloqueMovimiento = new BloqueMovimiento( new MovimientoDerecha() );
-        BloqueInversion bloqueInverso = new BloqueInversion( Arrays.asList(bloqueMovimiento) );
+        bloqueInversion = new BloqueInversion( Collections.singletonList(bloqueMovimiento) ); // el compilador le gusta mas esto
 
-        bloqueInverso.ejecutar(personaje, dibujo);
+        bloqueInversion.ejecutar(personaje, dibujo);
 
-        assertEquals(Arrays.asList(-1,0), personaje.obtenerPosicion() );
+        posicionEsperada = new Posicion(-1,0);
+        assertEquals( posicionEsperada.obtenerCoordenadas(), personaje.obtenerPosicion() );
     }
 
     @Test
@@ -49,11 +48,12 @@ public class BloqueInversionTest {
         BloqueMovimiento bloqueMovimientoArriba = new BloqueMovimiento( new MovimientoArriba() );
         BloqueMovimiento bloqueMovimientoDerecha = new BloqueMovimiento( new MovimientoDerecha() );
 
-        BloqueInversion bloqueInverso = new BloqueInversion( Arrays.asList(bloqueMovimientoArriba, bloqueMovimientoDerecha) );
+        bloqueInversion = new BloqueInversion( Arrays.asList(bloqueMovimientoArriba, bloqueMovimientoDerecha) );
 
-        bloqueInverso.ejecutar(personaje, dibujo);
+        bloqueInversion.ejecutar(personaje, dibujo);
 
-        assertEquals(Arrays.asList(-1,-1), personaje.obtenerPosicion());
+        posicionEsperada = new Posicion(-1,-1);
+        assertEquals( posicionEsperada.obtenerCoordenadas(), personaje.obtenerPosicion());
     }
 
     @Test
@@ -62,11 +62,12 @@ public class BloqueInversionTest {
         BloqueLevantarLapiz bloqueLevantarLapiz = new BloqueLevantarLapiz();
         BloqueMovimiento bloqueMoverAbajo = new BloqueMovimiento(new MovimientoAbajo());
 
-        BloqueInversion bloqueInverso = new BloqueInversion(Arrays.asList(bloqueLevantarLapiz, bloqueMoverAbajo));
+        bloqueInversion = new BloqueInversion(Arrays.asList(bloqueLevantarLapiz, bloqueMoverAbajo));
 
-        bloqueInverso.ejecutar(personaje, dibujo);
+        bloqueInversion.ejecutar(personaje, dibujo);
 
-        assertEquals(Arrays.asList(0,1), personaje.obtenerPosicion());
+        posicionEsperada = new Posicion(0,1);
+        assertEquals( posicionEsperada.obtenerCoordenadas(), personaje.obtenerPosicion());
     }
 
     @Test
@@ -78,6 +79,24 @@ public class BloqueInversionTest {
 
         segundoBloqueInversion.ejecutar(personaje, dibujo);
 
-        assertEquals(Arrays.asList(0,1), personaje.obtenerPosicion());
+        posicionEsperada = new Posicion(0,1);
+        assertEquals( posicionEsperada.obtenerCoordenadas(), personaje.obtenerPosicion());
+    }
+
+    @Test
+    public void test05SeCreaUnaSecuenciaRepetitiva()
+    {
+        BloqueMovimiento bloqueMovimientoArriba = new BloqueMovimiento( new MovimientoArriba() );
+        BloqueMovimiento bloqueMovimientoDerecha = new BloqueMovimiento( new MovimientoDerecha() );
+        BloqueRepeticion bloqueRepeticion = new BloqueRepeticion( 2, Arrays.asList(bloqueMovimientoArriba, bloqueMovimientoDerecha));
+        // (0,1) luego (1,1) -> (1,1) a (1,2) y para terminar en (2,2).
+
+        bloqueInversion = new BloqueInversion( Arrays.asList(bloqueRepeticion) );
+
+        bloqueInversion.ejecutar(personaje, dibujo);
+
+        // debería quedar en la coordenada (-2, -2).
+        posicionEsperada = new Posicion(-2,-2);
+        assertEquals( posicionEsperada.obtenerCoordenadas(), personaje.obtenerPosicion() );
     }
 }
