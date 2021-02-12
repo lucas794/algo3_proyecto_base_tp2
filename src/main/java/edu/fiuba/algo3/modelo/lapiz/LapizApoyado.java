@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.lapiz;
 
-import edu.fiuba.algo3.modelo.Dibujo;
-import edu.fiuba.algo3.modelo.Movimiento;
+import edu.fiuba.algo3.modelo.tablero.Dibujo;
+import edu.fiuba.algo3.modelo.tablero.movimiento.Movimiento;
 import edu.fiuba.algo3.modelo.Posicion;
 
 public class LapizApoyado implements Lapiz {

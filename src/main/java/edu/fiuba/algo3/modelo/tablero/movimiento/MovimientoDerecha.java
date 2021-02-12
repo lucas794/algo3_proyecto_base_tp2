@@ -1,6 +1,8 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.tablero.movimiento;
 
-public class MovimientoDerecha implements Movimiento{
+import edu.fiuba.algo3.modelo.Posicion;
+
+public class MovimientoDerecha implements Movimiento {
 
     public void mover(Posicion posicion){
         posicion.desplazarDerecha();

@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.bloques;
 
-import edu.fiuba.algo3.modelo.Dibujo;
-import edu.fiuba.algo3.modelo.Movimiento;
+import edu.fiuba.algo3.modelo.tablero.Dibujo;
+import edu.fiuba.algo3.modelo.tablero.movimiento.Movimiento;
 import edu.fiuba.algo3.modelo.Personaje;
 
 public class BloqueMovimiento implements Bloque {

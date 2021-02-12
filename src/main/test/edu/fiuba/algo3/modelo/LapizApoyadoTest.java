@@ -2,6 +2,9 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.lapiz.Lapiz;
 import edu.fiuba.algo3.modelo.lapiz.LapizApoyado;
+import edu.fiuba.algo3.modelo.tablero.Dibujo;
+import edu.fiuba.algo3.modelo.tablero.Linea;
+import edu.fiuba.algo3.modelo.tablero.movimiento.MovimientoDerecha;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

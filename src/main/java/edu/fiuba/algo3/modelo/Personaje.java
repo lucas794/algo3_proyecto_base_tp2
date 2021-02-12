@@ -4,6 +4,8 @@ import edu.fiuba.algo3.modelo.bloques.Bloque;
 import edu.fiuba.algo3.modelo.lapiz.Lapiz;
 import edu.fiuba.algo3.modelo.lapiz.LapizApoyado;
 import edu.fiuba.algo3.modelo.lapiz.LapizLevantado;
+import edu.fiuba.algo3.modelo.tablero.Dibujo;
+import edu.fiuba.algo3.modelo.tablero.movimiento.Movimiento;
 
 import java.util.List;
 

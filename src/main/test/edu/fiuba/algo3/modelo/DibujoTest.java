@@ -2,10 +2,12 @@ package edu.fiuba.algo3.modelo;
 
 //No se me ocurre como testear sin la interfaz grafica y sin agregar getters
 
-import edu.fiuba.algo3.modelo.bloques.Bloque;
-import edu.fiuba.algo3.modelo.bloques.BloqueBajarLapiz;
-import edu.fiuba.algo3.modelo.bloques.BloqueLevantarLapiz;
-import edu.fiuba.algo3.modelo.bloques.BloqueMovimiento;
+import edu.fiuba.algo3.modelo.bloques.*;
+import edu.fiuba.algo3.modelo.tablero.Dibujo;
+import edu.fiuba.algo3.modelo.tablero.Linea;
+import edu.fiuba.algo3.modelo.tablero.movimiento.MovimientoAbajo;
+import edu.fiuba.algo3.modelo.tablero.movimiento.MovimientoArriba;
+import edu.fiuba.algo3.modelo.tablero.movimiento.MovimientoDerecha;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

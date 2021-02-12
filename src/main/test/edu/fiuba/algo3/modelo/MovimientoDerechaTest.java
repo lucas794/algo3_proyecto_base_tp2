@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.tablero.movimiento.MovimientoDerecha;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
