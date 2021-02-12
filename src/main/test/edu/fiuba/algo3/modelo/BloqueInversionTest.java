@@ -1,5 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.bloques.Bloque;
+import edu.fiuba.algo3.modelo.bloques.BloqueInversion;
+import edu.fiuba.algo3.modelo.bloques.BloqueLevantarLapiz;
+import edu.fiuba.algo3.modelo.bloques.BloqueMovimiento;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

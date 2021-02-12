@@ -1,9 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.bloques.Bloque;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class BloqueRepeticion implements Bloque{
+public class BloqueRepeticion implements Bloque {
     List<Bloque> bloques = new ArrayList<>();
     private final double veces_repeticion;
 

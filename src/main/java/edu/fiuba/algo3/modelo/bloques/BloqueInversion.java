@@ -1,9 +1,12 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.bloques;
+
+import edu.fiuba.algo3.modelo.Dibujo;
+import edu.fiuba.algo3.modelo.Personaje;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BloqueInversion implements Bloque{
+public class BloqueInversion implements Bloque {
     List<Bloque> bloques = new ArrayList<>();
 
     public BloqueInversion(List<Bloque> arreglo_de_bloques){

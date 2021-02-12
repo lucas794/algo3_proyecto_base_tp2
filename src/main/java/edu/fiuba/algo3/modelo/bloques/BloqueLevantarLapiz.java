@@ -1,4 +1,7 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.bloques;
+
+import edu.fiuba.algo3.modelo.Dibujo;
+import edu.fiuba.algo3.modelo.Personaje;
 
 public class BloqueLevantarLapiz implements Bloque {
 

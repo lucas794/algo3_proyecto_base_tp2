@@ -1,5 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.bloques.Bloque;
+import edu.fiuba.algo3.modelo.lapiz.Lapiz;
+import edu.fiuba.algo3.modelo.lapiz.LapizApoyado;
+import edu.fiuba.algo3.modelo.lapiz.LapizLevantado;
+
 import java.util.List;
 
 public class Personaje {
