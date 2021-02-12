@@ -6,4 +6,9 @@ public class BloqueBajarLapiz implements Bloque {
     public void ejecutar(Personaje personaje, Dibujo dibujo) {
         personaje.apoyarLapiz();
     }
+
+    @Override
+    public void ejecutarOpuesto(Personaje personaje, Dibujo dibujo) {
+        personaje.levantarLapiz();
+    }
 }

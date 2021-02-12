@@ -6,4 +6,9 @@ public class MovimientoAbajo implements Movimiento {
     public void mover(Posicion posicion) {
         posicion.desplazarAbajo();
     }
+
+    @Override
+    public Movimiento opuesto() {
+        return new MovimientoArriba();
+    }
 }

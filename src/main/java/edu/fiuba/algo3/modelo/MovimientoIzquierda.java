@@ -6,4 +6,9 @@ public class MovimientoIzquierda implements Movimiento {
     public void mover(Posicion posicion) {
         posicion.desplazarIzquierda();
     }
+
+    @Override
+    public Movimiento opuesto() {
+        return new MovimientoDerecha();
+    }
 }

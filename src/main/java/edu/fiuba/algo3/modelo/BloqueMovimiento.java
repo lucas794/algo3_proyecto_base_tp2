@@ -11,5 +11,10 @@ public class BloqueMovimiento implements Bloque{
     public void ejecutar(Personaje personaje, Dibujo dibujo) {
         personaje.mover(movimiento, dibujo);
     }
+
+    @Override
+    public void ejecutarOpuesto(Personaje personaje, Dibujo dibujo) {
+        personaje.mover(movimiento.opuesto(), dibujo);
+    }
 }
 

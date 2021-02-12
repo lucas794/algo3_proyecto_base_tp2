@@ -19,8 +19,11 @@ public class BloqueRepeticion implements Bloque{
         }
     }
 
-    public void agregarBloque(Bloque bloque){
-        bloques.add(bloque);
+    @Override
+    public void ejecutarOpuesto(Personaje personaje, Dibujo dibujo){
+        for( int j = 0; j < this.veces_repeticion; j++ ) {
+            bloques.forEach( bloque -> bloque.ejecutarOpuesto(personaje, dibujo) );
+        }
     }
 
     public void agregarBloque( List<Bloque> arreglo_de_bloques )
