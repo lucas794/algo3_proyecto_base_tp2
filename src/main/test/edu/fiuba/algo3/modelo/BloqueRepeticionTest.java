@@ -24,7 +24,7 @@ public class BloqueRepeticionTest {
     }
     @Test
     public void test01ElPersonajeNoCambiaDePosicionConUnBLoqueRepeticionVacio(){
-        bloqueRepeticion = new BloqueRepeticion(2);
+        bloqueRepeticion = new BloqueRepeticion(2, bloquesAEjecutar);
 
         bloqueRepeticion.ejecutar(personaje,dibujo);
 
@@ -37,9 +37,8 @@ public class BloqueRepeticionTest {
             bloquesAEjecutar.add(new BloqueMovimiento(new MovimientoDerecha()));
         }
 
-        bloqueRepeticion = new BloqueRepeticion(3);
+        bloqueRepeticion = new BloqueRepeticion(3, bloquesAEjecutar);
 
-        bloqueRepeticion.agregarBloque( bloquesAEjecutar );
         bloqueRepeticion.ejecutar(personaje,dibujo);
 
         posicionEsperada = new Posicion(30, 0); // evitamos comparar vs Arrays.AsList.
@@ -52,9 +51,8 @@ public class BloqueRepeticionTest {
             bloquesAEjecutar.add(new BloqueMovimiento(new MovimientoIzquierda()));
         }
 
-        bloqueRepeticion = new BloqueRepeticion(2);
+        bloqueRepeticion = new BloqueRepeticion(2, bloquesAEjecutar);
 
-        bloqueRepeticion.agregarBloque( bloquesAEjecutar );
         bloqueRepeticion.ejecutar(personaje,dibujo);
 
         posicionEsperada = new Posicion(-30, 0);
@@ -78,9 +76,8 @@ public class BloqueRepeticionTest {
             bloquesAEjecutar.add(new BloqueMovimiento(new MovimientoAbajo()));
         }
 
-        bloqueRepeticion = new BloqueRepeticion(3);
+        bloqueRepeticion = new BloqueRepeticion(3, bloquesAEjecutar);
 
-        bloqueRepeticion.agregarBloque( bloquesAEjecutar );
         bloqueRepeticion.ejecutar(personaje,dibujo);
 
         posicionEsperada = new Posicion(15, -60);
@@ -91,11 +88,11 @@ public class BloqueRepeticionTest {
 
     @Test
     public void test05SeIntentaCrearBloqueRepeticionConVecesMenorADosLanzaExcepcion() {
-        assertThrows(NumeroVecesInvalidoException.class,() ->{bloqueRepeticion = new BloqueRepeticion(1);});
+        assertThrows(NumeroVecesInvalidoException.class,() ->{bloqueRepeticion = new BloqueRepeticion(1, bloquesAEjecutar);});
     }
 
     @Test
     public void test06SeIntentaCrearBloqueRepeticionConVecesMayorATresLanzaExcepcion() {
-        assertThrows(NumeroVecesInvalidoException.class,() ->{bloqueRepeticion = new BloqueRepeticion(5);});
+        assertThrows(NumeroVecesInvalidoException.class,() ->{bloqueRepeticion = new BloqueRepeticion(5, bloquesAEjecutar);});
     }
 }

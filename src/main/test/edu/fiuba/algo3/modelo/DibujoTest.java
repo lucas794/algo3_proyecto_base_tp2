@@ -164,7 +164,7 @@ public class DibujoTest {
         lista_de_bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
         // hasta acá, bajamos el lapiz, dibujamos la línea desde (0,0) a (0,1) y luego de (0,1) a (1,1).
 
-        BloqueRepeticion bloqueRepeticion = new BloqueRepeticion(2);
+
         List<Bloque> lista_bloques_repetir = new ArrayList<>();
         lista_bloques_repetir.add( new BloqueMovimiento( new MovimientoArriba() ));
         lista_bloques_repetir.add( new BloqueMovimiento( new MovimientoArriba() ));
@@ -174,7 +174,7 @@ public class DibujoTest {
         */
 
         lista_de_bloques.forEach( bloque -> bloque.ejecutar(personaje, sectorDibujo) ); // ejecutamos los bloque previos
-        bloqueRepeticion.agregarBloque( lista_bloques_repetir ); // agregamos los bloques al bloque de repetición.
+        BloqueRepeticion bloqueRepeticion = new BloqueRepeticion(2, lista_bloques_repetir);
         bloqueRepeticion.ejecutar(personaje, sectorDibujo);
 
         // ahora, a crear las lineas para comparar.
