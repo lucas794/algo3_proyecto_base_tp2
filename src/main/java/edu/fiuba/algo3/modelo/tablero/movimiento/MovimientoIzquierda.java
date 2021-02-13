@@ -2,7 +2,9 @@ package edu.fiuba.algo3.modelo.tablero.movimiento;
 
 import edu.fiuba.algo3.modelo.tablero.Posicion;
 
-public class MovimientoIzquierda implements Movimiento {
+import java.io.Serializable;
+
+public class MovimientoIzquierda implements Movimiento, Serializable {
 
     @Override
     public void mover(Posicion posicion) {

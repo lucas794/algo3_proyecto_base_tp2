@@ -5,10 +5,11 @@ import edu.fiuba.algo3.modelo.tablero.Dibujo;
 import edu.fiuba.algo3.modelo.excepciones.NumeroVecesInvalidoException;
 import edu.fiuba.algo3.modelo.Personaje;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BloqueRepeticion implements Bloque {
+public class BloqueRepeticion implements Bloque, Serializable {
     List<Bloque> bloques = new ArrayList<>();
     private final double veces_repeticion;
 

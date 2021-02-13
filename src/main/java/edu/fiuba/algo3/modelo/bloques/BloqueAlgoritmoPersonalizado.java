@@ -1,24 +1,32 @@
 package edu.fiuba.algo3.modelo.bloques;
 
 import edu.fiuba.algo3.modelo.Personaje;
+import edu.fiuba.algo3.modelo.recursos.DBAlgoritmoPersonalizados;
 import edu.fiuba.algo3.modelo.tablero.Dibujo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BloqueAlgoritmoPersonalizado implements Bloque {
 
-    List<Bloque> algoritmo_a_ejecutar = new ArrayList<>();
-    String nombre_algoritmo;
 
-    public BloqueAlgoritmoPersonalizado( String nombre_algoritmo_a_cargar ) {
+    List<Bloque> algoritmo_a_ejecutar = new ArrayList<>();
+
+    public BloqueAlgoritmoPersonalizado(DBAlgoritmoPersonalizados db, String nombre_algoritmo_a_cargar ) {
         // aquí debería cargarse el algoritmo
+
+        //this.algoritmo_a_ejecutar = db.cargar_algoritmo( nombre_algoritmo_a_cargar );
     }
 
-    public BloqueAlgoritmoPersonalizado( List<Bloque> bloques, String nombre_algoritmo_a_guardar ) {
+    public BloqueAlgoritmoPersonalizado(DBAlgoritmoPersonalizados db, List<Bloque> bloques, String nombre_algoritmo_a_guardar ) {
         // posiblemente requiera mas detalles pero es una base.
+
+
+        /*
         this.algoritmo_a_ejecutar.addAll( bloques );
-        this.nombre_algoritmo = nombre_algoritmo_a_guardar;
+        db.guardar_algoritmo( bloques, nombre_algoritmo_a_guardar );
+        */
     }
 
     @Override

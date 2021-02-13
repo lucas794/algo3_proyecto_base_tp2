@@ -2,7 +2,9 @@ package edu.fiuba.algo3.modelo.tablero.movimiento;
 
 import edu.fiuba.algo3.modelo.tablero.Posicion;
 
-public class MovimientoDerecha implements Movimiento {
+import java.io.Serializable;
+
+public class MovimientoDerecha implements Movimiento, Serializable {
 
     public void mover(Posicion posicion){
         posicion.desplazarDerecha();
