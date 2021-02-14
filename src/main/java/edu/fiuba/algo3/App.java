@@ -1,13 +1,10 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.interfaz.Tablero;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-//import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-//import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -74,20 +71,10 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        var javaVersion = SystemInfo.javaVersion();
-        var javafxVersion = SystemInfo.javafxVersion();
 
-        var label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
-        // creación del tablero
-        BorderPane tablero = new BorderPane(label);
+        Tablero tablero = new Tablero();
 
-        tablero.setLeft(new Label("Dibujo"));
-        tablero.setBottom(new Label( "Bloques"));
-        tablero.setCenter(new Label( "Algoritmo"));
-
-        // Creación de la escena.
-       // var label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
-        var scene = new Scene(/*new StackPane(label)*/ tablero, RES_X, RES_Y);
+        var scene = new Scene(tablero, RES_X, RES_Y);
 
         stage.setTitle( TITULO_VENTANA );
         stage.setOnCloseRequest(e -> cerrarVentana());
