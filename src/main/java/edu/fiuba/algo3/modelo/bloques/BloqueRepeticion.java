@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.bloques;
 
-import edu.fiuba.algo3.modelo.bloques.Bloque;
 import edu.fiuba.algo3.modelo.tablero.Dibujo;
 import edu.fiuba.algo3.modelo.excepciones.NumeroVecesInvalidoException;
 import edu.fiuba.algo3.modelo.Personaje;
