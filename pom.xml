@@ -54,7 +54,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-version}</version>
                 <configuration>
-                    <argLine>--add-opens edu.fiuba.algo3/edu.fiuba.algo3.modelo=ALL-UNNAMED</argLine>
+                    <argLine>@{argLine} --add-opens edu.fiuba.algo3/edu.fiuba.algo3.modelo=ALL-UNNAMED</argLine>
                 </configuration>
             </plugin>
             <plugin>
