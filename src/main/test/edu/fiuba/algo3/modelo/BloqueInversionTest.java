@@ -123,4 +123,20 @@ public class BloqueInversionTest {
         posicionEsperada = new Posicion(-2,-2);
         assertEquals( posicionEsperada.obtenerCoordenadas(), personaje.obtenerPosicion());
     }
+
+    @Test
+    public void test07SeInvierteBloqueBajarLapizNoDebeDibujar()
+    {
+        BloqueBajarLapiz bloqueBajarLapiz = new BloqueBajarLapiz();
+        BloqueMovimiento bloqueMoverArriba = new BloqueMovimiento( new MovimientoArriba() );
+
+        BloqueInversion bloqueInvertir = new BloqueInversion( Arrays.asList(bloqueBajarLapiz, bloqueMoverArriba,
+                                         bloqueMoverArriba, bloqueMoverArriba, bloqueMoverArriba));
+
+        bloqueInvertir.ejecutar(personaje, dibujo);
+
+        Posicion posicionEsperada = new Posicion( 0, -4 );
+        assertEquals( new ArrayList<>(), dibujo.obtenerSectorDibujado() ); // no tiene líneas dibujadas ya que se sube el lapiz
+        assertEquals( posicionEsperada.obtenerCoordenadas(), personaje.obtenerPosicion() );
+    }
 }
