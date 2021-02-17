@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.bloques.BloqueAlgoritmoPersonalizado;
+import edu.fiuba.algo3.modelo.bloques.BloqueInversion;
 import edu.fiuba.algo3.modelo.bloques.BloqueMovimiento;
 import edu.fiuba.algo3.modelo.bloques.BloqueRepeticion;
 import edu.fiuba.algo3.modelo.recursos.DBAlgoritmoPersonalizados;
@@ -66,6 +67,25 @@ class BloqueAlgoritmoPersonalizadoTest {
         bloqueCarga.ejecutar(personaje, dibujo);
 
         Posicion posicionEsperada = new Posicion( -2, 2 );
+
+        assertEquals( posicionEsperada.obtenerCoordenadas(), personaje.obtenerPosicion() );
+    }
+
+    @Test
+    public void test03SeCreaAlgoritmoPersonalizadoConBloqueInversion()
+    {
+        BloqueRepeticion bloqueRepeticion = new BloqueRepeticion( 2, Arrays.asList( bloqueMoverIzquierda, bloqueMoverArriba ) );
+        BloqueInversion bloqueInversion = new BloqueInversion(Arrays.asList(bloqueRepeticion));
+
+        BloqueAlgoritmoPersonalizado bloqueGuardado = new BloqueAlgoritmoPersonalizado( dbAlgoritmosPersonalizados,
+                Collections.singletonList(bloqueInversion), "test03" );
+
+        BloqueAlgoritmoPersonalizado bloqueCarga = new BloqueAlgoritmoPersonalizado( dbAlgoritmosPersonalizados,
+                "test03");
+
+        bloqueCarga.ejecutar(personaje, dibujo);
+
+        Posicion posicionEsperada = new Posicion( 2, -2 );
 
         assertEquals( posicionEsperada.obtenerCoordenadas(), personaje.obtenerPosicion() );
     }

@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.bloques.*;
+import edu.fiuba.algo3.modelo.recursos.DBAlgoritmoPersonalizados;
 import edu.fiuba.algo3.modelo.tablero.Dibujo;
 import edu.fiuba.algo3.modelo.tablero.Posicion;
 import edu.fiuba.algo3.modelo.tablero.movimiento.MovimientoAbajo;
@@ -98,5 +99,28 @@ public class BloqueInversionTest {
         // debería quedar en la coordenada (-2, -2).
         posicionEsperada = new Posicion(-2,-2);
         assertEquals( posicionEsperada.obtenerCoordenadas(), personaje.obtenerPosicion() );
+    }
+
+    @Test
+    public void test06SeInvierteAlgoritmoPersonalizado()
+    {
+        BloqueMovimiento bloqueMovimientoArriba = new BloqueMovimiento( new MovimientoArriba() );
+        BloqueMovimiento bloqueMovimientoDerecha = new BloqueMovimiento( new MovimientoDerecha() );
+        BloqueRepeticion bloqueRepeticion = new BloqueRepeticion(2, Arrays.asList(bloqueMovimientoArriba, bloqueMovimientoDerecha));
+        DBAlgoritmoPersonalizados dbAlgoritmosPersonalizados = new DBAlgoritmoPersonalizados();
+
+        BloqueAlgoritmoPersonalizado bloqueGuardado = new BloqueAlgoritmoPersonalizado( dbAlgoritmosPersonalizados,
+                Collections.singletonList(bloqueRepeticion), "test06" );
+
+        BloqueAlgoritmoPersonalizado bloqueCarga = new BloqueAlgoritmoPersonalizado( dbAlgoritmosPersonalizados,
+                "test06");
+
+
+        bloqueInversion = new BloqueInversion( Arrays.asList(bloqueCarga) );
+
+        bloqueInversion.ejecutar(personaje, dibujo);
+
+        posicionEsperada = new Posicion(-2,-2);
+        assertEquals( posicionEsperada.obtenerCoordenadas(), personaje.obtenerPosicion());
     }
 }
