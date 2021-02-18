@@ -13,9 +13,9 @@ public class Tablero extends BorderPane {
 
         posicionarSectores();
 
-        BorderPane.setMargin(sectorDibujo, new Insets(20,50,300,30));
-        BorderPane.setMargin(sectorBloques, new Insets(20,50,50,30));
-        BorderPane.setMargin(sectorAlgoritmo, new Insets(20,50,50,30));
+        BorderPane.setMargin(sectorDibujo, new Insets(20,5,300,10));
+        BorderPane.setMargin(sectorBloques, new Insets(20,5,20,10));
+        BorderPane.setMargin(sectorAlgoritmo, new Insets(20,5,20,10));
 
     }
 
