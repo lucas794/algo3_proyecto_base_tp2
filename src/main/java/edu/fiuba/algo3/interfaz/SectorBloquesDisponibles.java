@@ -47,7 +47,7 @@ public class SectorBloquesDisponibles extends VBox {
 
         DBAlgoritmoPersonalizados db = new DBAlgoritmoPersonalizados();
         List<List<?>> info_algoritmos_personalizados = db.cargar_todos_algoritmos();
-        // esto es un ejemplo, hay que preguntar mas al respecto, alternativa hashmap?
+
         info_algoritmos_personalizados.forEach( info -> contenedorBotonera.getChildren().add( new Button( (String) info.get(0))));
 
         contenedorBotonera.setAlignment( Pos.CENTER );

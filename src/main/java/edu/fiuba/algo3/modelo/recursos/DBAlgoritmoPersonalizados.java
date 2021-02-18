@@ -3,76 +3,46 @@ package edu.fiuba.algo3.modelo.recursos;
 import edu.fiuba.algo3.modelo.bloques.Bloque;
 
 import java.io.*;
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class DBAlgoritmoPersonalizados {
-
-    private final String EXTENSION_ARCHIVO = ".algoblock";
-    private final String NOMBRE_CARPETA = "algoblocks_personalizados";
-
-    private final String ruta_programa = System.getProperty("user.dir");
-    private final String ruta_madre = ruta_programa + "/" + NOMBRE_CARPETA + "/";
-    private final boolean ruta_no_existe;
+    private HashMap<String, List<Bloque>> bloques_de_ejecutacion;
 
     public DBAlgoritmoPersonalizados() {
-        ruta_no_existe = new File( ruta_madre ).mkdir();
-
-        // si ruta_no_existe es true, es que se creó el directorio
-        // si no existe, es que hay archivos adentro, habría que leerlos.
+        bloques_de_ejecutacion = new HashMap<>();
     }
 
     public void guardar_algoritmo( List<Bloque> bloques , String nombre_algoritmo )
     {
-        FileOutputStream archivo;
-
-        try {
-            archivo = new FileOutputStream(ruta_madre + nombre_algoritmo + EXTENSION_ARCHIVO );
-            ObjectOutputStream oos = new ObjectOutputStream(archivo);
-            oos.writeObject(bloques);
-            oos.close();
-        } catch (IOException e) {
-            e.printStackTrace(); // queda por resolver, podemos lanzar una excepción.
-        }
+        bloques_de_ejecutacion.put(nombre_algoritmo, bloques);
     }
-
 
     public List<Bloque> cargar_algoritmo( String nombre_algoritmo )
     {
-        List<Bloque> temp_bloques = null;
+        Boolean existe_algoritmo = bloques_de_ejecutacion.containsKey(nombre_algoritmo);
 
-        FileInputStream archivo_salida;
-        try {
-            archivo_salida = new FileInputStream(ruta_madre + nombre_algoritmo + EXTENSION_ARCHIVO );
-            ObjectInputStream ois = new ObjectInputStream(archivo_salida);
-            temp_bloques = (List<Bloque>) ois.readObject();
-
-            ois.close();
-
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+        if( !existe_algoritmo )
+        {
+            return null; // se puede manejar alternativas
         }
 
-        return temp_bloques;
+        return bloques_de_ejecutacion.get(nombre_algoritmo);
     }
 
     public List<List<?>> cargar_todos_algoritmos()
     {
-        if( ruta_no_existe )
-            return new ArrayList<>(); // lista vacia
-
         List<List<?>> arreglo_temporal = new ArrayList<>();
 
-        File ruta = new File(ruta_madre);
-        File[] directorioArchivos = ruta.listFiles();
+        if( bloques_de_ejecutacion.size() <= 0 )
+            return arreglo_temporal;
 
-        String nombre_archivo;
-
-        for( File archivo : directorioArchivos )
+        for( String nombre_algoritmo : bloques_de_ejecutacion.keySet() )
         {
-            nombre_archivo = archivo.getName().replaceFirst("[.][^.]+$", "");
-            arreglo_temporal.add(Arrays.asList(nombre_archivo, this.cargar_algoritmo(nombre_archivo)));
+            arreglo_temporal.add( Arrays.asList(nombre_algoritmo, bloques_de_ejecutacion.get(nombre_algoritmo)) );
         }
 
         return arreglo_temporal;
