@@ -1,11 +1,8 @@
 package edu.fiuba.algo3;
 
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TransferMode;
+import javafx.scene.input.*;
+
 
 // esta clase muy posiblemente tenga que ir en otra carpeta, pero lo pongo acá inicialmente.
 
