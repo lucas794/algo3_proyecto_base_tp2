@@ -1,12 +1,10 @@
 package edu.fiuba.algo3.interfaz;
 
+import edu.fiuba.algo3.BotonAB;
 import edu.fiuba.algo3.modelo.recursos.DBAlgoritmoPersonalizados;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.*;
@@ -20,30 +18,24 @@ public class SectorBloquesDisponibles extends VBox {
         Label upper = new Label("Bloques Disponibles");
         this.getChildren().add(upper);
 
-        Button botonMoverArriba = new Button("Mover arriba");
-        Button botonMoverAbajo = new Button("Mover abajo");
-        Button botonMoverIzquierda = new Button("Mover izquierda");
-        Button botonMoverDerecha = new Button("Mover derecha");
-        Button botonBajarLapiz = new Button("Bajar lapiz");
-        Button botonSubirLapiz = new Button("Subir lapiz");
+        BotonAB botonMoverArriba = new BotonAB("Mover Arriba");
+        BotonAB botonMoverAbajo = new BotonAB( "Mover Abajo");
+        BotonAB botonMoverIzquierda = new BotonAB("Mover izquierda");
+        BotonAB botonMoverDerecha = new BotonAB("Mover derecha");
+        BotonAB botonBajarLapiz = new BotonAB("Bajar lapiz");
+        BotonAB botonSubirLapiz = new BotonAB("Subir lapiz");
 
-        Button botonRepeticion = new Button("Repetir: ");
-        ObservableList<Integer> repeticiones = FXCollections.observableArrayList( 2, 3 );
-        ComboBox cantidadRepeticiones = new ComboBox( repeticiones );
-        cantidadRepeticiones.getSelectionModel().selectFirst();
+        BotonAB botonRepeticion2x = new BotonAB("Repetir 2x");
+        BotonAB botonRepeticion3x = new BotonAB("Repetir 3x");
 
-        Button botonInvertir = new Button("Invertir comportamiento");
-        Button botonGuardarAlgoritmo = new Button("Guardar algoritmo");
-        botonGuardarAlgoritmo.setDisable( true );
-
-        HBox contenedorRepeticion = new HBox(botonRepeticion, cantidadRepeticiones);
-        contenedorRepeticion.setAlignment( Pos.CENTER );
+        BotonAB botonInvertir = new BotonAB("Invertir comportamiento");
+        //Button botonGuardarAlgoritmo = new Button("Guardar algoritmo");
+        //botonGuardarAlgoritmo.setDisable( true );
 
         Separator separador = new Separator();
 
-        VBox contenedorBotonera = new VBox(botonMoverAbajo, botonMoverArriba, botonMoverDerecha, botonMoverIzquierda,
-                botonBajarLapiz, botonSubirLapiz, contenedorRepeticion,
-                botonInvertir, botonGuardarAlgoritmo, separador);
+        VBox contenedorBotonera = new VBox(botonMoverArriba, botonMoverAbajo, botonMoverIzquierda, botonMoverDerecha,
+                botonBajarLapiz, botonSubirLapiz, botonRepeticion2x, botonRepeticion3x, botonInvertir);
 
         DBAlgoritmoPersonalizados db = new DBAlgoritmoPersonalizados();
         List<List<?>> info_algoritmos_personalizados = db.cargar_todos_algoritmos();
@@ -54,8 +46,7 @@ public class SectorBloquesDisponibles extends VBox {
         contenedorBotonera.setSpacing( 10 );
 
         this.getChildren().add(contenedorBotonera);
+
         this.setBackground(new Background(new BackgroundFill(Color.LIGHTGREY, CornerRadii.EMPTY, Insets.EMPTY)));
-
     }
-
 }
