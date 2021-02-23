@@ -1,22 +1,31 @@
 package edu.fiuba.algo3;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.input.*;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.TransferMode;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 // esta clase muy posiblemente tenga que ir en otra carpeta, pero lo pongo acá inicialmente.
 
 public class BotonAB extends Button {
 
-    public BotonAB(String nombre_boton) {
-        super(nombre_boton);
+    String RUTA_ICONOS = "file:src/main/java/edu/fiuba/algo3/interfaz/imagenes/";
 
-        this.setOnDragDetected( new HabilidadDrag(this, nombre_boton, TransferMode.ANY) );
-        /*this.setOnDragDetected(mouseEvent -> {
-            Dragboard db = startDragAndDrop(TransferMode.COPY_OR_MOVE);
-            ClipboardContent contenido = new ClipboardContent();
-            contenido.putString(nombre_boton);
-            db.setContent(contenido);
-            mouseEvent.consume();
-        });*/
+    public BotonAB(String nombre_boton, String icono) {
+        super();
+
+        ImageView icon = new ImageView(RUTA_ICONOS + icono);
+        this.setMaxSize( 100, 100);
+        this.setMinSize( 55, 55);
+        this.setTooltip( new Tooltip(nombre_boton) );
+        this.setBackground(new Background(new BackgroundFill(Color.DARKCYAN, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setBorder(new Border(new BorderStroke(Color.BLACK,
+                BorderStrokeStyle.DASHED, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+        this.setGraphic( icon );
+
+        this.setOnDragDetected( new HabilidadDrag(this, nombre_boton, TransferMode.ANY, icono) );
     }
 }

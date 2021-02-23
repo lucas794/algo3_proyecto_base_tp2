@@ -2,14 +2,13 @@ package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.interfaz.SectorAlgoritmo;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TitledPane;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.VBox;
+
 
 public class HabilidadDrop implements EventHandler<DragEvent> {
 
@@ -26,11 +25,10 @@ public class HabilidadDrop implements EventHandler<DragEvent> {
         Dragboard db = dragEvent.getDragboard();
         boolean success = false;
         if (db.hasString()) {
-            TitledPane temp_pane = new TitledPane();
-            temp_pane.setText(db.getString());
-            temp_pane.setAlignment( Pos.CENTER );
+            BotonAB movimiento = new BotonAB( db.getString().split(",")[0], db.getString().split(",")[1]);
+            movimiento.setOnDragDetected( null ); // no se mueve
 
-            temp_pane.setOnMouseClicked(mouseEvent -> {
+            movimiento.setOnMouseClicked(mouseEvent -> {
                 if( mouseEvent.isSecondaryButtonDown() || mouseEvent.getButton() == MouseButton.SECONDARY)
                 {
                     ContextMenu menu = new ContextMenu();
@@ -40,15 +38,17 @@ public class HabilidadDrop implements EventHandler<DragEvent> {
 
                     menu.show(this.sector, mouseEvent.getScreenX(), mouseEvent.getScreenY());
 
-                    borrar.setOnAction(actionEvent -> this.contenedor.getChildren().remove(temp_pane));
+                    borrar.setOnAction(actionEvent -> this.contenedor.getChildren().remove(movimiento));
 
                     cancelar.setOnAction( evento -> menu.hide());
                 }
             });
 
-            this.contenedor.getChildren().add(temp_pane);
+            this.contenedor.getChildren().add(movimiento);
+
             success = true;
         }
+
         dragEvent.setDropCompleted(success);
         dragEvent.consume();
     }

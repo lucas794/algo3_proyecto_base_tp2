@@ -19,6 +19,7 @@ public class SectorAlgoritmo extends VBox {
 
         VBox contenedorAlgoritmo = new VBox();
         contenedorAlgoritmo.setPrefSize(400, 600);
+        contenedorAlgoritmo.setAlignment(Pos.TOP_CENTER);
         this.getChildren().add(contenedorAlgoritmo);
 
         this.setBackground(new Background(new BackgroundFill(Color.LIGHTGREY, CornerRadii.EMPTY, Insets.EMPTY)));

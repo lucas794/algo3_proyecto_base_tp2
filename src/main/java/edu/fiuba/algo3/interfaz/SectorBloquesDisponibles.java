@@ -16,19 +16,21 @@ public class SectorBloquesDisponibles extends VBox {
 
     public SectorBloquesDisponibles(){
         Label upper = new Label("Bloques Disponibles");
+        upper.setMaxWidth(Double.MAX_VALUE);
+        upper.setAlignment(Pos.CENTER);
         this.getChildren().add(upper);
 
-        BotonAB botonMoverArriba = new BotonAB("Mover Arriba");
-        BotonAB botonMoverAbajo = new BotonAB( "Mover Abajo");
-        BotonAB botonMoverIzquierda = new BotonAB("Mover izquierda");
-        BotonAB botonMoverDerecha = new BotonAB("Mover derecha");
-        BotonAB botonBajarLapiz = new BotonAB("Bajar lapiz");
-        BotonAB botonSubirLapiz = new BotonAB("Subir lapiz");
+        BotonAB botonMoverArriba = new BotonAB("Mover Arriba", "arriba.png");
+        BotonAB botonMoverAbajo = new BotonAB( "Mover Abajo", "abajo.png");
+        BotonAB botonMoverIzquierda = new BotonAB("Mover izquierda", "izquierda.png");
+        BotonAB botonMoverDerecha = new BotonAB("Mover derecha", "derecha.png");
+        BotonAB botonBajarLapiz = new BotonAB("Bajar lapiz", "abajo.png");
+        BotonAB botonSubirLapiz = new BotonAB("Subir lapiz", "arriba.png");
 
-        BotonAB botonRepeticion2x = new BotonAB("Repetir 2x");
-        BotonAB botonRepeticion3x = new BotonAB("Repetir 3x");
+        BotonAB botonRepeticion2x = new BotonAB("Repetir 2x", "repeticion.png");
+        BotonAB botonRepeticion3x = new BotonAB("Repetir 3x", "repeticion.png");
 
-        BotonAB botonInvertir = new BotonAB("Invertir comportamiento");
+        BotonAB botonInvertir = new BotonAB("Invertir comportamiento", "personajeUp.png");
         Button botonGuardarAlgoritmo = new Button("Guardar algoritmo");
         botonGuardarAlgoritmo.setDisable( true );
 
@@ -43,11 +45,11 @@ public class SectorBloquesDisponibles extends VBox {
 
         info_algoritmos_personalizados.forEach( info -> contenedorBotonera.getChildren().add( new Button( (String) info.get(0))));
 
-        contenedorBotonera.setAlignment( Pos.CENTER );
-        contenedorBotonera.setSpacing( 10 );
+        contenedorBotonera.setAlignment( Pos.TOP_CENTER );
+        contenedorBotonera.setSpacing( 2 );
 
         this.getChildren().add(contenedorBotonera);
 
-        this.setBackground(new Background(new BackgroundFill(Color.LIGHTGREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setBackground(new Background(new BackgroundFill(Color.LIGHTGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 }
