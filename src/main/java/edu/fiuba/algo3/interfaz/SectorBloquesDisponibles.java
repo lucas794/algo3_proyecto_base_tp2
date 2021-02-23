@@ -29,13 +29,14 @@ public class SectorBloquesDisponibles extends VBox {
         BotonAB botonRepeticion3x = new BotonAB("Repetir 3x");
 
         BotonAB botonInvertir = new BotonAB("Invertir comportamiento");
-        //Button botonGuardarAlgoritmo = new Button("Guardar algoritmo");
-        //botonGuardarAlgoritmo.setDisable( true );
+        Button botonGuardarAlgoritmo = new Button("Guardar algoritmo");
+        botonGuardarAlgoritmo.setDisable( true );
 
         Separator separador = new Separator();
 
         VBox contenedorBotonera = new VBox(botonMoverArriba, botonMoverAbajo, botonMoverIzquierda, botonMoverDerecha,
-                botonBajarLapiz, botonSubirLapiz, botonRepeticion2x, botonRepeticion3x, botonInvertir);
+                botonBajarLapiz, botonSubirLapiz, botonRepeticion2x, botonRepeticion3x, botonInvertir, botonGuardarAlgoritmo,
+                separador);
 
         DBAlgoritmoPersonalizados db = new DBAlgoritmoPersonalizados();
         List<List<?>> info_algoritmos_personalizados = db.cargar_todos_algoritmos();
