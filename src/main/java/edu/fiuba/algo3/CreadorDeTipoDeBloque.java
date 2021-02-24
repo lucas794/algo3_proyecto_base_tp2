@@ -8,7 +8,7 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
-public class CreadorDeTipoDeBloque {
+public class CreadorDeTipoDeBloque extends Observable {
 
     public void crearBloque(String nombre, String icono, SectorAlgoritmo sector, VBox contenedor) {
         BotonAB item = new BotonAB(nombre, icono);
@@ -17,6 +17,7 @@ public class CreadorDeTipoDeBloque {
         item.setOnMouseClicked( new MenuContextoHandler(item, sector, contenedor) );
 
         contenedor.getChildren().add(item);
+        notificarObservadores(contenedor);
     }
 
     public void crearContenedor(String nombre, String icono, SectorAlgoritmo sector, VBox contenedor)
@@ -49,5 +50,7 @@ public class CreadorDeTipoDeBloque {
         item.setOnMouseClicked( new MenuContextoEnContenedorHandler(boton, sector, item) );
         item.setAlignment(Pos.CENTER);
         contenedor.getChildren().add(item);
+
+        notificarObservadores(contenedor);
     }
 }

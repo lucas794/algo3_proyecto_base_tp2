@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.interfaz;
 
 import edu.fiuba.algo3.BotonAB;
+import edu.fiuba.algo3.BotonABGA;
 import edu.fiuba.algo3.modelo.recursos.DBAlgoritmoPersonalizados;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -12,6 +13,8 @@ import javafx.scene.paint.Color;
 
 import java.util.List;
 
+// necesito que esto extienda de Observador, no de VBox (solo puedo extender de una clase)
+// Una vez que solo extienda de Observador, el botonGuardarAlgoritmo se cambiaría de activado a desactivado.
 public class SectorBloquesDisponibles extends VBox {
 
     public SectorBloquesDisponibles(){
@@ -30,8 +33,7 @@ public class SectorBloquesDisponibles extends VBox {
         BotonAB botonRepeticion = new BotonAB("Repetir...", "repeticion.png");
         BotonAB botonInvertir = new BotonAB("Invertir comportamiento", "personajeUp.png");
 
-        Button botonGuardarAlgoritmo = new Button("Guardar algoritmo");
-        botonGuardarAlgoritmo.setDisable( true );
+        BotonABGA botonGuardarAlgoritmo = new BotonABGA("Guardar algoritmo");
 
         Separator separador = new Separator();
 
