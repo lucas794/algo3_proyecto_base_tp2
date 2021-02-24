@@ -2,16 +2,17 @@ package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.interfaz.SectorAlgoritmo;
 import javafx.event.EventHandler;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.MenuItem;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
-import javafx.scene.input.MouseButton;
-import javafx.scene.layout.VBox;
+import javafx.scene.input.TransferMode;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 
 public class HabilidadDrop implements EventHandler<DragEvent> {
-
     SectorAlgoritmo sector;
     VBox contenedor;
 
@@ -25,30 +26,46 @@ public class HabilidadDrop implements EventHandler<DragEvent> {
         Dragboard db = dragEvent.getDragboard();
         boolean success = false;
         if (db.hasString()) {
-            BotonAB movimiento = new BotonAB( db.getString().split(",")[0], db.getString().split(",")[1]);
-            movimiento.setOnDragDetected( null ); // no se mueve
+            String nombre = db.getString().split(",")[0];
+            String icono = db.getString().split(",")[1];
 
-            movimiento.setOnMouseClicked(mouseEvent -> {
-                if( mouseEvent.isSecondaryButtonDown() || mouseEvent.getButton() == MouseButton.SECONDARY)
-                {
-                    ContextMenu menu = new ContextMenu();
-                    MenuItem borrar = new MenuItem("BORRAR");
-                    MenuItem cancelar = new MenuItem("CANCELAR");
-                    menu.getItems().addAll(borrar, cancelar);
+            if( nombre.contains("Repetir") || nombre.contains("Invertir") ) {
+                VBox contenedorAEjecutar = new VBox();
+                contenedorAEjecutar.setPrefSize( 110, 160 );
+                contenedorAEjecutar.setAlignment( Pos.TOP_CENTER );
+                contenedorAEjecutar.setOnDragOver( new HabilidadAceptarDrag(TransferMode.ANY) );
 
-                    menu.show(this.sector, mouseEvent.getScreenX(), mouseEvent.getScreenY());
+                contenedorAEjecutar.setOnDragDropped( new HabilidadDrop(this.sector, contenedorAEjecutar ) );
+                contenedorAEjecutar.setBorder(new Border(new BorderStroke(Color.ROYALBLUE,
+                        BorderStrokeStyle.DOTTED, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+                contenedorAEjecutar.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
 
-                    borrar.setOnAction(actionEvent -> this.contenedor.getChildren().remove(movimiento));
-
-                    cancelar.setOnAction( evento -> menu.hide());
+                if( nombre.contains("Repetir") ) {
+                    ChoiceBox<Integer> choiceBox = new ChoiceBox<>();
+                    choiceBox.getItems().add(2);
+                    choiceBox.getItems().add(3);
+                    choiceBox.getSelectionModel().selectFirst();
+                    contenedorAEjecutar.getChildren().add(choiceBox);
                 }
-            });
 
-            this.contenedor.getChildren().add(movimiento);
+                BotonAB boton = new BotonAB( nombre, icono );
+                boton.setOnDragDetected( null );
+                HBox item = new HBox(boton, contenedorAEjecutar);
+                boton.setOnMouseClicked( new MenuContextoEnContenedorHandler(boton, this.sector, item) );
+                item.setOnMouseClicked( new MenuContextoEnContenedorHandler(boton, this.sector, item) );
+                item.setAlignment(Pos.CENTER);
+                this.contenedor.getChildren().add(item);
+            }
+            else {
+                BotonAB item = new BotonAB(nombre, icono);
+                item.setOnDragDetected(null); // no se mueve
 
+                item.setOnMouseClicked( new MenuContextoHandler(item, this.sector, this.contenedor) );
+
+                this.contenedor.getChildren().add(item);
+            }
             success = true;
         }
-
         dragEvent.setDropCompleted(success);
         dragEvent.consume();
     }

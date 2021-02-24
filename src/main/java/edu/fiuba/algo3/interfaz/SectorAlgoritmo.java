@@ -25,7 +25,6 @@ public class SectorAlgoritmo extends VBox {
         this.setBackground(new Background(new BackgroundFill(Color.LIGHTGREY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         contenedorAlgoritmo.setOnDragOver( new HabilidadAceptarDrag(TransferMode.ANY) );
-
         contenedorAlgoritmo.setOnDragDropped( new HabilidadDrop(this, contenedorAlgoritmo) );
     }
 

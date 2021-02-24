@@ -1,12 +1,9 @@
 package edu.fiuba.algo3;
 
-import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.TransferMode;
+import javafx.scene.input.*;
 
-public class HabilidadDrag implements EventHandler {
+public class HabilidadDrag implements EventHandler<MouseEvent> {
 
     String nombre_boton;
     BotonAB boton;
@@ -21,7 +18,7 @@ public class HabilidadDrag implements EventHandler {
     }
 
     @Override
-    public void handle(Event event) {
+    public void handle(MouseEvent event) {
         Dragboard db = this.boton.startDragAndDrop(this.transferencia);
         ClipboardContent contenido = new ClipboardContent();
         contenido.putString(this.nombre_boton + "," + this.icono);
