@@ -26,6 +26,6 @@ public class BotonAB extends Button {
                 BorderStrokeStyle.DASHED, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
         this.setGraphic( icon );
 
-        this.setOnDragDetected( new HabilidadDrag(this, nombre_boton, TransferMode.ANY, icono) );
+        this.setOnDragDetected( new HabilidadDragHandler(this, nombre_boton, TransferMode.ANY, icono) );
     }
 }

@@ -5,11 +5,11 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 
-public class HabilidadAceptarDrag implements EventHandler<DragEvent> {
+public class HabilidadAceptarDragHandler implements EventHandler<DragEvent> {
 
     TransferMode[] transferencia;
 
-    public HabilidadAceptarDrag(TransferMode[] copyOrMove) {
+    public HabilidadAceptarDragHandler(TransferMode[] copyOrMove) {
         this.transferencia = copyOrMove;
     }
 

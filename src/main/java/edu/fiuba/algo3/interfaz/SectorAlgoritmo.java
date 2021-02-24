@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.interfaz;
 
-import edu.fiuba.algo3.HabilidadAceptarDrag;
-import edu.fiuba.algo3.HabilidadDrop;
+import edu.fiuba.algo3.HabilidadAceptarDragHandler;
+import edu.fiuba.algo3.HabilidadDropHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -18,14 +18,15 @@ public class SectorAlgoritmo extends VBox {
         this.getChildren().add(text);
 
         VBox contenedorAlgoritmo = new VBox();
-        contenedorAlgoritmo.setPrefSize(400, 600);
+        contenedorAlgoritmo.setPrefSize(400, 900);
         contenedorAlgoritmo.setAlignment(Pos.TOP_CENTER);
         this.getChildren().add(contenedorAlgoritmo);
 
         this.setBackground(new Background(new BackgroundFill(Color.LIGHTGREY, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        contenedorAlgoritmo.setOnDragOver( new HabilidadAceptarDrag(TransferMode.ANY) );
-        contenedorAlgoritmo.setOnDragDropped( new HabilidadDrop(this, contenedorAlgoritmo) );
+        contenedorAlgoritmo.setOnDragOver( new HabilidadAceptarDragHandler(TransferMode.ANY) );
+
+        contenedorAlgoritmo.setOnDragDropped( new HabilidadDropHandler(this, contenedorAlgoritmo) );
     }
 
 }
