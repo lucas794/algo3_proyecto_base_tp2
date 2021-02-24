@@ -1,13 +1,10 @@
 package edu.fiuba.algo3.interfaz;
 
-import edu.fiuba.algo3.BotonAB;
-import edu.fiuba.algo3.BotonABGA;
 import edu.fiuba.algo3.modelo.recursos.DBAlgoritmoPersonalizados;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
@@ -23,23 +20,8 @@ public class SectorBloquesDisponibles extends VBox {
         upper.setAlignment(Pos.CENTER);
         this.getChildren().add(upper);
 
-        BotonAB botonMoverArriba = new BotonAB("Mover Arriba", "arriba.png");
-        BotonAB botonMoverAbajo = new BotonAB( "Mover Abajo", "abajo.png");
-        BotonAB botonMoverIzquierda = new BotonAB("Mover izquierda", "izquierda.png");
-        BotonAB botonMoverDerecha = new BotonAB("Mover derecha", "derecha.png");
-        BotonAB botonBajarLapiz = new BotonAB("Bajar lapiz", "abajo.png");
-        BotonAB botonSubirLapiz = new BotonAB("Subir lapiz", "arriba.png");
-
-        BotonAB botonRepeticion = new BotonAB("Repetir...", "repeticion.png");
-        BotonAB botonInvertir = new BotonAB("Invertir comportamiento", "personajeUp.png");
-
-        BotonABGA botonGuardarAlgoritmo = new BotonABGA("Guardar algoritmo");
-
-        Separator separador = new Separator();
-
-        VBox contenedorBotonera = new VBox(botonMoverArriba, botonMoverAbajo, botonMoverIzquierda, botonMoverDerecha,
-                botonBajarLapiz, botonSubirLapiz, botonRepeticion, botonInvertir, botonGuardarAlgoritmo,
-                separador);
+        ContenedorBotonera contenedor = new ContenedorBotonera();
+        VBox contenedorBotonera = contenedor.getContenedorBotonera();
 
         DBAlgoritmoPersonalizados db = new DBAlgoritmoPersonalizados();
         List<List<?>> info_algoritmos_personalizados = db.cargar_todos_algoritmos();
