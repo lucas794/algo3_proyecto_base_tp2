@@ -6,17 +6,18 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
-public class SectorDibujo extends BorderPane{
+public class SectorDibujo extends Pane{
 
     private ImageView imagenPersonaje;
     private VistaPersonaje vistaPersonaje;
-    //private Personaje personaje;
+    private Personaje personaje;
 
-    public SectorDibujo() {
+    public SectorDibujo(Personaje personaje) {
+        this.personaje = personaje;
         this.setPrefSize(400,500);
         clean();
         imagenPersonaje = new ImageView( "file:src/main/java/edu/fiuba/algo3/interfaz/imagenes/personajeRight.png");
-        vistaPersonaje = new VistaPersonaje(imagenPersonaje, this);
+        vistaPersonaje = new VistaPersonaje(imagenPersonaje, this, personaje);
 
     }
 
@@ -26,6 +27,10 @@ public class SectorDibujo extends BorderPane{
         Background fondo = new Background(fondoImagen);
 
         this.setBackground(fondo);
+    }
+
+    public void update(){
+        vistaPersonaje.updateVistaPersonaje();
     }
 
 }

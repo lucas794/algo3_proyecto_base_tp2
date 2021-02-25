@@ -1,22 +1,23 @@
 package edu.fiuba.algo3.interfaz;
 
+import edu.fiuba.algo3.modelo.Personaje;
 import javafx.geometry.Insets;
 import javafx.scene.layout.BorderPane;
 
+
 public class Tablero extends BorderPane {
 
-    SectorDibujo sectorDibujo = new SectorDibujo();
-    SectorBloquesDisponibles sectorBloques = new SectorBloquesDisponibles();
-    SectorAlgoritmo sectorAlgoritmo = new SectorAlgoritmo();
+    private Personaje personaje;
+    private SectorDibujo sectorDibujo;
+    private SectorBloquesDisponibles sectorBloques;
+    private SectorAlgoritmo sectorAlgoritmo;
 
     public Tablero() {
-
+        inicializar();
         posicionarSectores();
-
         BorderPane.setMargin(sectorDibujo, new Insets(20,5,300,10));
         BorderPane.setMargin(sectorBloques, new Insets(20,5,20,10));
         BorderPane.setMargin(sectorAlgoritmo, new Insets(20,5,20,10));
-
     }
 
     private void posicionarSectores() {
@@ -24,4 +25,13 @@ public class Tablero extends BorderPane {
         this.setRight(sectorAlgoritmo);
         this.setLeft(sectorDibujo);
     }
+
+    private void inicializar(){
+        personaje = new Personaje();
+        sectorDibujo = new SectorDibujo(personaje);
+        sectorBloques = new SectorBloquesDisponibles(sectorDibujo, personaje);
+        sectorAlgoritmo = new SectorAlgoritmo();
+
+    }
 }
+

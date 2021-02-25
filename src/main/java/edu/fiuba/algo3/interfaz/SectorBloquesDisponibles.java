@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.interfaz;
 
+import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.recursos.DBAlgoritmoPersonalizados;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,13 +15,13 @@ import java.util.List;
 // Una vez que solo extienda de Observador, el botonGuardarAlgoritmo se cambiaría de activado a desactivado.
 public class SectorBloquesDisponibles extends VBox {
 
-    public SectorBloquesDisponibles(){
+    public SectorBloquesDisponibles(SectorDibujo sectorDibujo, Personaje personaje){
         Label upper = new Label("Bloques Disponibles");
         upper.setMaxWidth(Double.MAX_VALUE);
         upper.setAlignment(Pos.CENTER);
         this.getChildren().add(upper);
 
-        ContenedorBotonera contenedor = new ContenedorBotonera();
+        ContenedorBotonera contenedor = new ContenedorBotonera(sectorDibujo, personaje);
         VBox contenedorBotonera = contenedor.getContenedorBotonera();
 
         DBAlgoritmoPersonalizados db = new DBAlgoritmoPersonalizados();
