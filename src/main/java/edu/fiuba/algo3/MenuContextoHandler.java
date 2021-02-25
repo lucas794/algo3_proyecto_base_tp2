@@ -13,12 +13,6 @@ public class MenuContextoHandler extends EjecucionClickDerecho implements EventH
     VBox contenedor;
     BotonAB boton;
 
-    /*public MenuContextoHandler(BotonAB boton, SectorAlgoritmo sector, VBox contenedor) {
-        this.sector = sector;
-        this.contenedor = contenedor;
-        this.boton = boton;
-    }*/
-
     public MenuContextoHandler(BotonAB item, SectorAlgoritmo sector, VBox contenedor, ContenedorBotonera botonera) {
         this.sector = sector;
         this.contenedor = contenedor;

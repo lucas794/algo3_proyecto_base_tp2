@@ -47,8 +47,8 @@ public class CreadorDeTipoDeBloque {
         BotonAB boton = new BotonAB( nombre, icono );
         boton.setOnDragDetected( null );
         HBox item = new HBox(boton, contenedorAEjecutar);
-        boton.setOnMouseClicked( new MenuContextoEnContenedorHandler(boton, sector, item, botonera) );
-        item.setOnMouseClicked( new MenuContextoEnContenedorHandler(boton, sector, item, botonera) );
+        boton.setOnMouseClicked( new MenuContextoEnContenedorHandler(contenedor, sector, item, botonera) );
+        item.setOnMouseClicked( new MenuContextoEnContenedorHandler(contenedor, sector, item, botonera) );
         item.setAlignment(Pos.CENTER);
         contenedor.getChildren().add(item);
         botonera.notifyObservers(contenedor.getChildren().size());

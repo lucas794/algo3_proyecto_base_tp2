@@ -6,21 +6,16 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 public class MenuContextoEnContenedorHandler extends EjecucionClickDerecho implements EventHandler<MouseEvent> {
     ContenedorBotonera botonera;
-    BotonAB boton;
+    VBox contenedorMadre;
     SectorAlgoritmo sector;
     HBox contenedor;
-/*
-    public MenuContextoEnContenedorHandler(BotonAB boton, SectorAlgoritmo sector, HBox item) {
-        this.boton = boton;
-        this.sector = sector;
-        this.contenedor = item;
-    }*/
 
-    public MenuContextoEnContenedorHandler(BotonAB boton, SectorAlgoritmo sector, HBox item, ContenedorBotonera botonera) {
-        this.boton = boton;
+    public MenuContextoEnContenedorHandler(VBox contenedorMadre, SectorAlgoritmo sector, HBox item, ContenedorBotonera botonera) {
+        this.contenedorMadre = contenedorMadre;
         this.sector = sector;
         this.contenedor = item;
         this.botonera = botonera;
@@ -29,7 +24,7 @@ public class MenuContextoEnContenedorHandler extends EjecucionClickDerecho imple
     @Override
     public void handle(MouseEvent mouseEvent) {
         if (mouseEvent.getButton() == MouseButton.SECONDARY) {
-            resolucionClickDerecho(this.contenedor, this.sector, mouseEvent, this.botonera);
+            resolucionClickDerecho(this.contenedor, this.contenedorMadre, this.sector, mouseEvent, this.botonera);
         }
     }
 
