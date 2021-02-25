@@ -3,6 +3,7 @@ package edu.fiuba.algo3.interfaz;
 import edu.fiuba.algo3.BotonAB;
 import edu.fiuba.algo3.BotonABGA;
 import edu.fiuba.algo3.Observable;
+import edu.fiuba.algo3.Observer;
 import edu.fiuba.algo3.interfaz.controladores.MovimientoEventHandler;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.bloques.BloqueMovimiento;
@@ -13,15 +14,19 @@ import edu.fiuba.algo3.modelo.tablero.movimiento.MovimientoIzquierda;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.VBox;
 
-public class ContenedorBotonera extends Observable {
+import java.util.ArrayList;
+
+public class ContenedorBotonera implements Observable {
+
+    private final VBox botones;
     private Personaje personaje;
     private SectorDibujo sectorDibujo;
+    private ArrayList<Observer> observers;
 
     public ContenedorBotonera(SectorDibujo sectorDibujo, Personaje personaje){
         this.personaje = personaje;
         this.sectorDibujo = sectorDibujo;
-    }
-    public VBox getContenedorBotonera() {
+        this.observers = new ArrayList<>();
 
         //los metodos setOnAction son temporales aca para probar los movimientos del personaje
         BotonAB botonMoverArriba = new BotonAB("Mover Arriba", "arriba.png");
@@ -47,15 +52,35 @@ public class ContenedorBotonera extends Observable {
         BotonAB botonRepeticion = new BotonAB("Repetir...", "repeticion.png");
         BotonAB botonInvertir = new BotonAB("Invertir comportamiento", "personajeUp.png");
 
-        BotonABGA botonGuardarAlgoritmo = new BotonABGA("Guardar algoritmo");
+        VBox botones = new VBox(botonMoverArriba, botonMoverAbajo, botonMoverIzquierda, botonMoverDerecha,
+                botonBajarLapiz, botonSubirLapiz, botonRepeticion, botonInvertir);
+
+        BotonABGA botonGuardarAlgoritmo = new BotonABGA("Guardar algoritmo", this, botones);
 
         Separator separador = new Separator();
 
-        VBox botones = new VBox(botonMoverArriba, botonMoverAbajo, botonMoverIzquierda, botonMoverDerecha,
-                botonBajarLapiz, botonSubirLapiz, botonRepeticion, botonInvertir, botonGuardarAlgoritmo,
-                separador);
+        botones.getChildren().addAll(botonGuardarAlgoritmo, separador);
 
-        return botones;
+        this.botones = botones;
+    }
+
+    public ContenedorBotonera getContenedorBotonera() {
+        return this;
+    }
+
+    public VBox obtenerBotones()
+    {
+        return this.botones;
+    }
+
+    @Override
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void notifyObservers(int hijos) {
+        observers.forEach( observer -> observer.change(hijos) );
     }
 }
 

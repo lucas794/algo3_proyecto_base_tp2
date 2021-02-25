@@ -7,7 +7,6 @@ import javafx.scene.layout.BorderPane;
 
 public class Tablero extends BorderPane {
 
-    private Personaje personaje;
     private SectorDibujo sectorDibujo;
     private SectorBloquesDisponibles sectorBloques;
     private SectorAlgoritmo sectorAlgoritmo;
@@ -27,10 +26,10 @@ public class Tablero extends BorderPane {
     }
 
     private void inicializar(){
-        personaje = new Personaje();
+        Personaje personaje = new Personaje();
         sectorDibujo = new SectorDibujo(personaje);
         sectorBloques = new SectorBloquesDisponibles(sectorDibujo, personaje);
-        sectorAlgoritmo = new SectorAlgoritmo();
+        sectorAlgoritmo = new SectorAlgoritmo( sectorBloques.obtenerBotonera() );
 
     }
 }

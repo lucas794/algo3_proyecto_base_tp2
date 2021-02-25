@@ -11,7 +11,7 @@ import javafx.scene.paint.Color;
 
 public class SectorAlgoritmo extends VBox {
 
-    public SectorAlgoritmo(){
+    public SectorAlgoritmo(ContenedorBotonera contenedorBotonera){
         Label text = new Label("Espacio de Trabajo");
         text.setMaxWidth(Double.MAX_VALUE);
         text.setAlignment(Pos.CENTER);
@@ -26,7 +26,7 @@ public class SectorAlgoritmo extends VBox {
 
         contenedorAlgoritmo.setOnDragOver( new HabilidadAceptarDragHandler(TransferMode.ANY) );
 
-        contenedorAlgoritmo.setOnDragDropped( new HabilidadDropHandler(this, contenedorAlgoritmo) );
+        contenedorAlgoritmo.setOnDragDropped( new HabilidadDropHandler(this, contenedorAlgoritmo, contenedorBotonera) );
     }
 
 }
