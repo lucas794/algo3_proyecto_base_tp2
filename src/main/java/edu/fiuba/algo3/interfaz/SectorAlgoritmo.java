@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public class SectorAlgoritmo extends VBox {
 
@@ -15,6 +16,10 @@ public class SectorAlgoritmo extends VBox {
         Label text = new Label("Espacio de Trabajo");
         text.setMaxWidth(Double.MAX_VALUE);
         text.setAlignment(Pos.CENTER);
+        text.setTextFill(Color.WHITE);
+        text.setStyle("-fx-background-color: rgb(85,40,129);");
+        text.setFont(Font.font("Times",20));
+        text.setTextFill(Color.WHITE);
         this.getChildren().add(text);
 
         VBox contenedorAlgoritmo = new VBox();
@@ -22,6 +27,7 @@ public class SectorAlgoritmo extends VBox {
         contenedorAlgoritmo.setAlignment(Pos.TOP_CENTER);
         this.getChildren().add(contenedorAlgoritmo);
 
+        this.setMinWidth(600);
         this.setBackground(new Background(new BackgroundFill(Color.LIGHTGREY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         contenedorAlgoritmo.setOnDragOver( new HabilidadAceptarDragHandler(TransferMode.ANY) );

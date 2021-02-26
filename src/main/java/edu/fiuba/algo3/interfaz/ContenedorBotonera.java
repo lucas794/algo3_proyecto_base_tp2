@@ -11,8 +11,13 @@ import edu.fiuba.algo3.modelo.tablero.movimiento.MovimientoAbajo;
 import edu.fiuba.algo3.modelo.tablero.movimiento.MovimientoArriba;
 import edu.fiuba.algo3.modelo.tablero.movimiento.MovimientoDerecha;
 import edu.fiuba.algo3.modelo.tablero.movimiento.MovimientoIzquierda;
+import javafx.geometry.Insets;
 import javafx.scene.control.Separator;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -63,6 +68,8 @@ public class ContenedorBotonera implements Observable {
         botones.getChildren().addAll(botonGuardarAlgoritmo, separador);
 
         this.botones = botones;
+        botones.setBackground(new Background(new BackgroundFill(Color.LIGHTGREY, CornerRadii.EMPTY, Insets.EMPTY)));
+
     }
 
     public ContenedorBotonera getContenedorBotonera() {
