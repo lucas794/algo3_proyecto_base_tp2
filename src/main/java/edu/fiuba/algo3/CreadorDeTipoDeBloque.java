@@ -26,9 +26,10 @@ public class CreadorDeTipoDeBloque {
         VBox contenedorAEjecutar = new VBox();
         contenedorAEjecutar.setPrefSize( 110, 160 );
         contenedorAEjecutar.setAlignment( Pos.TOP_CENTER );
-        contenedorAEjecutar.setOnDragOver( new HabilidadAceptarDragHandler(TransferMode.ANY) );
 
+        contenedorAEjecutar.setOnDragOver( new HabilidadAceptarDragHandler(TransferMode.ANY) );
         contenedorAEjecutar.setOnDragDropped( new HabilidadDropHandler(sector, contenedorAEjecutar, botonera) );
+
         contenedorAEjecutar.setBorder(new Border(new BorderStroke(Color.ROYALBLUE,
                 BorderStrokeStyle.DOTTED, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
         contenedorAEjecutar.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));

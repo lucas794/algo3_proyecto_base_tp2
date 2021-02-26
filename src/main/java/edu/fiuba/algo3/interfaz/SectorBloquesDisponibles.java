@@ -11,8 +11,6 @@ import javafx.scene.paint.Color;
 
 import java.util.List;
 
-// necesito que esto extienda de Observador, no de VBox (solo puedo extender de una clase)
-// Una vez que solo extienda de Observador, el botonGuardarAlgoritmo se cambiaría de activado a desactivado.
 public class SectorBloquesDisponibles extends VBox {
 
     private static ContenedorBotonera contenedor;

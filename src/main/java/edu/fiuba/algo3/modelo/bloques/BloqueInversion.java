@@ -3,11 +3,10 @@ package edu.fiuba.algo3.modelo.bloques;
 import edu.fiuba.algo3.modelo.tablero.Dibujo;
 import edu.fiuba.algo3.modelo.Personaje;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BloqueInversion implements Bloque, Serializable {
+public class BloqueInversion implements Bloque {
     List<Bloque> bloques = new ArrayList<>();
 
     public BloqueInversion(List<Bloque> arreglo_de_bloques){

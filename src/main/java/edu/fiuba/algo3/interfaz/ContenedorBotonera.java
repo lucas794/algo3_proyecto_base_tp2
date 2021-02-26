@@ -55,7 +55,8 @@ public class ContenedorBotonera implements Observable {
         VBox botones = new VBox(botonMoverArriba, botonMoverAbajo, botonMoverIzquierda, botonMoverDerecha,
                 botonBajarLapiz, botonSubirLapiz, botonRepeticion, botonInvertir);
 
-        BotonABGA botonGuardarAlgoritmo = new BotonABGA("Guardar algoritmo", this, botones);
+        BotonABGA botonGuardarAlgoritmo = new BotonABGA("Guardar algoritmo");
+        this.addObserver(botonGuardarAlgoritmo);
 
         Separator separador = new Separator();
 

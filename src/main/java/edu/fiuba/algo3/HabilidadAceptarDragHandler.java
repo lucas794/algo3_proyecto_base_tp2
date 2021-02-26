@@ -17,7 +17,7 @@ public class HabilidadAceptarDragHandler implements EventHandler<DragEvent> {
     public void handle(DragEvent dragEvent) {
         Dragboard db = dragEvent.getDragboard();
         if (db.hasString()) {
-            dragEvent.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+            dragEvent.acceptTransferModes(transferencia);
         }
         dragEvent.consume();
     }

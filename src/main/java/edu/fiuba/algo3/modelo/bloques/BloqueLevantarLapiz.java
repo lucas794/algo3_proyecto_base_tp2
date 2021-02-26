@@ -3,9 +3,7 @@ package edu.fiuba.algo3.modelo.bloques;
 import edu.fiuba.algo3.modelo.tablero.Dibujo;
 import edu.fiuba.algo3.modelo.Personaje;
 
-import java.io.Serializable;
-
-public class BloqueLevantarLapiz implements Bloque, Serializable{
+public class BloqueLevantarLapiz implements Bloque {
 
     @Override
     public void ejecutar(Personaje personaje, Dibujo dibujo) {

@@ -27,7 +27,7 @@ public class Tablero extends BorderPane {
 
     private void inicializar(){
         Personaje personaje = new Personaje();
-        sectorDibujo = new SectorDibujo(personaje);
+        sectorDibujo = new SectorDibujo(personaje); // acá, de alguna manera posiblemente haya que pasarle los bloques que están en el sector algoritmo..
         sectorBloques = new SectorBloquesDisponibles(sectorDibujo, personaje);
         sectorAlgoritmo = new SectorAlgoritmo( sectorBloques.obtenerBotonera() );
 

@@ -4,9 +4,7 @@ import edu.fiuba.algo3.modelo.tablero.Dibujo;
 import edu.fiuba.algo3.modelo.tablero.movimiento.Movimiento;
 import edu.fiuba.algo3.modelo.Personaje;
 
-import java.io.Serializable;
-
-public class BloqueMovimiento implements Bloque, Serializable {
+public class BloqueMovimiento implements Bloque{
     Movimiento movimiento;
 
     public BloqueMovimiento(Movimiento movimiento) {
