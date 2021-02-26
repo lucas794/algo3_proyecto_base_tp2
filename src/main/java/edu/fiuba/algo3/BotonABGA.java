@@ -2,7 +2,7 @@ package edu.fiuba.algo3;
 
 import javafx.scene.control.Button;
 
-public class BotonABGA extends Button implements Observer {
+public class BotonABGA extends Button implements ObservadorBotonGA {
 
     public BotonABGA(String nombre) {
         super(nombre);
@@ -10,7 +10,7 @@ public class BotonABGA extends Button implements Observer {
     }
 
     @Override
-    public void change(int hijos) {
+    public void cambios(int hijos) {
         this.setDisable(hijos == 0);
     }
 }

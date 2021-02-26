@@ -16,14 +16,31 @@ public class EjecucionClickDerecho {
         crearMenu(sector, mouseEvent, actionEvent -> {
             contenedor.getChildren().clear();
             contenedorMadre.getChildren().remove(contenedor);
-            botonera.notifyObservers(contenedorMadre.getChildren().size());
+            botonera.notificarObservadores(contenedorMadre.getChildren().size());
+        });
+    }
+
+    public void resolucionClickDerecho(HBox contenedor, VBox contenedorMadre, SectorAlgoritmo sector, MouseEvent mouseEvent, ContenedorBotonera botonera, CreadorDeTipoDeBloque creador) {
+        crearMenu(sector, mouseEvent, actionEvent -> {
+            contenedor.getChildren().clear();
+            contenedorMadre.getChildren().remove(contenedor);
+            botonera.notificarObservadores(contenedorMadre.getChildren().size());
+            creador.notificarObservadores( -75, -10 ); // lo achicamos!!
         });
     }
 
     public void resolucionClickDerecho(VBox contenedor, SectorAlgoritmo sector, MouseEvent mouseEvent, BotonAB boton, ContenedorBotonera botonera) {
         crearMenu(sector, mouseEvent, actionEvent -> {
             contenedor.getChildren().remove(boton);
-            botonera.notifyObservers(contenedor.getChildren().size());
+            botonera.notificarObservadores(contenedor.getChildren().size());
+        });
+    }
+
+    public void resolucionClickDerecho(VBox contenedor, SectorAlgoritmo sector, MouseEvent mouseEvent, BotonAB boton, ContenedorBotonera botonera, CreadorDeTipoDeBloque creador) {
+        crearMenu(sector, mouseEvent, actionEvent -> {
+            contenedor.getChildren().remove(boton);
+            botonera.notificarObservadores(contenedor.getChildren().size());
+            creador.notificarObservadores(0, -65); // lo achicamos!
         });
     }
 

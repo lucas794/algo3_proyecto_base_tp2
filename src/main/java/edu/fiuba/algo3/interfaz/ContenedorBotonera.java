@@ -2,8 +2,8 @@ package edu.fiuba.algo3.interfaz;
 
 import edu.fiuba.algo3.BotonAB;
 import edu.fiuba.algo3.BotonABGA;
-import edu.fiuba.algo3.Observable;
-import edu.fiuba.algo3.Observer;
+import edu.fiuba.algo3.ObservableBotonGA;
+import edu.fiuba.algo3.ObservadorBotonGA;
 import edu.fiuba.algo3.interfaz.controladores.MovimientoEventHandler;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.bloques.BloqueMovimiento;
@@ -21,17 +21,17 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
-public class ContenedorBotonera implements Observable {
+public class ContenedorBotonera implements ObservableBotonGA {
 
     private final VBox botones;
     private Personaje personaje;
     private SectorDibujo sectorDibujo;
-    private ArrayList<Observer> observers;
+    private ArrayList<ObservadorBotonGA> observadorBotonGAS;
 
     public ContenedorBotonera(SectorDibujo sectorDibujo, Personaje personaje){
         this.personaje = personaje;
         this.sectorDibujo = sectorDibujo;
-        this.observers = new ArrayList<>();
+        this.observadorBotonGAS = new ArrayList<>();
 
         //los metodos setOnAction son temporales aca para probar los movimientos del personaje
         BotonAB botonMoverArriba = new BotonAB("Mover Arriba", "arriba.png");
@@ -61,7 +61,7 @@ public class ContenedorBotonera implements Observable {
                 botonBajarLapiz, botonSubirLapiz, botonRepeticion, botonInvertir);
 
         BotonABGA botonGuardarAlgoritmo = new BotonABGA("Guardar algoritmo");
-        this.addObserver(botonGuardarAlgoritmo);
+        this.agregarObservador(botonGuardarAlgoritmo);
 
         Separator separador = new Separator();
 
@@ -82,13 +82,13 @@ public class ContenedorBotonera implements Observable {
     }
 
     @Override
-    public void addObserver(Observer observer) {
-        observers.add(observer);
+    public void agregarObservador(ObservadorBotonGA observadorBotonGA) {
+        observadorBotonGAS.add(observadorBotonGA);
     }
 
     @Override
-    public void notifyObservers(int hijos) {
-        observers.forEach( observer -> observer.change(hijos) );
+    public void notificarObservadores(int hijos) {
+        observadorBotonGAS.forEach( obs -> obs.cambios(hijos) );
     }
 }
 

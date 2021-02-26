@@ -18,7 +18,6 @@ public class HabilidadDropHandler extends CreadorDeTipoDeBloque implements Event
         this.botonera = contenedorBotonera;
     }
 
-
     @Override
     public void handle(DragEvent dragEvent) {
         Dragboard db = dragEvent.getDragboard();
