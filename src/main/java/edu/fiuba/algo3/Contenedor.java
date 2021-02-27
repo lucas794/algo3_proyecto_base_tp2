@@ -18,6 +18,7 @@ public class Contenedor implements ObservadorContenedor {
     double TAMANIO_Y = 70;
     double sizeX = TAMANIO_X;
     double sizeY = TAMANIO_Y;
+    int cantidadHijos = 0;
 
     public Contenedor(CreadorDeTipoDeBloque creadorDeTipoDeBloque, String nombre, VBox contenedor, ContenedorBotonera botonera, SectorAlgoritmo sector, String icono)
     {
@@ -29,7 +30,7 @@ public class Contenedor implements ObservadorContenedor {
         contenedorAEjecutar.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
 
         contenedorAEjecutar.setOnDragOver( new HabilidadAceptarDragHandler(TransferMode.ANY) );
-        contenedorAEjecutar.setOnDragDropped( new HabilidadDropEnContenedorHandler(sector, contenedorAEjecutar, botonera, creadorDeTipoDeBloque) );
+        contenedorAEjecutar.setOnDragDropped( new HabilidadDropHandler(sector, contenedorAEjecutar, botonera, creadorDeTipoDeBloque) );
 
         if( nombre.contains("Repetir") ) {
             ComboBox<Integer> comboBox = new ComboBox<>();
@@ -56,7 +57,11 @@ public class Contenedor implements ObservadorContenedor {
     }
 
     @Override
-    public void cambios(double x, double y) {
+    public void cambios(double x, double y, int hijos) {
+        if( cantidadHijos >= 2 )
+            return;
+
+        cantidadHijos += hijos;
         sizeX += x;
         sizeY += y;
         this.contenedorAEjecutar.setPrefSize(sizeX, sizeY);

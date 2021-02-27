@@ -11,10 +11,13 @@ import javafx.scene.layout.VBox;
 public class MenuContextoEnContenedorHandler extends EjecucionClickDerecho implements EventHandler<MouseEvent> {
 
     ContenedorBotonera botonera;
-    VBox contenedorMadre;
     SectorAlgoritmo sector;
+    VBox contenedorMadre;
     HBox contenedor;
     CreadorDeTipoDeBloque creador;
+
+    //
+    BotonAB boton = null;
 
     public MenuContextoEnContenedorHandler(VBox contenedorMadre, SectorAlgoritmo sector, HBox item, ContenedorBotonera botonera, CreadorDeTipoDeBloque creador) {
         this.contenedorMadre = contenedorMadre;
@@ -24,10 +27,21 @@ public class MenuContextoEnContenedorHandler extends EjecucionClickDerecho imple
         this.creador = creador;
     }
 
+    public MenuContextoEnContenedorHandler(BotonAB item, SectorAlgoritmo sector, VBox contenedorAlgoritmo, ContenedorBotonera botonera, CreadorDeTipoDeBloque creador) {
+        this.sector = sector;
+        this.botonera = botonera;
+        this.contenedorMadre = contenedorAlgoritmo;
+        this.boton = item;
+        this.creador = creador;
+    }
+
     @Override
     public void handle(MouseEvent mouseEvent) {
         if (mouseEvent.getButton() == MouseButton.SECONDARY) {
-            resolucionClickDerecho(this.contenedor, this.contenedorMadre, this.sector, mouseEvent, this.botonera, this.creador);
+            if( this.boton != null )
+                resolucionClickDerecho(this.contenedorMadre, this.sector, mouseEvent, this.boton, this.botonera, this.creador);
+            else
+                resolucionClickDerecho(this.contenedor, this.contenedorMadre, this.sector, mouseEvent, this.botonera, this.creador);
         }
     }
 

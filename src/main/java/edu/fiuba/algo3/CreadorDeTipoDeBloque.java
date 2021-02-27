@@ -8,14 +8,9 @@ import java.util.ArrayList;
 
 public class CreadorDeTipoDeBloque implements ObservableContenedor {
 
-    private ArrayList<ObservadorContenedor> observadores;
-
-    public CreadorDeTipoDeBloque() {
-        this.observadores = new ArrayList<>();
-    }
+    private Contenedor bloqueEnSectorAlgoritmo;
 
     public void crearBloque(String nombre, String icono, SectorAlgoritmo sector, VBox contenedor, ContenedorBotonera botonera) {
-        //this.crearBloquePrivado(nombre, icono, sector, contenedor, botonera);
         BotonAB item = new BotonAB(nombre, icono);
         item.setOnDragDetected(null); // no se mueve
 
@@ -25,36 +20,41 @@ public class CreadorDeTipoDeBloque implements ObservableContenedor {
         botonera.notificarObservadores(contenedor.getChildren().size());
     }
 
+    // crea un bloque adentro de un contenedor de algoritmo (repeticion/inversion)
     public void crearBloque(String nombre, String icono, SectorAlgoritmo sector, VBox contenedor, ContenedorBotonera botonera, CreadorDeTipoDeBloque creador) {
         BotonAB item = new BotonAB(nombre, icono);
         item.setOnDragDetected(null); // no se mueve
-
-        item.setOnMouseClicked( new MenuContextoAdentroContenedorHandler(item, sector, contenedor, botonera, creador) );
+        item.setOnMouseClicked( new MenuContextoEnContenedorHandler(item, sector, contenedor, botonera, creador) );
 
         contenedor.getChildren().add(item);
         botonera.notificarObservadores(contenedor.getChildren().size());
-        creador.notificarObservadores(0, 65);
-    }
 
+        creador.notificarObservador(0, 45, 0); // no es un contenedor.
+    }
+    // contenedor adentro de contenedor
     public void crearContenedor(String nombre, String icono, SectorAlgoritmo sector, VBox contenedor, ContenedorBotonera botonera, CreadorDeTipoDeBloque creador) {
         Contenedor contenedorAEjecutar = new Contenedor(creador, nombre, contenedor, botonera, sector, icono);
-        creador.agregarObservador(contenedorAEjecutar);
-        creador.notificarObservadores(75, 10); // agrega un contenedor a uno ya existente.
+        this.agregarObservador(contenedorAEjecutar);
+        this.notificarObservador(50, 45 , 0); // agrega un contenedor a uno ya existente.
+        creador.notificarObservador( 50, 45, 1); // llamamos al padre para que crezca también
     }
 
+    // crea un contenedor simple
     public void crearContenedor(String nombre, String icono, SectorAlgoritmo sector, VBox contenedor, ContenedorBotonera botonera)
     {
         Contenedor contenedorAEjecutar = new Contenedor(this, nombre, contenedor, botonera, sector, icono);
         this.agregarObservador(contenedorAEjecutar);
+        this.notificarObservador( 50, 45, 0);
     }
 
     @Override
-    public void agregarObservador(ObservadorContenedor obs) {
-        this.observadores.add(obs);
+    public void agregarObservador(Contenedor obs) {
+        this.bloqueEnSectorAlgoritmo = obs;
     }
 
     @Override
-    public void notificarObservadores(double x, double y) {
-        this.observadores.forEach( obs -> obs.cambios(x,y) );
+    public void notificarObservador(double x, double y, int hijos) {
+        this.bloqueEnSectorAlgoritmo.cambios(x, y, hijos);
     }
+
 }

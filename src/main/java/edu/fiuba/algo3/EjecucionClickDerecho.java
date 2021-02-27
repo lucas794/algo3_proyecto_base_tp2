@@ -12,20 +12,20 @@ import javafx.scene.layout.VBox;
 
 public class EjecucionClickDerecho {
 
-    public void resolucionClickDerecho(HBox contenedor, VBox contenedorMadre, SectorAlgoritmo sector, MouseEvent mouseEvent, ContenedorBotonera botonera) {
+    /*public void resolucionClickDerecho(HBox contenedor, VBox contenedorMadre, SectorAlgoritmo sector, MouseEvent mouseEvent, ContenedorBotonera botonera) {
         crearMenu(sector, mouseEvent, actionEvent -> {
             contenedor.getChildren().clear();
             contenedorMadre.getChildren().remove(contenedor);
             botonera.notificarObservadores(contenedorMadre.getChildren().size());
         });
-    }
+    }*/
 
     public void resolucionClickDerecho(HBox contenedor, VBox contenedorMadre, SectorAlgoritmo sector, MouseEvent mouseEvent, ContenedorBotonera botonera, CreadorDeTipoDeBloque creador) {
         crearMenu(sector, mouseEvent, actionEvent -> {
             contenedor.getChildren().clear();
             contenedorMadre.getChildren().remove(contenedor);
             botonera.notificarObservadores(contenedorMadre.getChildren().size());
-            creador.notificarObservadores( -75, -10 ); // lo achicamos!!
+            creador.notificarObservador( -50, -45, -1 ); // lo achicamos!!
         });
     }
 
@@ -40,7 +40,7 @@ public class EjecucionClickDerecho {
         crearMenu(sector, mouseEvent, actionEvent -> {
             contenedor.getChildren().remove(boton);
             botonera.notificarObservadores(contenedor.getChildren().size());
-            creador.notificarObservadores(0, -65); // lo achicamos!
+            creador.notificarObservador(0, -45, -1); // lo achicamos .
         });
     }
 

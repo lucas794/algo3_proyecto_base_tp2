@@ -11,11 +11,19 @@ public class HabilidadDropHandler extends CreadorDeTipoDeBloque implements Event
     SectorAlgoritmo sector;
     VBox contenedor;
     ContenedorBotonera botonera;
+    CreadorDeTipoDeBloque creador = null;
 
     public HabilidadDropHandler(SectorAlgoritmo sectorAlgoritmo, VBox contenedorAlgoritmo, ContenedorBotonera contenedorBotonera) {
         this.sector = sectorAlgoritmo;
         this.contenedor = contenedorAlgoritmo;
         this.botonera = contenedorBotonera;
+    }
+
+    public HabilidadDropHandler(SectorAlgoritmo sector, VBox contenedorAEjecutar, ContenedorBotonera botonera, CreadorDeTipoDeBloque creadorDeTipoDeBloque) {
+        this.sector = sector;
+        this.contenedor = contenedorAEjecutar;
+        this.botonera = botonera;
+        this.creador = creadorDeTipoDeBloque;
     }
 
     @Override
@@ -27,8 +35,15 @@ public class HabilidadDropHandler extends CreadorDeTipoDeBloque implements Event
             String icono = db.getString().split(",")[1];
 
             if( nombre.contains("Repetir") || nombre.contains("Invertir") )
-                crearContenedor(nombre, icono, this.sector, this.contenedor, this.botonera);
-            else crearBloque(nombre, icono, this.sector, this.contenedor, this.botonera);
+                if( this.creador != null )
+                    crearContenedor(nombre, icono, this.sector, this.contenedor, this.botonera, this.creador);
+                else
+                    crearContenedor(nombre, icono, this.sector, this.contenedor, this.botonera);
+            else
+                if( this.creador != null )
+                    crearBloque(nombre, icono, this.sector, this.contenedor, this.botonera, this.creador);
+                else
+                    crearBloque(nombre, icono, this.sector, this.contenedor, this.botonera);
             success = true;
         }
         dragEvent.setDropCompleted(success);
