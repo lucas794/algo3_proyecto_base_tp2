@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
@@ -17,7 +18,7 @@ public class SectorBloquesDisponibles extends VBox {
 
     private static ContenedorBotonera contenedor;
 
-    public SectorBloquesDisponibles(SectorDibujo sectorDibujo, Personaje personaje){
+    public SectorBloquesDisponibles(SectorDibujo sectorDibujo, Personaje personaje, MediaPlayer mediaPlayer){
 
         //Como se repite codigo en ambos titulos creo que se podría separar en una clase
         Label upper = new Label("Bloques Disponibles");
@@ -28,7 +29,7 @@ public class SectorBloquesDisponibles extends VBox {
         upper.setFont(Font.font("Times",20));
         this.getChildren().add(upper);
 
-        contenedor = new ContenedorBotonera(sectorDibujo, personaje);
+        contenedor = new ContenedorBotonera(sectorDibujo, personaje, mediaPlayer);
         VBox contenedorBotonera = contenedor.obtenerBotones();
 
         ScrollPane scrollVbox = new ScrollPane(contenedorBotonera);

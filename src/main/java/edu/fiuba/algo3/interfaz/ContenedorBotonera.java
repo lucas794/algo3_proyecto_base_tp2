@@ -2,6 +2,7 @@ package edu.fiuba.algo3.interfaz;
 
 import edu.fiuba.algo3.*;
 import edu.fiuba.algo3.interfaz.controladores.MovimientoEventHandler;
+import edu.fiuba.algo3.BotonVolumen;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.bloques.BloqueMovimiento;
 import edu.fiuba.algo3.modelo.tablero.movimiento.MovimientoAbajo;
@@ -14,6 +15,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
@@ -27,7 +29,7 @@ public class ContenedorBotonera implements ObservableBotonGA, ObservableSectorAl
     private ArrayList<ObservadorSectorAlgoritmo> observadorSA;
     BotonABGA botonGuardarAlgoritmo;
 
-    public ContenedorBotonera(SectorDibujo sectorDibujo, Personaje personaje){
+    public ContenedorBotonera(SectorDibujo sectorDibujo, Personaje personaje, MediaPlayer mediaPlayer){
         this.personaje = personaje;
         this.sectorDibujo = sectorDibujo;
         this.observadorBotonGAS = new ArrayList<>();
@@ -69,7 +71,10 @@ public class ContenedorBotonera implements ObservableBotonGA, ObservableSectorAl
 
         Separator nuevoSeparador = new Separator();
 
-        botones.getChildren().addAll(botonGuardarAlgoritmo, separador, ejecutarAlgoritmo, nuevoSeparador);
+        BotonVolumen botonVolumen = new BotonVolumen(mediaPlayer);
+        this.agregar(botonVolumen);
+
+        botones.getChildren().addAll(botonGuardarAlgoritmo, separador, ejecutarAlgoritmo, botonVolumen, nuevoSeparador);
 
         this.botones = botones;
         botones.setBackground(new Background(new BackgroundFill(Color.LIGHTGREY, CornerRadii.EMPTY, Insets.EMPTY)));
