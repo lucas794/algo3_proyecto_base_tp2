@@ -4,8 +4,6 @@ import edu.fiuba.algo3.interfaz.ContenedorBotonera;
 import edu.fiuba.algo3.interfaz.SectorAlgoritmo;
 import javafx.scene.layout.*;
 
-import java.util.ArrayList;
-
 public class CreadorDeTipoDeBloque implements ObservableContenedor {
 
     private Contenedor bloqueEnSectorAlgoritmo;
@@ -19,7 +17,8 @@ public class CreadorDeTipoDeBloque implements ObservableContenedor {
 
         contenedor.getChildren().add(item);
         botonera.notificarObservadores(contenedor.getChildren().size());
-        sector.notificarObservadores(contenedor);
+        botonera.notificar(contenedor);
+        sector.notificar(contenedor);
     }
 
     // crea un bloque adentro de un contenedor de algoritmo (repeticion/inversion)
@@ -30,9 +29,11 @@ public class CreadorDeTipoDeBloque implements ObservableContenedor {
 
         contenedor.getChildren().add(item);
         botonera.notificarObservadores(contenedor.getChildren().size());
+        botonera.notificar(contenedor);
 
         creador.notificarObservador(0, 45, 0); // no es un contenedor.
     }
+
     // contenedor adentro de contenedor
     public void crearContenedor(String nombre, String icono, SectorAlgoritmo sector, VBox contenedor, ContenedorBotonera botonera, CreadorDeTipoDeBloque creador) {
         Contenedor contenedorAEjecutar = new Contenedor(creador, nombre, contenedor, botonera, sector, icono);
@@ -47,7 +48,7 @@ public class CreadorDeTipoDeBloque implements ObservableContenedor {
         Contenedor contenedorAEjecutar = new Contenedor(this, nombre, contenedor, botonera, sector, icono);
         this.agregarObservador(contenedorAEjecutar);
         this.notificarObservador( 50, 45, 0);
-        sector.notificarObservadores(contenedor);
+        sector.notificar(contenedor);
     }
 
     @Override

@@ -14,9 +14,11 @@ import javafx.stage.Stage;
 public class BotonABGAClickHandler extends Stage implements EventHandler<MouseEvent> {
 
     VBox contenendorAlgoritmo;
+    VBox botoneraSectorBloquesDisponibles;
 
-    public BotonABGAClickHandler(VBox contenendorAlgoritmo) {
+    public BotonABGAClickHandler(VBox contenendorAlgoritmo, VBox botoneraSectorBloquesDisponibles) {
         this.contenendorAlgoritmo = contenendorAlgoritmo;
+        this.botoneraSectorBloquesDisponibles = botoneraSectorBloquesDisponibles;
     }
 
     @Override
@@ -44,8 +46,15 @@ public class BotonABGAClickHandler extends Stage implements EventHandler<MouseEv
 
         cancelar.setOnMouseClicked( e-> this.hide() );
         aceptar.setOnMouseClicked( e-> {
-            System.out.println(this.contenendorAlgoritmo.getChildren().size());
-            this.contenendorAlgoritmo.getChildren().clear();
+
+            // solo de muestra, agregamos un nuevo boton a los bloques disponibles
+            // este boton debería tener la info de los hijos de this.contenedorAlgoritmo (es pasada por parámetro).
+            // y bueno, el nombre escrito en el texto.
+            BotonGAPersonalizado botonPersonalizado = new BotonGAPersonalizado( texto, this.contenendorAlgoritmo.getChildren() );
+            this.botoneraSectorBloquesDisponibles.getChildren().add(botonPersonalizado);
+
+            //this.contenendorAlgoritmo.getChildren().clear();
+
             this.hide();
         });
     }

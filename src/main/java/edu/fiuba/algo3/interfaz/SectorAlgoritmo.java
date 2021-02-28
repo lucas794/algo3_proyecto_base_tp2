@@ -30,7 +30,7 @@ public class SectorAlgoritmo extends VBox implements ObservableSectorAlgoritmo {
 
         ContenedorAlgoritmo contenedorAlgoritmo = new ContenedorAlgoritmo(400, 900, Pos.TOP_CENTER);
 
-        this.agregarObservador(contenedorAlgoritmo);
+        this.agregar(contenedorAlgoritmo);
         this.getChildren().add(contenedorAlgoritmo);
 
         this.setMinWidth(600);
@@ -42,12 +42,12 @@ public class SectorAlgoritmo extends VBox implements ObservableSectorAlgoritmo {
     }
 
     @Override
-    public void agregarObservador(ObservadorSectorAlgoritmo observador) {
+    public void agregar(ObservadorSectorAlgoritmo observador) {
         this.observadores.add(observador);
     }
 
     @Override
-    public void notificarObservadores(VBox nuevoContenedor) {
+    public void notificar(VBox nuevoContenedor) {
         this.observadores.forEach( obs -> obs.cambios(nuevoContenedor) );
     }
 }

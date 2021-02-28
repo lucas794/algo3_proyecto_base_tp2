@@ -25,6 +25,7 @@ public class EjecucionClickDerecho {
             contenedor.getChildren().clear();
             contenedorMadre.getChildren().remove(contenedor);
             botonera.notificarObservadores(contenedorMadre.getChildren().size());
+            botonera.notificar(contenedorMadre);
             creador.notificarObservador( -50, -45, -1 ); // lo achicamos!!
         });
     }
@@ -33,6 +34,7 @@ public class EjecucionClickDerecho {
         crearMenu(sector, mouseEvent, actionEvent -> {
             contenedor.getChildren().remove(boton);
             botonera.notificarObservadores(contenedor.getChildren().size());
+            botonera.notificar(contenedor);
         });
     }
 
@@ -41,6 +43,7 @@ public class EjecucionClickDerecho {
             contenedor.getChildren().remove(boton);
             botonera.notificarObservadores(contenedor.getChildren().size());
             creador.notificarObservador(0, -45, -1); // lo achicamos .
+            botonera.notificar(contenedor);
         });
     }
 

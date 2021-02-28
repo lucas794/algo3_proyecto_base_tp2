@@ -6,11 +6,12 @@ import javafx.scene.layout.VBox;
 public class BotonABGA extends Button implements ObservadorBotonGA, ObservadorSectorAlgoritmo {
 
     VBox contenendorAlgoritmo = null;
+    VBox botoneraSectorBloquesDisponibles;
 
-    public BotonABGA(String nombre) {
+    public BotonABGA(String nombre, VBox botones) {
         super(nombre);
         this.setDisable(true);
-        //this.setOnMouseClicked( new BotonABGAClickHandler(this.contenendorAlgoritmo) );
+        this.botoneraSectorBloquesDisponibles = botones;
     }
 
     @Override
@@ -25,6 +26,6 @@ public class BotonABGA extends Button implements ObservadorBotonGA, ObservadorSe
 
         this.contenendorAlgoritmo = nuevoContenedor;
         // re-escribimos el handler con el nuevo info del contenedor :)
-        this.setOnMouseClicked( new BotonABGAClickHandler(this.contenendorAlgoritmo) );
+        this.setOnMouseClicked( new BotonABGAClickHandler(this.contenendorAlgoritmo, this.botoneraSectorBloquesDisponibles) );
     }
 }

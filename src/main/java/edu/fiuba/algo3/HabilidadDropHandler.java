@@ -45,6 +45,8 @@ public class HabilidadDropHandler extends CreadorDeTipoDeBloque implements Event
                 else
                     crearBloque(nombre, icono, this.sector, this.contenedor, this.botonera);
             success = true;
+
+            // reproduccion musica.
         }
         dragEvent.setDropCompleted(success);
         dragEvent.consume();

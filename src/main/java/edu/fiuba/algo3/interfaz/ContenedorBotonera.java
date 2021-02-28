@@ -18,18 +18,20 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
-public class ContenedorBotonera implements ObservableBotonGA {
+public class ContenedorBotonera implements ObservableBotonGA, ObservableSectorAlgoritmo {
 
     private final VBox botones;
     private Personaje personaje;
     private SectorDibujo sectorDibujo;
     private ArrayList<ObservadorBotonGA> observadorBotonGAS;
+    private ArrayList<ObservadorSectorAlgoritmo> observadorSA;
     BotonABGA botonGuardarAlgoritmo;
 
     public ContenedorBotonera(SectorDibujo sectorDibujo, Personaje personaje){
         this.personaje = personaje;
         this.sectorDibujo = sectorDibujo;
         this.observadorBotonGAS = new ArrayList<>();
+        this.observadorSA = new ArrayList<>();
 
         //los metodos setOnAction son temporales aca para probar los movimientos del personaje
         BotonAB botonMoverArriba = new BotonAB("Mover Arriba", "arriba.png");
@@ -57,12 +59,17 @@ public class ContenedorBotonera implements ObservableBotonGA {
         VBox botones = new VBox(botonMoverArriba, botonMoverAbajo, botonMoverIzquierda, botonMoverDerecha,
                 botonBajarLapiz, botonSubirLapiz, botonRepeticion, botonInvertir);
 
-        botonGuardarAlgoritmo = new BotonABGA("Guardar algoritmo");
+        botonGuardarAlgoritmo = new BotonABGA("Guardar algoritmo", botones );
         this.agregarObservador(botonGuardarAlgoritmo);
 
         Separator separador = new Separator();
 
-        botones.getChildren().addAll(botonGuardarAlgoritmo, separador);
+        BotonEjecutar ejecutarAlgoritmo = new BotonEjecutar( botones );
+        this.agregar(ejecutarAlgoritmo);
+
+        Separator nuevoSeparador = new Separator();
+
+        botones.getChildren().addAll(botonGuardarAlgoritmo, separador, ejecutarAlgoritmo, nuevoSeparador);
 
         this.botones = botones;
         botones.setBackground(new Background(new BackgroundFill(Color.LIGHTGREY, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -90,6 +97,18 @@ public class ContenedorBotonera implements ObservableBotonGA {
 
     public ObservadorSectorAlgoritmo obtenerBotonGuardarAlgoritmo() {
         return botonGuardarAlgoritmo;
+    }
+
+    ///////////////////////////////////////////////////////////
+
+    @Override
+    public void agregar(ObservadorSectorAlgoritmo observador) {
+        this.observadorSA.add(observador);
+    }
+
+    @Override
+    public void notificar(VBox nuevoContenedor) {
+        this.observadorSA.forEach( obs -> obs.cambios(nuevoContenedor) );
     }
 }
 

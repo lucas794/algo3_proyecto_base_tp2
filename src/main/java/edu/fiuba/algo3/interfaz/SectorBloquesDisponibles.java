@@ -53,6 +53,6 @@ public class SectorBloquesDisponibles extends VBox {
     }
 
     public void agregarEnlaceConSector(SectorAlgoritmo sectorAlgoritmo) {
-        sectorAlgoritmo.agregarObservador( contenedor.obtenerBotonGuardarAlgoritmo() );
+        sectorAlgoritmo.agregar( contenedor.obtenerBotonGuardarAlgoritmo() );
     }
 }

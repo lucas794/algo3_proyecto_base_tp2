@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
-public class SectorDibujo extends Pane{
+public class SectorDibujo extends Pane {
 
     private ImageView imagenPersonaje;
     private VistaPersonaje vistaPersonaje;
