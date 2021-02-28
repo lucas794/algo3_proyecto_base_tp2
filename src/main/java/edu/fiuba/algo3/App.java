@@ -4,6 +4,10 @@ import edu.fiuba.algo3.interfaz.Tablero;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.io.File;
+import java.time.Duration;
 
 /**
  * JavaFX App
@@ -18,6 +22,12 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
 
+        String musicFile = "src/main/java/edu/fiuba/algo3/interfaz/musica/main.mp3";     // For example
+        Media musica = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(musica);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.play();
+
         Tablero tablero = new Tablero();
 
         var scene = new Scene(tablero, RES_X, RES_Y);
@@ -25,6 +35,9 @@ public class App extends Application {
         stage.setTitle( TITULO_VENTANA );
         stage.setScene(scene);
         stage.show();
+
+
+
     }
 
     public static void main(String[] args) {
