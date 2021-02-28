@@ -2,7 +2,6 @@ package edu.fiuba.algo3.interfaz;
 
 import edu.fiuba.algo3.modelo.Personaje;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.media.MediaPlayer;
 
@@ -33,6 +32,7 @@ public class Tablero extends BorderPane {
         sectorBloques = new SectorBloquesDisponibles(sectorDibujo, personaje, mediaPlayer);
         sectorAlgoritmo = new SectorAlgoritmo( sectorBloques.obtenerBotonera() );
         sectorBloques.agregarEnlaceConSector( sectorAlgoritmo );
+        sectorDibujo.agregarEnlaceConSector( sectorAlgoritmo );
     }
 }
 

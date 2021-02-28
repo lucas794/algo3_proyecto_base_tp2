@@ -66,15 +66,15 @@ public class ContenedorBotonera implements ObservableBotonGA, ObservableSectorAl
 
         Separator separador = new Separator();
 
-        BotonEjecutar ejecutarAlgoritmo = new BotonEjecutar( botones );
-        this.agregar(ejecutarAlgoritmo);
+        /*BotonEjecutar ejecutarAlgoritmo = new BotonEjecutar();
+        this.agregar(ejecutarAlgoritmo);*/
 
         Separator nuevoSeparador = new Separator();
 
         BotonVolumen botonVolumen = new BotonVolumen(mediaPlayer);
         this.agregar(botonVolumen);
 
-        botones.getChildren().addAll(botonGuardarAlgoritmo, separador, ejecutarAlgoritmo, botonVolumen, nuevoSeparador);
+        botones.getChildren().addAll(botonGuardarAlgoritmo, separador/*, ejecutarAlgoritmo*/, botonVolumen, nuevoSeparador);
 
         this.botones = botones;
         botones.setBackground(new Background(new BackgroundFill(Color.LIGHTGREY, CornerRadii.EMPTY, Insets.EMPTY)));

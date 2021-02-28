@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.interfaz;
 
+import edu.fiuba.algo3.BotonEjecutar;
 import edu.fiuba.algo3.interfaz.vista.VistaPersonaje;
 import edu.fiuba.algo3.modelo.Personaje;
 import javafx.scene.image.Image;
@@ -12,6 +13,8 @@ public class SectorDibujo extends Pane {
     private VistaPersonaje vistaPersonaje;
     private Personaje personaje;
 
+    BotonEjecutar boton = new BotonEjecutar();
+
     public SectorDibujo(Personaje personaje) {
         this.personaje = personaje;
         this.setPrefSize(400,500);
@@ -19,6 +22,7 @@ public class SectorDibujo extends Pane {
         imagenPersonaje = new ImageView( "file:src/main/java/edu/fiuba/algo3/interfaz/imagenes/personajeRight.png");
         vistaPersonaje = new VistaPersonaje(imagenPersonaje, this, personaje);
 
+        this.getChildren().add( boton );
     }
 
     public void clean(){
@@ -33,4 +37,7 @@ public class SectorDibujo extends Pane {
         vistaPersonaje.updateVistaPersonaje();
     }
 
+    public void agregarEnlaceConSector(SectorAlgoritmo sectorAlgoritmo) {
+        sectorAlgoritmo.agregar(boton);
+    }
 }

@@ -7,7 +7,7 @@ public class BotonEjecutar extends Button implements ObservadorSectorAlgoritmo {
 
     VBox contenedorAlgoritmo;
 
-    public BotonEjecutar(VBox botones) {
+    public BotonEjecutar() {
         super("Ejecutar algoritmo!");
         this.setDisable(true);
     }
@@ -16,6 +16,6 @@ public class BotonEjecutar extends Button implements ObservadorSectorAlgoritmo {
     public void cambios(VBox nuevoContenedor) {
         this.contenedorAlgoritmo = nuevoContenedor;
         this.setDisable( this.contenedorAlgoritmo.getChildren().size() == 0 );
-        this.setOnMouseClicked( new EjecucionAlgoritmoHandler( this.contenedorAlgoritmo ) );
+        this.setOnMouseClicked( new EjecucionAlgoritmoHandler( this.contenedorAlgoritmo  ) );
     }
 }

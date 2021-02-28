@@ -26,6 +26,7 @@ public class EjecucionClickDerecho {
             contenedorMadre.getChildren().remove(contenedor);
             botonera.notificarObservadores(contenedorMadre.getChildren().size());
             botonera.notificar(contenedorMadre);
+            sector.notificar(contenedorMadre);
             creador.notificarObservador( -50, -45, -1 ); // lo achicamos!!
         });
     }
@@ -35,6 +36,7 @@ public class EjecucionClickDerecho {
             contenedor.getChildren().remove(boton);
             botonera.notificarObservadores(contenedor.getChildren().size());
             botonera.notificar(contenedor);
+            sector.notificar(contenedor);
         });
     }
 
@@ -44,6 +46,7 @@ public class EjecucionClickDerecho {
             botonera.notificarObservadores(contenedor.getChildren().size());
             creador.notificarObservador(0, -45, -1); // lo achicamos .
             botonera.notificar(contenedor);
+            sector.notificar(contenedor);
         });
     }
 
