@@ -1,9 +1,6 @@
 package edu.fiuba.algo3.interfaz;
 
-import edu.fiuba.algo3.BotonAB;
-import edu.fiuba.algo3.BotonABGA;
-import edu.fiuba.algo3.ObservableBotonGA;
-import edu.fiuba.algo3.ObservadorBotonGA;
+import edu.fiuba.algo3.*;
 import edu.fiuba.algo3.interfaz.controladores.MovimientoEventHandler;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.bloques.BloqueMovimiento;
@@ -27,6 +24,7 @@ public class ContenedorBotonera implements ObservableBotonGA {
     private Personaje personaje;
     private SectorDibujo sectorDibujo;
     private ArrayList<ObservadorBotonGA> observadorBotonGAS;
+    BotonABGA botonGuardarAlgoritmo;
 
     public ContenedorBotonera(SectorDibujo sectorDibujo, Personaje personaje){
         this.personaje = personaje;
@@ -50,7 +48,6 @@ public class ContenedorBotonera implements ObservableBotonGA {
         MovimientoEventHandler botonMovimiento = new MovimientoEventHandler(new BloqueMovimiento(new MovimientoDerecha()), sectorDibujo, personaje);
         botonMoverDerecha.setOnAction(botonMovimiento);
 
-
         BotonAB botonBajarLapiz = new BotonAB("Bajar lapiz", "abajo.png");
         BotonAB botonSubirLapiz = new BotonAB("Subir lapiz", "arriba.png");
 
@@ -60,7 +57,7 @@ public class ContenedorBotonera implements ObservableBotonGA {
         VBox botones = new VBox(botonMoverArriba, botonMoverAbajo, botonMoverIzquierda, botonMoverDerecha,
                 botonBajarLapiz, botonSubirLapiz, botonRepeticion, botonInvertir);
 
-        BotonABGA botonGuardarAlgoritmo = new BotonABGA("Guardar algoritmo");
+        botonGuardarAlgoritmo = new BotonABGA("Guardar algoritmo");
         this.agregarObservador(botonGuardarAlgoritmo);
 
         Separator separador = new Separator();
@@ -89,6 +86,10 @@ public class ContenedorBotonera implements ObservableBotonGA {
     @Override
     public void notificarObservadores(int hijos) {
         observadorBotonGAS.forEach( obs -> obs.cambios(hijos) );
+    }
+
+    public ObservadorSectorAlgoritmo obtenerBotonGuardarAlgoritmo() {
+        return botonGuardarAlgoritmo;
     }
 }
 

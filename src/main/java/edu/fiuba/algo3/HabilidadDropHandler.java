@@ -35,12 +35,12 @@ public class HabilidadDropHandler extends CreadorDeTipoDeBloque implements Event
             String icono = db.getString().split(",")[1];
 
             if( nombre.contains("Repetir") || nombre.contains("Invertir") )
-                if( this.creador != null )
+                if( this.creador != null ) // hace un drop en un contenedor
                     crearContenedor(nombre, icono, this.sector, this.contenedor, this.botonera, this.creador);
                 else
                     crearContenedor(nombre, icono, this.sector, this.contenedor, this.botonera);
             else
-                if( this.creador != null )
+                if( this.creador != null ) // hace un drop en un contenedor
                     crearBloque(nombre, icono, this.sector, this.contenedor, this.botonera, this.creador);
                 else
                     crearBloque(nombre, icono, this.sector, this.contenedor, this.botonera);

@@ -10,6 +10,7 @@ public class CreadorDeTipoDeBloque implements ObservableContenedor {
 
     private Contenedor bloqueEnSectorAlgoritmo;
 
+    // crea un bloque adentro del SectorAlgoritmo
     public void crearBloque(String nombre, String icono, SectorAlgoritmo sector, VBox contenedor, ContenedorBotonera botonera) {
         BotonAB item = new BotonAB(nombre, icono);
         item.setOnDragDetected(null); // no se mueve
@@ -18,6 +19,7 @@ public class CreadorDeTipoDeBloque implements ObservableContenedor {
 
         contenedor.getChildren().add(item);
         botonera.notificarObservadores(contenedor.getChildren().size());
+        sector.notificarObservadores(contenedor);
     }
 
     // crea un bloque adentro de un contenedor de algoritmo (repeticion/inversion)
@@ -39,12 +41,13 @@ public class CreadorDeTipoDeBloque implements ObservableContenedor {
         creador.notificarObservador( 50, 45, 1); // llamamos al padre para que crezca también
     }
 
-    // crea un contenedor simple
+    // crea un contenedor simple adentro del Sector Algoritmo
     public void crearContenedor(String nombre, String icono, SectorAlgoritmo sector, VBox contenedor, ContenedorBotonera botonera)
     {
         Contenedor contenedorAEjecutar = new Contenedor(this, nombre, contenedor, botonera, sector, icono);
         this.agregarObservador(contenedorAEjecutar);
         this.notificarObservador( 50, 45, 0);
+        sector.notificarObservadores(contenedor);
     }
 
     @Override

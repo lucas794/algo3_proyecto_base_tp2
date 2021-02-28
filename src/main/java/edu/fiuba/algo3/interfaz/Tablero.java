@@ -30,7 +30,7 @@ public class Tablero extends BorderPane {
         sectorDibujo = new SectorDibujo(personaje); // acá, de alguna manera posiblemente haya que pasarle los bloques que están en el sector algoritmo..
         sectorBloques = new SectorBloquesDisponibles(sectorDibujo, personaje);
         sectorAlgoritmo = new SectorAlgoritmo( sectorBloques.obtenerBotonera() );
-
+        sectorBloques.agregarEnlaceConSector( sectorAlgoritmo );
     }
 }
 

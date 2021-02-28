@@ -2,6 +2,7 @@ package edu.fiuba.algo3.interfaz;
 
 import edu.fiuba.algo3.HabilidadAceptarDragHandler;
 import edu.fiuba.algo3.HabilidadDropHandler;
+import edu.fiuba.algo3.ObservadorSectorAlgoritmo;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -10,9 +11,14 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-public class SectorAlgoritmo extends VBox {
+import java.util.ArrayList;
+
+public class SectorAlgoritmo extends VBox implements ObservableSectorAlgoritmo {
+
+    private ArrayList<ObservadorSectorAlgoritmo> observadores;
 
     public SectorAlgoritmo(ContenedorBotonera contenedorBotonera){
+        observadores = new ArrayList<>();
         Label text = new Label("Espacio de Trabajo");
         text.setMaxWidth(Double.MAX_VALUE);
         text.setAlignment(Pos.CENTER);
@@ -22,9 +28,9 @@ public class SectorAlgoritmo extends VBox {
         text.setTextFill(Color.WHITE);
         this.getChildren().add(text);
 
-        VBox contenedorAlgoritmo = new VBox();
-        contenedorAlgoritmo.setPrefSize(400, 900);
-        contenedorAlgoritmo.setAlignment(Pos.TOP_CENTER);
+        ContenedorAlgoritmo contenedorAlgoritmo = new ContenedorAlgoritmo(400, 900, Pos.TOP_CENTER);
+
+        this.agregarObservador(contenedorAlgoritmo);
         this.getChildren().add(contenedorAlgoritmo);
 
         this.setMinWidth(600);
@@ -35,4 +41,13 @@ public class SectorAlgoritmo extends VBox {
         contenedorAlgoritmo.setOnDragDropped( new HabilidadDropHandler(this, contenedorAlgoritmo, contenedorBotonera) );
     }
 
+    @Override
+    public void agregarObservador(ObservadorSectorAlgoritmo observador) {
+        this.observadores.add(observador);
+    }
+
+    @Override
+    public void notificarObservadores(VBox nuevoContenedor) {
+        this.observadores.forEach( obs -> obs.cambios(nuevoContenedor) );
+    }
 }
