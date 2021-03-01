@@ -16,6 +16,7 @@ public class EjecucionAlgoritmoHandler implements EventHandler<MouseEvent> {
 
     @Override
     public void handle(MouseEvent mouseEvent) {
+
         ObservableList<Node> test = this.contenedor.getChildren(); //
         for( Node bloque : test ) {
         }

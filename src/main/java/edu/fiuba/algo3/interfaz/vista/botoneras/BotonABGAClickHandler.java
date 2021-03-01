@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.interfaz.vista.botoneras;
 
+import edu.fiuba.algo3.interfaz.vista.SectorBloquesDisponibles;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -14,9 +15,9 @@ import javafx.stage.Stage;
 public class BotonABGAClickHandler extends Stage implements EventHandler<MouseEvent> {
 
     VBox contenendorAlgoritmo;
-    VBox botoneraSectorBloquesDisponibles;
+    SectorBloquesDisponibles botoneraSectorBloquesDisponibles;
 
-    public BotonABGAClickHandler(VBox contenendorAlgoritmo, VBox botoneraSectorBloquesDisponibles) {
+    public BotonABGAClickHandler(VBox contenendorAlgoritmo, SectorBloquesDisponibles botoneraSectorBloquesDisponibles) {
         this.contenendorAlgoritmo = contenendorAlgoritmo;
         this.botoneraSectorBloquesDisponibles = botoneraSectorBloquesDisponibles;
     }
@@ -53,7 +54,7 @@ public class BotonABGAClickHandler extends Stage implements EventHandler<MouseEv
             BotonGAPersonalizado botonPersonalizado = new BotonGAPersonalizado( texto, this.contenendorAlgoritmo.getChildren() );
             this.botoneraSectorBloquesDisponibles.getChildren().add(botonPersonalizado);
 
-            //this.contenendorAlgoritmo.getChildren().clear();
+            // this.contenendorAlgoritmo.getChildren() tiene los Bloques que hay que ejecutarse!
 
             this.hide();
         });

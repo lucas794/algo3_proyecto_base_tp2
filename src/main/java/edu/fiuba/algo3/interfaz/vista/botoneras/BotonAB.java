@@ -9,7 +9,6 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
-// esta clase muy posiblemente tenga que ir en otra carpeta, pero lo pongo acá inicialmente.
 
 public class BotonAB extends Button {
 

@@ -1,18 +1,19 @@
 package edu.fiuba.algo3.interfaz.vista.botoneras;
 
 import edu.fiuba.algo3.interfaz.ObservadorSectorAlgoritmo;
+import edu.fiuba.algo3.interfaz.vista.SectorBloquesDisponibles;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
 public class BotonABGA extends Button implements ObservadorSectorAlgoritmo {
 
     VBox contenendorAlgoritmo = null;
-    VBox botoneraSectorBloquesDisponibles;
+    SectorBloquesDisponibles sectorBloquesDisponibles;
 
-    public BotonABGA(String nombre, VBox botones) {
+    public BotonABGA(String nombre, SectorBloquesDisponibles sectorBloquesDisponibles) {
         super(nombre);
         this.setDisable(true);
-        this.botoneraSectorBloquesDisponibles = botones;
+        this.sectorBloquesDisponibles = sectorBloquesDisponibles;
     }
 
     @Override
@@ -25,6 +26,6 @@ public class BotonABGA extends Button implements ObservadorSectorAlgoritmo {
         this.setDisable( this.contenendorAlgoritmo.getChildren().size() == 0 ); // no tiene hijos...
 
         // re-escribimos el handler con el nuevo info del contenedor :)
-        this.setOnMouseClicked( new BotonABGAClickHandler(this.contenendorAlgoritmo, this.botoneraSectorBloquesDisponibles) );
+        this.setOnMouseClicked( new BotonABGAClickHandler(this.contenendorAlgoritmo, this.sectorBloquesDisponibles) );
     }
 }

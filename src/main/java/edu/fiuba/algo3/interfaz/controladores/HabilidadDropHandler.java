@@ -1,29 +1,34 @@
 package edu.fiuba.algo3.interfaz.controladores;
 
 import edu.fiuba.algo3.interfaz.CreadorDeTipoDeBloque;
-import edu.fiuba.algo3.interfaz.vista.botoneras.ContenedorBotonera;
 import edu.fiuba.algo3.interfaz.vista.SectorAlgoritmo;
+import edu.fiuba.algo3.interfaz.vista.SectorBloquesDisponibles;
 import javafx.event.EventHandler;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+import java.io.File;
 
 public class HabilidadDropHandler extends CreadorDeTipoDeBloque implements EventHandler<DragEvent> {
+
     SectorAlgoritmo sector;
     VBox contenedor;
-    ContenedorBotonera botonera;
+    SectorBloquesDisponibles sectorBloquesDisponibles;
     CreadorDeTipoDeBloque creador = null;
 
-    public HabilidadDropHandler(SectorAlgoritmo sectorAlgoritmo, VBox contenedorAlgoritmo, ContenedorBotonera contenedorBotonera) {
+    public HabilidadDropHandler(SectorAlgoritmo sectorAlgoritmo, VBox contenedorAlgoritmo, SectorBloquesDisponibles sectorBloquesDisponibles) {
         this.sector = sectorAlgoritmo;
         this.contenedor = contenedorAlgoritmo;
-        this.botonera = contenedorBotonera;
+        this.sectorBloquesDisponibles = sectorBloquesDisponibles;
     }
 
-    public HabilidadDropHandler(SectorAlgoritmo sector, VBox contenedorAEjecutar, ContenedorBotonera botonera, CreadorDeTipoDeBloque creadorDeTipoDeBloque) {
+    public HabilidadDropHandler(SectorAlgoritmo sector, VBox contenedorAEjecutar, SectorBloquesDisponibles sectorBloquesDisponibles, CreadorDeTipoDeBloque creadorDeTipoDeBloque) {
         this.sector = sector;
         this.contenedor = contenedorAEjecutar;
-        this.botonera = botonera;
+        this.sectorBloquesDisponibles = sectorBloquesDisponibles;
         this.creador = creadorDeTipoDeBloque;
     }
 
@@ -37,17 +42,20 @@ public class HabilidadDropHandler extends CreadorDeTipoDeBloque implements Event
 
             if( nombre.contains("Repetir") || nombre.contains("Invertir") )
                 if( this.creador != null ) // hace un drop en un contenedor
-                    crearContenedor(nombre, icono, this.sector, this.contenedor, this.botonera, this.creador);
+                    crearContenedor(nombre, icono, this.sector, this.contenedor, this.sectorBloquesDisponibles, this.creador);
                 else
-                    crearContenedor(nombre, icono, this.sector, this.contenedor, this.botonera);
+                    crearContenedor(nombre, icono, this.sector, this.contenedor, this.sectorBloquesDisponibles);
             else
                 if( this.creador != null ) // hace un drop en un contenedor
-                    crearBloque(nombre, icono, this.sector, this.contenedor, this.botonera, this.creador);
+                    crearBloque(nombre, icono, this.sector, this.contenedor, this.sectorBloquesDisponibles, this.creador);
                 else
-                    crearBloque(nombre, icono, this.sector, this.contenedor, this.botonera);
+                    crearBloque(nombre, icono, this.sector, this.contenedor, this.sectorBloquesDisponibles);
             success = true;
 
-            // reproduccion musica.
+            String musicFile = "src/main/java/edu/fiuba/algo3/interfaz/musica/soltar_bloque.mp3";     // For example
+            Media musica = new Media(new File(musicFile).toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(musica);
+            mediaPlayer.play();
         }
         dragEvent.setDropCompleted(success);
         dragEvent.consume();

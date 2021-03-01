@@ -1,26 +1,21 @@
 package edu.fiuba.algo3.interfaz.vista;
 
 import edu.fiuba.algo3.interfaz.ContenedorAlgoritmo;
-import edu.fiuba.algo3.interfaz.ObservableSectorAlgoritmo;
 import edu.fiuba.algo3.interfaz.ObservadorSectorAlgoritmo;
-import edu.fiuba.algo3.interfaz.controladores.HabilidadAceptarDragHandler;
-import edu.fiuba.algo3.interfaz.controladores.HabilidadDropHandler;
-import edu.fiuba.algo3.interfaz.vista.botoneras.ContenedorBotonera;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 import java.util.ArrayList;
 
-public class SectorAlgoritmo extends VBox implements ObservableSectorAlgoritmo {
+public class SectorAlgoritmo extends VBox {
 
     private ArrayList<ObservadorSectorAlgoritmo> observadores;
 
-    public SectorAlgoritmo(ContenedorBotonera contenedorBotonera){
+    public SectorAlgoritmo(SectorBloquesDisponibles sectorBloquesDisponibles){
         observadores = new ArrayList<>();
         Label text = new Label("Espacio de Trabajo");
         text.setMaxWidth(Double.MAX_VALUE);
@@ -30,26 +25,11 @@ public class SectorAlgoritmo extends VBox implements ObservableSectorAlgoritmo {
         text.setFont(Font.font("Times",20));
         this.getChildren().add(text);
 
-        ContenedorAlgoritmo contenedorAlgoritmo = new ContenedorAlgoritmo(400, 900, Pos.TOP_CENTER);
+        ContenedorAlgoritmo contenedorAlgoritmo = new ContenedorAlgoritmo(400, 900, Pos.TOP_CENTER, this, sectorBloquesDisponibles );
 
-        this.agregarObservador(contenedorAlgoritmo);
         this.getChildren().add(contenedorAlgoritmo);
 
         this.setMinWidth(600);
         this.setBackground(new Background(new BackgroundFill(Color.LIGHTGREY, CornerRadii.EMPTY, Insets.EMPTY)));
-
-        contenedorAlgoritmo.setOnDragOver( new HabilidadAceptarDragHandler(TransferMode.ANY) );
-
-        contenedorAlgoritmo.setOnDragDropped( new HabilidadDropHandler(this, contenedorAlgoritmo, contenedorBotonera) );
-    }
-
-    @Override
-    public void agregarObservador(ObservadorSectorAlgoritmo observador) {
-        this.observadores.add(observador);
-    }
-
-    @Override
-    public void notificarObservador(VBox nuevoContenedor) {
-        this.observadores.forEach( obs -> obs.cambios(nuevoContenedor) );
     }
 }

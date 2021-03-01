@@ -4,8 +4,8 @@ import edu.fiuba.algo3.interfaz.controladores.HabilidadAceptarDragHandler;
 import edu.fiuba.algo3.interfaz.controladores.HabilidadDropHandler;
 import edu.fiuba.algo3.interfaz.controladores.MenuContextoEnContenedorHandler;
 import edu.fiuba.algo3.interfaz.vista.SectorAlgoritmo;
+import edu.fiuba.algo3.interfaz.vista.SectorBloquesDisponibles;
 import edu.fiuba.algo3.interfaz.vista.botoneras.BotonAB;
-import edu.fiuba.algo3.interfaz.vista.botoneras.ContenedorBotonera;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ComboBox;
@@ -24,7 +24,7 @@ public class Contenedor implements ObservadorContenedor {
     double sizeY = TAMANIO_Y;
     int cantidadHijos = 0;
 
-    public Contenedor(CreadorDeTipoDeBloque creadorDeTipoDeBloque, String nombre, VBox contenedor, ContenedorBotonera botonera, SectorAlgoritmo sector, String icono)
+    public Contenedor(CreadorDeTipoDeBloque creadorDeTipoDeBloque, String nombre, VBox contenedor, SectorBloquesDisponibles sectorBloquesDisponibles, SectorAlgoritmo sector, String icono)
     {
         contenedorAEjecutar.setPrefSize( TAMANIO_X, TAMANIO_Y );
         contenedorAEjecutar.setAlignment( Pos.TOP_CENTER );
@@ -34,7 +34,7 @@ public class Contenedor implements ObservadorContenedor {
         contenedorAEjecutar.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
 
         contenedorAEjecutar.setOnDragOver( new HabilidadAceptarDragHandler(TransferMode.ANY) );
-        contenedorAEjecutar.setOnDragDropped( new HabilidadDropHandler(sector, contenedorAEjecutar, botonera, creadorDeTipoDeBloque) );
+        contenedorAEjecutar.setOnDragDropped( new HabilidadDropHandler(sector, contenedorAEjecutar, sectorBloquesDisponibles, creadorDeTipoDeBloque) );
 
         if( nombre.contains("Repetir") ) {
             ComboBox<Integer> comboBox = new ComboBox<>();
@@ -52,12 +52,10 @@ public class Contenedor implements ObservadorContenedor {
 
         item.getChildren().addAll(boton, contenedorAEjecutar);
 
-        boton.setOnMouseClicked( new MenuContextoEnContenedorHandler(contenedor, sector, item, botonera, creadorDeTipoDeBloque) );
-        item.setOnMouseClicked( new MenuContextoEnContenedorHandler(contenedor, sector, item, botonera, creadorDeTipoDeBloque) );
+        boton.setOnMouseClicked( new MenuContextoEnContenedorHandler(contenedor, sector, item, sectorBloquesDisponibles, creadorDeTipoDeBloque) );
+        item.setOnMouseClicked( new MenuContextoEnContenedorHandler(contenedor, sector, item, sectorBloquesDisponibles, creadorDeTipoDeBloque) );
         item.setAlignment(Pos.CENTER);
         contenedor.getChildren().add(item);
-
-        botonera.notificarObservador(contenedor);
     }
 
     @Override
