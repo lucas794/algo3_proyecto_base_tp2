@@ -1,5 +1,6 @@
-package edu.fiuba.algo3.interfaz;
+package edu.fiuba.algo3.interfaz.vista;
 
+import edu.fiuba.algo3.interfaz.vista.botoneras.ContenedorBotonera;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.recursos.DBAlgoritmoPersonalizados;
 import javafx.geometry.Insets;

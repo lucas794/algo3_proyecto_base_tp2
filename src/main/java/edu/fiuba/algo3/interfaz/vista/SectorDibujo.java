@@ -1,7 +1,6 @@
-package edu.fiuba.algo3.interfaz;
+package edu.fiuba.algo3.interfaz.vista;
 
-import edu.fiuba.algo3.BotonEjecutar;
-import edu.fiuba.algo3.interfaz.vista.VistaPersonaje;
+import edu.fiuba.algo3.interfaz.vista.botoneras.BotonEjecutar;
 import edu.fiuba.algo3.modelo.Personaje;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

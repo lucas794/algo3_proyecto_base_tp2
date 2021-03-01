@@ -1,5 +1,6 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.interfaz.vista.botoneras;
 
+import edu.fiuba.algo3.interfaz.controladores.HabilidadDragHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;

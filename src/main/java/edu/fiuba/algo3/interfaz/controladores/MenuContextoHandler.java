@@ -1,7 +1,9 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.interfaz.controladores;
 
-import edu.fiuba.algo3.interfaz.ContenedorBotonera;
-import edu.fiuba.algo3.interfaz.SectorAlgoritmo;
+import edu.fiuba.algo3.interfaz.EjecucionClickDerecho;
+import edu.fiuba.algo3.interfaz.vista.botoneras.BotonAB;
+import edu.fiuba.algo3.interfaz.vista.botoneras.ContenedorBotonera;
+import edu.fiuba.algo3.interfaz.vista.SectorAlgoritmo;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;

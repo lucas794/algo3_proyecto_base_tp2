@@ -1,6 +1,5 @@
-package edu.fiuba.algo3.interfaz;
+package edu.fiuba.algo3.interfaz.vista;
 
-import edu.fiuba.algo3.interfaz.vista.BarraDeMenu;
 import edu.fiuba.algo3.modelo.Personaje;
 import javafx.geometry.Insets;
 import javafx.scene.layout.BorderPane;

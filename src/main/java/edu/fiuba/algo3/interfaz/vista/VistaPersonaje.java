@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.interfaz.vista;
 
-import edu.fiuba.algo3.interfaz.SectorDibujo;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.tablero.Posicion;
 import javafx.scene.image.Image;

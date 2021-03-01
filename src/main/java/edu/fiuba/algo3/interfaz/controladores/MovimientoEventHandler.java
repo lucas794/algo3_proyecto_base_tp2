@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.interfaz.controladores;
 
-import edu.fiuba.algo3.interfaz.SectorDibujo;
+import edu.fiuba.algo3.interfaz.vista.SectorDibujo;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.bloques.BloqueMovimiento;
 import edu.fiuba.algo3.modelo.tablero.Dibujo;

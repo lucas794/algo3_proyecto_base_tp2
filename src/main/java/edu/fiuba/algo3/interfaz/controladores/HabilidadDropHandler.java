@@ -1,7 +1,8 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.interfaz.controladores;
 
-import edu.fiuba.algo3.interfaz.ContenedorBotonera;
-import edu.fiuba.algo3.interfaz.SectorAlgoritmo;
+import edu.fiuba.algo3.interfaz.CreadorDeTipoDeBloque;
+import edu.fiuba.algo3.interfaz.vista.botoneras.ContenedorBotonera;
+import edu.fiuba.algo3.interfaz.vista.SectorAlgoritmo;
 import javafx.event.EventHandler;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;

@@ -1,8 +1,9 @@
-package edu.fiuba.algo3.interfaz;
+package edu.fiuba.algo3.interfaz.vista.botoneras;
 
-import edu.fiuba.algo3.*;
+import edu.fiuba.algo3.interfaz.ObservableSectorAlgoritmo;
+import edu.fiuba.algo3.interfaz.ObservadorSectorAlgoritmo;
+import edu.fiuba.algo3.interfaz.vista.SectorDibujo;
 import edu.fiuba.algo3.interfaz.controladores.MovimientoEventHandler;
-import edu.fiuba.algo3.BotonVolumen;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.bloques.BloqueMovimiento;
 import edu.fiuba.algo3.modelo.tablero.movimiento.MovimientoAbajo;

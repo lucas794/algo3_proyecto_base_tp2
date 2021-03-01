@@ -1,4 +1,4 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.interfaz.controladores;
 
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;

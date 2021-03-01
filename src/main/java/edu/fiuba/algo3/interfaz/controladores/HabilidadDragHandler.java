@@ -1,5 +1,6 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.interfaz.controladores;
 
+import edu.fiuba.algo3.interfaz.vista.botoneras.BotonAB;
 import javafx.event.EventHandler;
 import javafx.scene.input.*;
 

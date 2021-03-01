@@ -1,4 +1,4 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.interfaz.vista.botoneras;
 
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;

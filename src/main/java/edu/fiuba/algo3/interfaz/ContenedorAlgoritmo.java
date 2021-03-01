@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.interfaz;
 
-import edu.fiuba.algo3.ObservadorSectorAlgoritmo;
 import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
 

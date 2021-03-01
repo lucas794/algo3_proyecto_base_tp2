@@ -1,8 +1,11 @@
-package edu.fiuba.algo3.interfaz;
+package edu.fiuba.algo3.interfaz.vista;
 
-import edu.fiuba.algo3.HabilidadAceptarDragHandler;
-import edu.fiuba.algo3.HabilidadDropHandler;
-import edu.fiuba.algo3.ObservadorSectorAlgoritmo;
+import edu.fiuba.algo3.interfaz.ContenedorAlgoritmo;
+import edu.fiuba.algo3.interfaz.ObservableSectorAlgoritmo;
+import edu.fiuba.algo3.interfaz.ObservadorSectorAlgoritmo;
+import edu.fiuba.algo3.interfaz.controladores.HabilidadAceptarDragHandler;
+import edu.fiuba.algo3.interfaz.controladores.HabilidadDropHandler;
+import edu.fiuba.algo3.interfaz.vista.botoneras.ContenedorBotonera;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -25,7 +28,6 @@ public class SectorAlgoritmo extends VBox implements ObservableSectorAlgoritmo {
         text.setTextFill(Color.WHITE);
         text.setStyle("-fx-background-color: rgb(85,40,129);");
         text.setFont(Font.font("Times",20));
-        text.setTextFill(Color.WHITE);
         this.getChildren().add(text);
 
         ContenedorAlgoritmo contenedorAlgoritmo = new ContenedorAlgoritmo(400, 900, Pos.TOP_CENTER);

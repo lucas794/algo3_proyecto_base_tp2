@@ -1,7 +1,11 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.interfaz;
 
-import edu.fiuba.algo3.interfaz.ContenedorBotonera;
-import edu.fiuba.algo3.interfaz.SectorAlgoritmo;
+import edu.fiuba.algo3.interfaz.controladores.HabilidadAceptarDragHandler;
+import edu.fiuba.algo3.interfaz.controladores.HabilidadDropHandler;
+import edu.fiuba.algo3.interfaz.controladores.MenuContextoEnContenedorHandler;
+import edu.fiuba.algo3.interfaz.vista.SectorAlgoritmo;
+import edu.fiuba.algo3.interfaz.vista.botoneras.BotonAB;
+import edu.fiuba.algo3.interfaz.vista.botoneras.ContenedorBotonera;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ComboBox;
