@@ -19,7 +19,7 @@ public class SectorBloquesDisponibles extends VBox {
 
     private static ContenedorBotonera contenedor;
 
-    public SectorBloquesDisponibles(SectorDibujo sectorDibujo, Personaje personaje, MediaPlayer mediaPlayer){
+    public SectorBloquesDisponibles(SectorDibujo sectorDibujo, Personaje personaje){
 
         //Como se repite codigo en ambos titulos creo que se podría separar en una clase
         Label upper = new Label("Bloques Disponibles");
@@ -30,7 +30,7 @@ public class SectorBloquesDisponibles extends VBox {
         upper.setFont(Font.font("Times",20));
         this.getChildren().add(upper);
 
-        contenedor = new ContenedorBotonera(sectorDibujo, personaje, mediaPlayer);
+        contenedor = new ContenedorBotonera(sectorDibujo, personaje);
         VBox contenedorBotonera = contenedor.obtenerBotones();
 
         ScrollPane scrollVbox = new ScrollPane(contenedorBotonera);

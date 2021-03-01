@@ -30,7 +30,7 @@ public class ContenedorBotonera implements /*ObservableBotonGA, */ObservableSect
     private ArrayList<ObservadorSectorAlgoritmo> observadorSA;
     BotonABGA botonGuardarAlgoritmo;
 
-    public ContenedorBotonera(SectorDibujo sectorDibujo, Personaje personaje, MediaPlayer mediaPlayer){
+    public ContenedorBotonera(SectorDibujo sectorDibujo, Personaje personaje){
         this.personaje = personaje;
         this.sectorDibujo = sectorDibujo;
 
@@ -72,10 +72,7 @@ public class ContenedorBotonera implements /*ObservableBotonGA, */ObservableSect
 
         Separator nuevoSeparador = new Separator();
 
-        BotonVolumen botonVolumen = new BotonVolumen(mediaPlayer);
-        this.agregarObservador(botonVolumen);
-
-        botones.getChildren().addAll(botonGuardarAlgoritmo, separador/*, ejecutarAlgoritmo*/, botonVolumen, nuevoSeparador);
+        botones.getChildren().addAll(botonGuardarAlgoritmo, separador/*, ejecutarAlgoritmo*/, nuevoSeparador);
 
         this.botones = botones;
         botones.setBackground(new Background(new BackgroundFill(Color.LIGHTGREY, CornerRadii.EMPTY, Insets.EMPTY)));
