@@ -3,6 +3,8 @@ package edu.fiuba.algo3.interfaz.controladores;
 import edu.fiuba.algo3.interfaz.vista.botoneras.BotonAB;
 import javafx.event.EventHandler;
 import javafx.scene.input.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class HabilidadDragHandler implements EventHandler<MouseEvent> {
 
@@ -21,8 +23,12 @@ public class HabilidadDragHandler implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent event) {
         Dragboard db = this.boton.startDragAndDrop(this.transferencia);
+        db.setDragView(this.boton.snapshot(null, null), event.getX(), event.getY());
         ClipboardContent contenido = new ClipboardContent();
-        contenido.putString(this.nombre_boton + "," + this.icono);
+        JSONArray test = new JSONArray();
+        test.put(this.nombre_boton);
+        test.put(this.icono);
+        contenido.putString(test.toString());
         db.setContent(contenido);
         event.consume();
     }

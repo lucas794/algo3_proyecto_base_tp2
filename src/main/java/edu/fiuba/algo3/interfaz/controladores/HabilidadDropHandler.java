@@ -9,6 +9,8 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.File;
 
@@ -37,8 +39,10 @@ public class HabilidadDropHandler extends CreadorDeTipoDeBloque implements Event
         Dragboard db = dragEvent.getDragboard();
         boolean success = false;
         if (db.hasString()) {
-            String nombre = db.getString().split(",")[0];
-            String icono = db.getString().split(",")[1];
+            JSONArray salida = new JSONArray(db.getString());
+
+            String nombre = (String) salida.get(0);
+            String icono = (String) salida.get(1);
 
             if( nombre.contains("Repetir") || nombre.contains("Invertir") )
                 if( this.creador != null ) // hace un drop en un contenedor
@@ -50,6 +54,8 @@ public class HabilidadDropHandler extends CreadorDeTipoDeBloque implements Event
                     crearBloque(nombre, icono, this.sector, this.contenedor, this.sectorBloquesDisponibles, this.creador);
                 else
                     crearBloque(nombre, icono, this.sector, this.contenedor, this.sectorBloquesDisponibles);
+
+
             success = true;
 
             String musicFile = "src/main/java/edu/fiuba/algo3/interfaz/musica/soltar_bloque.mp3";     // For example
