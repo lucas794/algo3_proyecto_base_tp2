@@ -15,7 +15,7 @@ public class OpcionActivarMusicaHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent){
-        reproductor.setVolume(1.0);
+        reproductor.setVolume(0.5);
         opcion.setOnAction(new OpcionDesactivarMusicaHandler(reproductor,opcion));
         opcion.setText("Apagar Musica");
     }
