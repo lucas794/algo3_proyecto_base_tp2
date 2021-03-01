@@ -22,7 +22,6 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-media</artifactId>
             <version>13</version>
-            <type>pom</type>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
