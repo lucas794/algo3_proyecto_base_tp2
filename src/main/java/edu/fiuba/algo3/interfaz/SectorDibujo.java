@@ -38,6 +38,6 @@ public class SectorDibujo extends Pane {
     }
 
     public void agregarEnlaceConSector(SectorAlgoritmo sectorAlgoritmo) {
-        sectorAlgoritmo.agregar(boton);
+        sectorAlgoritmo.agregarObservador(boton);
     }
 }

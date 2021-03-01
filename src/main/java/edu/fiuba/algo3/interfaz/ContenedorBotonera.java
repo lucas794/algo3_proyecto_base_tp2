@@ -20,19 +20,19 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
-public class ContenedorBotonera implements ObservableBotonGA, ObservableSectorAlgoritmo {
+public class ContenedorBotonera implements /*ObservableBotonGA, */ObservableSectorAlgoritmo {
 
     private final VBox botones;
     private Personaje personaje;
     private SectorDibujo sectorDibujo;
-    private ArrayList<ObservadorBotonGA> observadorBotonGAS;
+
     private ArrayList<ObservadorSectorAlgoritmo> observadorSA;
     BotonABGA botonGuardarAlgoritmo;
 
     public ContenedorBotonera(SectorDibujo sectorDibujo, Personaje personaje, MediaPlayer mediaPlayer){
         this.personaje = personaje;
         this.sectorDibujo = sectorDibujo;
-        this.observadorBotonGAS = new ArrayList<>();
+
         this.observadorSA = new ArrayList<>();
 
         //los metodos setOnAction son temporales aca para probar los movimientos del personaje
@@ -72,7 +72,7 @@ public class ContenedorBotonera implements ObservableBotonGA, ObservableSectorAl
         Separator nuevoSeparador = new Separator();
 
         BotonVolumen botonVolumen = new BotonVolumen(mediaPlayer);
-        this.agregar(botonVolumen);
+        this.agregarObservador(botonVolumen);
 
         botones.getChildren().addAll(botonGuardarAlgoritmo, separador/*, ejecutarAlgoritmo*/, botonVolumen, nuevoSeparador);
 
@@ -90,16 +90,6 @@ public class ContenedorBotonera implements ObservableBotonGA, ObservableSectorAl
         return this.botones;
     }
 
-    @Override
-    public void agregarObservador(ObservadorBotonGA observadorBotonGA) {
-        observadorBotonGAS.add(observadorBotonGA);
-    }
-
-    @Override
-    public void notificarObservadores(int hijos) {
-        observadorBotonGAS.forEach( obs -> obs.cambios(hijos) );
-    }
-
     public ObservadorSectorAlgoritmo obtenerBotonGuardarAlgoritmo() {
         return botonGuardarAlgoritmo;
     }
@@ -107,12 +97,12 @@ public class ContenedorBotonera implements ObservableBotonGA, ObservableSectorAl
     ///////////////////////////////////////////////////////////
 
     @Override
-    public void agregar(ObservadorSectorAlgoritmo observador) {
+    public void agregarObservador(ObservadorSectorAlgoritmo observador) {
         this.observadorSA.add(observador);
     }
 
     @Override
-    public void notificar(VBox nuevoContenedor) {
+    public void notificarObservador(VBox nuevoContenedor) {
         this.observadorSA.forEach( obs -> obs.cambios(nuevoContenedor) );
     }
 }

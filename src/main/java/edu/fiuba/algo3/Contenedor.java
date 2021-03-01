@@ -53,7 +53,7 @@ public class Contenedor implements ObservadorContenedor {
         item.setAlignment(Pos.CENTER);
         contenedor.getChildren().add(item);
 
-        botonera.notificarObservadores(contenedor.getChildren().size());
+        botonera.notificarObservador(contenedor);
     }
 
     @Override

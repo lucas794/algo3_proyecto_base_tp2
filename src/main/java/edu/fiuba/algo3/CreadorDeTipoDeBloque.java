@@ -16,9 +16,8 @@ public class CreadorDeTipoDeBloque implements ObservableContenedor {
         item.setOnMouseClicked( new MenuContextoHandler(item, sector, contenedor, botonera) );
 
         contenedor.getChildren().add(item);
-        botonera.notificarObservadores(contenedor.getChildren().size());
-        botonera.notificar(contenedor);
-        sector.notificar(contenedor);
+        botonera.notificarObservador(contenedor);
+        sector.notificarObservador(contenedor);
     }
 
     // crea un bloque adentro de un contenedor de algoritmo (repeticion/inversion)
@@ -28,8 +27,7 @@ public class CreadorDeTipoDeBloque implements ObservableContenedor {
         item.setOnMouseClicked( new MenuContextoEnContenedorHandler(item, sector, contenedor, botonera, creador) );
 
         contenedor.getChildren().add(item);
-        botonera.notificarObservadores(contenedor.getChildren().size());
-        botonera.notificar(contenedor);
+        botonera.notificarObservador(contenedor);
 
         creador.notificarObservador(0, 45, 0); // no es un contenedor.
     }
@@ -48,7 +46,7 @@ public class CreadorDeTipoDeBloque implements ObservableContenedor {
         Contenedor contenedorAEjecutar = new Contenedor(this, nombre, contenedor, botonera, sector, icono);
         this.agregarObservador(contenedorAEjecutar);
         this.notificarObservador( 50, 45, 0);
-        sector.notificar(contenedor);
+        sector.notificarObservador(contenedor);
     }
 
     @Override

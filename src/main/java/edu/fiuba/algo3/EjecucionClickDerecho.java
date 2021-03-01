@@ -24,9 +24,8 @@ public class EjecucionClickDerecho {
         crearMenu(sector, mouseEvent, actionEvent -> {
             contenedor.getChildren().clear();
             contenedorMadre.getChildren().remove(contenedor);
-            botonera.notificarObservadores(contenedorMadre.getChildren().size());
-            botonera.notificar(contenedorMadre);
-            sector.notificar(contenedorMadre);
+            botonera.notificarObservador(contenedorMadre);
+            sector.notificarObservador(contenedorMadre);
             creador.notificarObservador( -50, -45, -1 ); // lo achicamos!!
         });
     }
@@ -34,19 +33,17 @@ public class EjecucionClickDerecho {
     public void resolucionClickDerecho(VBox contenedor, SectorAlgoritmo sector, MouseEvent mouseEvent, BotonAB boton, ContenedorBotonera botonera) {
         crearMenu(sector, mouseEvent, actionEvent -> {
             contenedor.getChildren().remove(boton);
-            botonera.notificarObservadores(contenedor.getChildren().size());
-            botonera.notificar(contenedor);
-            sector.notificar(contenedor);
+            botonera.notificarObservador(contenedor);
+            sector.notificarObservador(contenedor);
         });
     }
 
     public void resolucionClickDerecho(VBox contenedor, SectorAlgoritmo sector, MouseEvent mouseEvent, BotonAB boton, ContenedorBotonera botonera, CreadorDeTipoDeBloque creador) {
         crearMenu(sector, mouseEvent, actionEvent -> {
             contenedor.getChildren().remove(boton);
-            botonera.notificarObservadores(contenedor.getChildren().size());
             creador.notificarObservador(0, -45, -1); // lo achicamos .
-            botonera.notificar(contenedor);
-            sector.notificar(contenedor);
+            botonera.notificarObservador(contenedor);
+            sector.notificarObservador(contenedor);
         });
     }
 
