@@ -30,7 +30,7 @@ public class App extends Application {
         Tablero tablero = new Tablero(mediaPlayer);
 
         var scene = new Scene(tablero, RES_X, RES_Y);
-
+        stage.setResizable(false);
         stage.setTitle( TITULO_VENTANA );
         stage.setScene(scene);
         stage.show();
