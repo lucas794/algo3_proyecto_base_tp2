@@ -5,17 +5,15 @@ import edu.fiuba.algo3.interfaz.ObservadorSectorAlgoritmo;
 import edu.fiuba.algo3.interfaz.vista.botoneras.BotonEjecutar;
 import edu.fiuba.algo3.modelo.Personaje;
 import edu.fiuba.algo3.modelo.tablero.Dibujo;
-import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
 import java.util.ArrayList;
 
-public class SectorDibujo extends AnchorPane implements ObservableSectorAlgoritmo {
+public class SectorDibujo extends Pane implements ObservableSectorAlgoritmo {
     private Personaje personaje;
     private ImageView imagenPersonaje;
-    private ImageView nuevoFondo;
     private VistaPersonaje vistaPersonaje;
     private VistaLinea vistaLinea;
     private Dibujo dibujo;
