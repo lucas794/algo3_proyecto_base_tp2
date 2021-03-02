@@ -26,6 +26,7 @@ public class Contenedor implements ObservadorContenedor {
 
     public Contenedor(CreadorDeTipoDeBloque creadorDeTipoDeBloque, String nombre, VBox contenedor, SectorBloquesDisponibles sectorBloquesDisponibles, SectorAlgoritmo sector, String icono)
     {
+        item.setId(nombre);
         contenedorAEjecutar.setPrefSize( TAMANIO_X, TAMANIO_Y );
         contenedorAEjecutar.setAlignment( Pos.TOP_CENTER );
 

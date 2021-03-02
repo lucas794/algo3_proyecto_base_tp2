@@ -56,18 +56,18 @@ public class SectorBloquesDisponibles extends VBox implements ObservableSectorAl
         MovimientoEventHandler movAbajo = new MovimientoEventHandler(new BloqueMovimiento(new MovimientoAbajo()), sectorDibujo, personaje);
         botonMoverAbajo.setOnAction(movAbajo);
 
-        BotonAB botonMoverIzquierda = new BotonAB("Mover izquierda", "izquierda.png");
+        BotonAB botonMoverIzquierda = new BotonAB("Mover Izquierda", "izquierda.png");
         MovimientoEventHandler movIzquierda = new MovimientoEventHandler(new BloqueMovimiento(new MovimientoIzquierda()), sectorDibujo, personaje);
         botonMoverIzquierda.setOnAction(movIzquierda);
 
-        BotonAB botonMoverDerecha = new BotonAB("Mover derecha", "derecha.png");
+        BotonAB botonMoverDerecha = new BotonAB("Mover Derecha", "derecha.png");
         MovimientoEventHandler botonMovimiento = new MovimientoEventHandler(new BloqueMovimiento(new MovimientoDerecha()), sectorDibujo, personaje);
         botonMoverDerecha.setOnAction(botonMovimiento);
 
-        BotonAB botonBajarLapiz = new BotonAB("Bajar lapiz", "abajo.png");
-        BotonAB botonSubirLapiz = new BotonAB("Subir lapiz", "arriba.png");
+        BotonAB botonBajarLapiz = new BotonAB("Bajar Lapiz", "abajo.png");
+        BotonAB botonSubirLapiz = new BotonAB("Subir Lapiz", "arriba.png");
 
-        BotonAB botonRepeticion = new BotonAB("Repetir...", "repeticion.png");
+        BotonAB botonRepeticion = new BotonAB("Repetir algoritmo", "repeticion.png");
         BotonAB botonInvertir = new BotonAB("Invertir comportamiento", "personajeUp.png");
 
         this.getChildren().addAll(botonMoverArriba, botonMoverAbajo, botonMoverIzquierda, botonMoverDerecha,

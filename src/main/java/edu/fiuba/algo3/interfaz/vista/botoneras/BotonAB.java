@@ -15,7 +15,7 @@ public class BotonAB extends Button {
     String RUTA_ICONOS = "file:src/main/java/edu/fiuba/algo3/interfaz/imagenes/";
 
     public BotonAB(String nombre_boton, String icono) {
-        super();
+        super(nombre_boton);
 
         ImageView icon = new ImageView(RUTA_ICONOS + icono);
         this.setMaxSize( 100, 100);
