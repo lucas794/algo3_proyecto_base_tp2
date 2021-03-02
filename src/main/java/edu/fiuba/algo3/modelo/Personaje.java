@@ -38,5 +38,6 @@ public class Personaje {
 
     public void reset() {
         this.posicion_personaje = new Posicion(0,0);
+        this.levantarLapiz();
     }
 }
