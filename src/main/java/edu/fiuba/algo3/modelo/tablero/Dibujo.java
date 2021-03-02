@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Dibujo {
-    private final List<Linea> lineas = new ArrayList<>();
+    private List<Linea> lineas = new ArrayList<>();
 
     public void agregarLinea(Movimiento movimiento, Posicion posicion) {
         Linea linea = new Linea(posicion);
@@ -23,5 +23,9 @@ public class Dibujo {
 
     public List<Linea> obtenerSectorDibujado() {
         return lineas;
+    }
+
+    public void reset() {
+        this.lineas = new ArrayList<>();
     }
 }

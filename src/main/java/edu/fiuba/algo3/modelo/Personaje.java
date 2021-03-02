@@ -13,7 +13,7 @@ import java.util.List;
 public class Personaje {
 
     private Lapiz lapiz = new LapizLevantado(); // por defecto, el lapiz arranca arriba.
-    private final Posicion posicion_personaje = new Posicion(0,0);
+    private Posicion posicion_personaje = new Posicion(0,0);
 
     public void ejecutarBloques(List<Bloque> bloques, Dibujo dibujo) {
         bloques.forEach( bloque -> bloque.ejecutar(this, dibujo) );
@@ -34,5 +34,9 @@ public class Personaje {
     public List<Integer> obtenerPosicion() {
 
         return this.posicion_personaje.obtenerCoordenadas();
+    }
+
+    public void reset() {
+        this.posicion_personaje = new Posicion(0,0);
     }
 }

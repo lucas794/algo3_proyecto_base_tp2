@@ -44,13 +44,8 @@ public class SectorDibujo extends Pane implements ObservableSectorAlgoritmo {
     }
 
     public void reset(){
-        imagenPersonaje.setImage(null);
-        clean();
-        Dibujo dibujoNuevo = new Dibujo();
-        Personaje personajeNuevo = new Personaje();
-        dibujo = dibujoNuevo;
-        personaje = personajeNuevo;
-        boton = new BotonEjecutar(personaje, this, dibujo);
+        this.dibujo.reset();
+        this.personaje.reset();
     }
 
     public void update(){
