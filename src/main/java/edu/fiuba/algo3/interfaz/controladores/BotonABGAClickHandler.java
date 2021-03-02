@@ -1,6 +1,7 @@
-package edu.fiuba.algo3.interfaz.vista.botoneras;
+package edu.fiuba.algo3.interfaz.controladores;
 
 import edu.fiuba.algo3.interfaz.vista.SectorBloquesDisponibles;
+import edu.fiuba.algo3.interfaz.vista.botoneras.BotonGAPersonalizado;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

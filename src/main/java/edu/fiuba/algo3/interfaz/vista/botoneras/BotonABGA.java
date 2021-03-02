@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.interfaz.vista.botoneras;
 
 import edu.fiuba.algo3.interfaz.ObservadorSectorAlgoritmo;
+import edu.fiuba.algo3.interfaz.controladores.BotonABGAClickHandler;
 import edu.fiuba.algo3.interfaz.vista.SectorBloquesDisponibles;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;

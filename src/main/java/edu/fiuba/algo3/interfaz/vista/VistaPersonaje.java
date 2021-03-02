@@ -22,7 +22,7 @@ public class VistaPersonaje {
     public VistaPersonaje(ImageView imagenPersonaje, SectorDibujo sectorDibujo, Personaje personaje){
         this.personaje = personaje;
         this.imagenPersonaje = imagenPersonaje;
-
+        this.setDireccionActual(VistaPersonaje.Direccion.ESTE);
         imagenPersonaje.setX(180);
         imagenPersonaje.setY(180);
         imagenPersonaje.setFitHeight(35);
@@ -66,7 +66,7 @@ public class VistaPersonaje {
             this.setDireccionActual(VistaPersonaje.Direccion.SUR);
         }else if ( posicionAnterior.obtenerCoordenadas().get(0) < personaje.obtenerPosicion().get(0)){
             this.setDireccionActual(VistaPersonaje.Direccion.ESTE);
-        }else {
+        }else if( posicionAnterior.obtenerCoordenadas().get(0) > personaje.obtenerPosicion().get(0)){
             this.setDireccionActual(VistaPersonaje.Direccion.OESTE);
         }
 
