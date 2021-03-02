@@ -106,6 +106,7 @@ public class EjecucionAlgoritmoHandler implements EventHandler<MouseEvent> {
 
     @Override
     public void handle(MouseEvent mouseEvent) {
+        sectorDibujo.reset();
 
         ObservableList<Node> botones = this.contenedor.getChildren();
 
@@ -125,6 +126,5 @@ public class EjecucionAlgoritmoHandler implements EventHandler<MouseEvent> {
 
         timeleine.setCycleCount(bloquesEjecutar.size());
         timeleine.play();
-
     }
 }

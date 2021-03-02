@@ -12,35 +12,51 @@ import javafx.scene.layout.*;
 import java.util.ArrayList;
 
 public class SectorDibujo extends Pane implements ObservableSectorAlgoritmo {
-
+    private Personaje personaje;
     private ImageView imagenPersonaje;
     private VistaPersonaje vistaPersonaje;
+    private VistaLinea vistaLinea;
+    private Dibujo dibujo;
     private ArrayList<ObservadorSectorAlgoritmo> observador;
     BotonEjecutar boton;
 
     public SectorDibujo(Personaje personaje, Dibujo dibujo) {
+        this.personaje = personaje;
+        this.dibujo = dibujo;
         boton = new BotonEjecutar(personaje, this, dibujo);
         this.setPrefSize(400,500);
         clean();
-        imagenPersonaje = new ImageView( "file:src/main/java/edu/fiuba/algo3/interfaz/imagenes/personajeRight.png");
-        vistaPersonaje = new VistaPersonaje(imagenPersonaje, this, personaje);
-        observador = new ArrayList<>();
 
+        observador = new ArrayList<>();
         this.agregarObservador( boton);
 
         this.getChildren().add( boton );
     }
 
     public void clean(){
+        imagenPersonaje = new ImageView( "file:src/main/java/edu/fiuba/algo3/interfaz/imagenes/personajeRight.png");
+        vistaPersonaje = new VistaPersonaje(imagenPersonaje, this, personaje);
+        vistaLinea = new VistaLinea(dibujo);
         BackgroundImage fondoImagen = new BackgroundImage(new Image("file:src/main/java/edu/fiuba/algo3/interfaz/imagenes/fondoSectorDibujo.jpg"),
                 BackgroundRepeat.REPEAT,BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         Background fondo = new Background(fondoImagen);
-
         this.setBackground(fondo);
+    }
+
+    public void reset(){
+        imagenPersonaje.setImage(null);
+        clean();
+        Dibujo dibujoNuevo = new Dibujo();
+        Personaje personajeNuevo = new Personaje();
+        dibujo = dibujoNuevo;
+        personaje = personajeNuevo;
+        boton = new BotonEjecutar(personaje, this, dibujo);
     }
 
     public void update(){
         vistaPersonaje.updateVistaPersonaje();
+
+        vistaLinea.updateVistaLinea(this);
     }
 
     @Override

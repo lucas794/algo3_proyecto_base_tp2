@@ -33,11 +33,16 @@ public class Tablero extends BorderPane {
         barraDeMenu = new BarraDeMenu(mediaPlayer);
         Dibujo dibujo = new Dibujo();
         Personaje personaje = new Personaje();
+
         sectorDibujo = new SectorDibujo(personaje, dibujo);
         sectorBloques = new SectorBloquesDisponibles(sectorDibujo, personaje);
 
         // la conexión completa. sectorAlgoritmo tiene acceso a sector bloques y sector bloques tiene acceso a sector dibujo.
         sectorAlgoritmo = new SectorAlgoritmo( sectorBloques );
     }
+
+
+
+
 }
 

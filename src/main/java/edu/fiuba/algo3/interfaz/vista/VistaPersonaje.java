@@ -54,6 +54,7 @@ public class VistaPersonaje {
         imagenPersonaje.setX(POS_INICIAL_CENTER + (personaje.obtenerPosicion().get(0) * 20));
     }
 
+
     public void setDireccionActual(VistaPersonaje.Direccion dir){
         direccionActual = dir;
     }

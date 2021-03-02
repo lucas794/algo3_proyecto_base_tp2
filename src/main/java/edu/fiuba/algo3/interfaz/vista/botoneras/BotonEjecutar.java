@@ -29,4 +29,5 @@ public class BotonEjecutar extends Button implements ObservadorSectorAlgoritmo {
         this.setDisable( this.contenedorAlgoritmo.getChildren().size() == 0 );
         this.setOnMouseClicked( new EjecucionAlgoritmoHandler(  this.contenedorAlgoritmo  , personaje, sectorDibujo, dibujo));
     }
+
 }
