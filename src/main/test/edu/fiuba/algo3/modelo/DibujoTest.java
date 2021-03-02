@@ -219,4 +219,29 @@ public class DibujoTest {
             assertEquals( lineaCreadaParaComparar.obtenerCoordenadasPosicionFinal() , trazoDibujado.obtenerCoordenadasPosicionFinal() );
         }
     }
+
+    @Test
+    public void test08SeCreaUnaSecuenciaDibujaLuegoReseteaYNoHayLineas() {
+        lista_de_bloques.add(new BloqueBajarLapiz());
+        lista_de_bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
+        lista_de_bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
+        lista_de_bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
+        lista_de_bloques.add(new BloqueMovimiento(new MovimientoArriba()));
+        lista_de_bloques.add(new BloqueLevantarLapiz());
+        lista_de_bloques.add(new BloqueMovimiento(new MovimientoAbajo()));
+        lista_de_bloques.add(new BloqueMovimiento(new MovimientoAbajo()));
+        lista_de_bloques.add(new BloqueMovimiento(new MovimientoAbajo()));
+        lista_de_bloques.add(new BloqueMovimiento(new MovimientoAbajo()));
+        lista_de_bloques.add(new BloqueBajarLapiz());
+        lista_de_bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
+        lista_de_bloques.add(new BloqueMovimiento(new MovimientoDerecha()));
+        // Mientras el lapiz estuvo bajado, solo se hicieron 6 líneas.
+
+        for (Bloque bloque : lista_de_bloques) {
+            bloque.ejecutar(personaje, sectorDibujo);
+        }
+
+        sectorDibujo.reset();
+        assertEquals( 0, sectorDibujo.obtenerSectorDibujado().size() );
+    }
 }
