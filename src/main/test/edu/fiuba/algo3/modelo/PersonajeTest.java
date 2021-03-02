@@ -313,4 +313,20 @@ public class PersonajeTest {
         assertEquals( 2, sectorDibujo.obtenerSectorDibujado().size() );
         assertEquals(lineaTrazada.obtenerCoordenadasPosicionFinal(), personaje.obtenerPosicion());
     }
+
+    @Test
+    public void test18SeMueveElPersonajeLuegoReseteaYTienePosicion00() {
+        BloqueMovimiento bloqueMoverArriba = new BloqueMovimiento(new MovimientoArriba());
+        BloqueMovimiento bloqueMoverDerecha = new BloqueMovimiento(new MovimientoDerecha());
+        List<Bloque> bloques = new ArrayList<>();
+        for (int i = 0; i < 50; i++) {
+            bloques.add(bloqueMoverDerecha);
+            bloques.add(bloqueMoverArriba);
+        }
+
+        personaje.ejecutarBloques(bloques, new Dibujo());
+        personaje.reset();
+
+        assertEquals( Arrays.asList(0, 0), personaje.obtenerPosicion() );
+    }
 }
