@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.interfaz.ObservadorSectorAlgoritmo;
 import edu.fiuba.algo3.modelo.bloques.Bloque;
 import edu.fiuba.algo3.modelo.lapiz.Lapiz;
 import edu.fiuba.algo3.modelo.lapiz.LapizApoyado;
