@@ -31,6 +31,8 @@ maven 3.6.0
 ## Ejecutando las pruebas
 
 ```bash
+    git clone https://github.com/lucas794/algo3_proyecto_base_tp2
+    cd algo3_proyecto_base_tp2/
     mvn test
 ```
 
@@ -42,7 +44,9 @@ Este comando crea el reporte de cobertura para CI y el reporte HTML que pueden a
 
 ## Ejecutando la aplicación
 
-Explicación de como ejecutar la aplicación
+```bashbash
+    mvn compile && mvn exec:java -Dexec.mainClass="edu.fiuba.algo3.vista.App"
+```
 
 ## Licencia
 
