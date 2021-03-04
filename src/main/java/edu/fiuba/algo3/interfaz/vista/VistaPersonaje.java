@@ -1,11 +1,13 @@
 package edu.fiuba.algo3.interfaz.vista;
 
+import edu.fiuba.algo3.modelo.ObservadorPersonaje;
 import edu.fiuba.algo3.modelo.Personaje;
+import edu.fiuba.algo3.modelo.tablero.Dibujo;
 import edu.fiuba.algo3.modelo.tablero.Posicion;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class VistaPersonaje {
+public class VistaPersonaje implements ObservadorPersonaje {
 
     private static final int POS_INICIAL_CENTER = 180;
     private static final int ESCALAR = 40;
@@ -17,6 +19,7 @@ public class VistaPersonaje {
     private Direccion direccionActual;
     private Posicion posicionAnterior = new Posicion(0,0);
     private Posicion imagenPosicionAnterior;
+    private VistaLinea vistaLinea;
     private Posicion imagenPosicionActual;
     private SectorDibujo sectorDibujo;
     private Rango rango;
@@ -26,16 +29,18 @@ public class VistaPersonaje {
     private static final String PERSONAJE_ARRIBA = "file:src/main/java/edu/fiuba/algo3/interfaz/imagenes/personajeUp.png";
     private static final String PERSONAJE_ABAJO = "file:src/main/java/edu/fiuba/algo3/interfaz/imagenes/personajeDown.png";
 
-    public VistaPersonaje(ImageView imagenPersonaje, SectorDibujo sectorDibujo, Personaje personaje){
+    public VistaPersonaje(ImageView imagenPersonaje, SectorDibujo sectorDibujo, Personaje personaje, Dibujo dibujo){
         this.personaje = personaje;
         this.imagenPersonaje = imagenPersonaje;
         this.sectorDibujo = sectorDibujo;
         this.rango = new Rango();
+        vistaLinea = new VistaLinea(dibujo, this, sectorDibujo);
         this.setDireccionActual(VistaPersonaje.Direccion.ESTE);
         imagenPersonaje.setX(POS_INICIAL_CENTER);
         imagenPersonaje.setY(POS_INICIAL_CENTER);
         imagenPersonaje.setFitHeight(35);
         imagenPersonaje.setFitWidth(30);
+        this.personaje.agregarObservador(this);
         sectorDibujo.getChildren().add(imagenPersonaje);
     }
 
@@ -57,7 +62,7 @@ public class VistaPersonaje {
 
     }
 
-    public void updateVistaPersonaje( ) {
+    public void update(){
         this.girarPersonaje();
         imagenPosicionAnterior = new Posicion((int)imagenPersonaje.getX(),(int) imagenPersonaje.getY());
 
@@ -67,6 +72,7 @@ public class VistaPersonaje {
         imagenPosicionActual = new Posicion((int)imagenPersonaje.getX(), (int)imagenPersonaje.getY());
 
         verificarFueraDeRango();
+        vistaLinea.dibujar();
     }
 
     public void setDireccionActual(VistaPersonaje.Direccion dir){

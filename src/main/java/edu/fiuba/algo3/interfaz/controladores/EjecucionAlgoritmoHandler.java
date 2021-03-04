@@ -15,7 +15,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
-import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -23,7 +22,6 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class EjecucionAlgoritmoHandler implements EventHandler<MouseEvent> {
@@ -119,9 +117,7 @@ public class EjecucionAlgoritmoHandler implements EventHandler<MouseEvent> {
         AtomicInteger contador = new AtomicInteger();
         timeleine = new Timeline(new KeyFrame(Duration.seconds(1), (ActionEvent event) -> {
             Bloque temp = bloquesEjecutar.get(contador.getAndIncrement());
-
             temp.ejecutar(personaje, dibujo);
-            sectorDibujo.update();
         }));
 
         timeleine.setCycleCount(bloquesEjecutar.size());

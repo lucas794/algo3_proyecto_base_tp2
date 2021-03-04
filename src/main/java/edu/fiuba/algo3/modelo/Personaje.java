@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.interfaz.ObservadorSectorAlgoritmo;
 import edu.fiuba.algo3.modelo.bloques.Bloque;
 import edu.fiuba.algo3.modelo.lapiz.Lapiz;
 import edu.fiuba.algo3.modelo.lapiz.LapizApoyado;
@@ -8,12 +9,14 @@ import edu.fiuba.algo3.modelo.tablero.Dibujo;
 import edu.fiuba.algo3.modelo.tablero.Posicion;
 import edu.fiuba.algo3.modelo.tablero.movimiento.Movimiento;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Personaje {
+public class Personaje implements ObservablePersonaje{
 
     private Lapiz lapiz = new LapizLevantado(); // por defecto, el lapiz arranca arriba.
     private Posicion posicion_personaje = new Posicion(0,0);
+    private ArrayList<ObservadorPersonaje> observador = new ArrayList<>();
 
     public void ejecutarBloques(List<Bloque> bloques, Dibujo dibujo) {
         bloques.forEach( bloque -> bloque.ejecutar(this, dibujo) );
@@ -21,6 +24,7 @@ public class Personaje {
 
     public void mover(Movimiento movimiento, Dibujo dibujo) {
         lapiz.dibujar(movimiento, this.posicion_personaje, dibujo);
+        notificarObservador();
     }
 
     public void apoyarLapiz(){
@@ -39,5 +43,16 @@ public class Personaje {
     public void reset() {
         this.posicion_personaje = new Posicion(0,0);
         this.levantarLapiz();
+        notificarObservador();
+    }
+
+    @Override
+    public void agregarObservador(ObservadorPersonaje observador) {
+        this.observador.add(observador);
+    }
+
+    @Override
+    public void notificarObservador() {
+        this.observador.forEach( obs -> obs.update());
     }
 }

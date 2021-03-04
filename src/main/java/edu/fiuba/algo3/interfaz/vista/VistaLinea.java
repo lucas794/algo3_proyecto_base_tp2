@@ -26,7 +26,7 @@ public class VistaLinea {
         this.sectorDibujo = sectorDibujo;
     }
 
-    public void updateVistaLinea() {
+    public void dibujar() {
 
         if (dibujo.obtenerSectorDibujado().size() != 0 && dibujo.obtenerSectorDibujado().size() > tamAnterior) {
 
@@ -42,12 +42,15 @@ public class VistaLinea {
             tamAnterior = dibujo.obtenerSectorDibujado().size();
 
             lineas.add(line);
+        }else if (dibujo.obtenerSectorDibujado().size() == 0){
+            reset();
         }
     }
 
     public void reset(){
         this.line = new Line();
         tamAnterior = 0;
+        dibujo.reset();
         lineas.forEach( lineas -> lineas.setStroke(Color.TRANSPARENT));
     }
 
