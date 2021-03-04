@@ -21,7 +21,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
 
-        String musicFile = "src/main/java/edu/fiuba/algo3/interfaz/musica/main.mp3";     // For example
+        String musicFile = "src/main/java/edu/fiuba/algo3/interfaz/musica/main.mp3";
         Media musica = new Media(new File(musicFile).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(musica);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);

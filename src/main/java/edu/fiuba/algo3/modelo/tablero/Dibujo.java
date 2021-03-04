@@ -15,12 +15,6 @@ public class Dibujo {
         lineas.add(linea);
     }
 
-    public void dibujar(){
-        for(Linea i : lineas){
-            i.dibujar();
-        }
-    }
-
     public List<Linea> obtenerSectorDibujado() {
         return lineas;
     }

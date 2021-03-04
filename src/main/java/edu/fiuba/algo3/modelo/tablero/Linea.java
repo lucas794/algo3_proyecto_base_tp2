@@ -2,8 +2,6 @@ package edu.fiuba.algo3.modelo.tablero;
 
 import java.util.List;
 
-// clase anémica momentaneamente, pero posiblemente deje de serlo cuando se implemente el dibujo en la interfaz gráfica.
-
 public class Linea {
     private final Posicion posInicial;
     private Posicion posFinal;
@@ -22,7 +20,4 @@ public class Linea {
         return this.posFinal.obtenerCoordenadas();
     }
 
-    public void dibujar(){
-        //Cuando haya interfaz grafica
-    }
 }
